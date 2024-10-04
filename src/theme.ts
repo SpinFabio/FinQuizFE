@@ -8,6 +8,7 @@ const theme = createTheme({
     },
     primary: {
       main: '#0074D9',
+      light:'#00bdf7',
       contrastText:'#fff' // da definire per tutti i testi che stanno sopra ad un primary.main color
     },
     secondary: {

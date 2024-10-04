@@ -1,14 +1,7 @@
 import React from 'react';
 import {Button, Typography, Tooltip, Box, Stack, useMediaQuery, useTheme, Container} from '@mui/material';
 import { Link } from 'react-router-dom';
-
-interface ButtonConfig {
-  id: string;
-  to: string;
-  tooltip: string;
-  text: string;
-  className: string;
-}
+import {ButtonConfig} from "../../components/ThreeModComponent/buttonConfigData.ts";
 
 interface HomePageProps {
   buttonsArray: ButtonConfig[];

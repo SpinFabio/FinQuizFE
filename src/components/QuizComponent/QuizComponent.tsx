@@ -1,4 +1,5 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
+import {Quiz} from "../../pages/QuizMainPage/dummyData.ts";
 import {
   CardContent,
   Typography,
@@ -10,28 +11,21 @@ import {
   Paper, useTheme
 } from '@mui/material';
 
-export interface Quiz {
-  macroTopic: string;
-  microTopic: string;
-  question: string;
-  correctAnswer: string;
-  allAnswers: string[];
-  level: number;
-  subcontent: string;
-  userAnsware?: string;
-  answered?: boolean;
-  flagged?: boolean;
+
+
+interface QuizComponentProps{
+  quiz: Quiz,
+  handleRadioButtonClick: (event: React.MouseEvent<HTMLButtonElement>) => void,
+  currentSelectedAnsw: string,
 }
 
-const QuizComponent: React.FC<{ quiz: Quiz }> = ({ quiz }) => {
-  // @ts-ignore
-  const [selectedAnswer, setSelectedAnswer] = useState<string>('');
+const QuizComponent: React.FC<QuizComponentProps> = ({
+                                                   quiz ,
+                                                   handleRadioButtonClick,
+                                                   currentSelectedAnsw,
+                                                 }) => {
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // @ts-ignore
-    const selectedAnswer = (event.target as HTMLInputElement).value;
-    setSelectedAnswer((event.target as HTMLInputElement).value);
-  };
+
 
   const shuffledAnswers = useMemo(() => shuffleArray([...quiz.allAnswers]), [quiz.allAnswers]);
   const theme = useTheme();
@@ -51,7 +45,10 @@ const QuizComponent: React.FC<{ quiz: Quiz }> = ({ quiz }) => {
       }}
     >
       <CardContent>
-        <Typography variant="h6" gutterBottom>
+        <Typography
+          variant="h6"
+          gutterBottom
+        >
           {quiz.question}
         </Typography>
 
@@ -64,7 +61,7 @@ const QuizComponent: React.FC<{ quiz: Quiz }> = ({ quiz }) => {
             <RadioGroup
               aria-label="options"
               name="radio-buttons-group"
-              onChange={handleChange}
+              value={currentSelectedAnsw}
               sx={{
                 textAlign: 'left', // Assicura che il testo rimanga allineato a sinistra
               }}
@@ -74,6 +71,7 @@ const QuizComponent: React.FC<{ quiz: Quiz }> = ({ quiz }) => {
                   key={answer}
                   value={answer}
                   control={<Radio
+                    onClick={handleRadioButtonClick}
                     sx={{
                       transition: 'transform 0.3s ease',
                       '&:hover': {

@@ -14,14 +14,18 @@ interface QuizNavigationControlsProps {
   flag: boolean;
 }
 
-const QuizNavigationControls: React.FC<QuizNavigationControlsProps> = ({
-                                                                         onPrevious,
-                                                                         onNext,
-                                                                         canGoPrevious,
-                                                                         canGoNext,
-                                                                         onFlag,
-                                                                         flag,
-                                                                       }) => {
+const QuizNavigationControls: React.FC<QuizNavigationControlsProps> =
+  ({
+     onPrevious,
+     onNext,
+     canGoPrevious,
+     canGoNext,
+     onFlag,
+     flag,
+   }) => {
+
+
+
   const theme = useTheme();
 
   return (
@@ -43,6 +47,8 @@ const QuizNavigationControls: React.FC<QuizNavigationControlsProps> = ({
         elevation={3}
         sx={{
           flex: 1,
+          borderRadius: 4,
+
           transition: 'transform 0.3s ease',
           '&:hover': {
             transform: 'scale(1.1)', // Ingrandisci al passaggio del mouse
@@ -50,12 +56,14 @@ const QuizNavigationControls: React.FC<QuizNavigationControlsProps> = ({
         }}
       >
         <Button
+
           variant="outlined"
           onClick={onPrevious}
           disabled={!canGoPrevious}
           sx={{
             width: '100%',
             border: 2,
+            borderRadius: 4,
             fontSize: { xs: '0.7rem', sm: '1rem' },
             padding: { xs: '4px', sm: '8px' },
           }}
@@ -106,6 +114,7 @@ const QuizNavigationControls: React.FC<QuizNavigationControlsProps> = ({
         elevation={3}
         sx={{
           flex: 1,
+          borderRadius: 4,
           transition: 'transform 0.3s ease',
           '&:hover': {
             transform: 'scale(1.1)', // Ingrandisci al passaggio del mouse
@@ -118,6 +127,7 @@ const QuizNavigationControls: React.FC<QuizNavigationControlsProps> = ({
           disabled={!canGoNext}
           sx={{
             width: '100%',
+            borderRadius: 4,
             border: 2, // Riduzione della dimensione del testo su schermi piccoli
             padding: { xs: '4px', sm: '8px' }, // Riduzione del padding su schermi piccoli
           }}

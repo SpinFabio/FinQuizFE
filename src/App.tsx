@@ -1,70 +1,60 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import NavBar from './components/Navbar/Navbar.tsx';
 import HomePage from './pages/HomePage/HomePage.tsx';
-import Mod1Page from "./pages/modalità1/Mod1Page.tsx";
-import TestPage from "./pages/TestPage.tsx";
-import { Container, Box } from '@mui/material';
+import TestPage from "./pages/_TestingPages/TestPage.tsx";
+import { Container } from '@mui/material';
 import Footer from "./components/Footer/Footer.tsx";
+import QuizMainPage from "./pages/QuizMainPage/QuizMainPage.tsx";
+import SubNav from "./pages/_TestingPages/SubNav.tsx";
+import Modal1 from "./pages/_TestingPages/Modal1.tsx";
+import TrainingHomePage from "./pages/TrainingHomePage/TrainingHomePage.tsx";
+import {buttonConfigs, UrlExerciceMode} from "./components/ThreeModComponent/buttonConfigData.ts";
+import QuizMacroForm from "./components/QuizMacroForm/QuizMacroForm.tsx";
 
-const buttonConfigs = [
-  {
-    id: 'simulazione',
-    to: '/mod1',
-    tooltip: 'Simula un esame completo come se fosse reale.',
-    text: 'Simulazione Esame',
-    className: 'mode1',
-  },
-  {
-    id: 'quiz',
-    to: '/quiz',
-    tooltip: 'Fai quiz suddivisi per argomento specifico.',
-    text: 'Quiz per Argomento',
-    className: 'mode2',
-  },
-  {
-    id: 'modalita',
-    to: '/veroEsame',
-    tooltip: 'Testa la vera modalità d\'esame, identica all\'originale.',
-    text: 'Vera Modalità di Esame',
-    className: 'mode3',
-  },
-];
 
 const App: React.FC = () => {
   return (
-    <Router>
-      <Box
+    <BrowserRouter
+      basename="/"
+    >
+      <NavBar/>
+
+      <Container
+        maxWidth="md"
         sx={{
+          padding: { xs: '16px', sm: '24px', md: '32px' },
           display: 'flex',
           flexDirection: 'column',
-          minHeight: '100vh',
+          alignItems: 'center',
         }}
       >
-        <NavBar/>
+        <Routes>
+          <Route path="/" element={<HomePage buttonsArray={buttonConfigs}/>}/>
+          <Route path={'quiz-main'} element={<QuizMainPage/>}/>
 
-        <Container
-          maxWidth="md"
-          sx={{
-            padding: { xs: '16px', sm: '24px', md: '32px' },
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Routes>
-            <Route path="/" element={<HomePage buttonsArray={buttonConfigs}/>}/>
-            <Route path={buttonConfigs[0].to} element={<Mod1Page/>}/>
-            <Route path="/test" element={<TestPage/>}/>
+          <Route path={UrlExerciceMode} element={<TrainingHomePage/>}>
+            <Route path={buttonConfigs[0].partialPath} element={<QuizMacroForm/>}/>
+            <Route path={buttonConfigs[1].partialPath} element={<h1>mod2</h1>}/>
+            <Route path={buttonConfigs[2].partialPath} element={<h1>mod3</h1>}/>
+          </Route>
 
-            {/* Aggiungi la nuova rotta se necessario */}
-          </Routes>
+          <Route path={"/esercitatiT"} element={<SubNav/>}>
+            <Route path={"mod1T"} element={<Modal1 num={1} />}/>
+            <Route path={"mod2T"} element={<Modal1 num={2} />}/>
+            <Route path={"mod3T"} element={<Modal1 num={3} />}/>
+          </Route>
 
-        </Container>
-      <Footer/>
+          <Route path="/test" element={<TestPage/>}/>
 
-      </Box>
-    </Router>
+        </Routes>
+
+      </Container>
+
+
+    <Footer/>
+
+    </BrowserRouter >
   );
 };
 
