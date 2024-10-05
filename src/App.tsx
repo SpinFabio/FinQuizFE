@@ -8,9 +8,10 @@ import Footer from "./components/Footer/Footer.tsx";
 import QuizMainPage from "./pages/QuizMainPage/QuizMainPage.tsx";
 import SubNav from "./pages/_TestingPages/SubNav.tsx";
 import Modal1 from "./pages/_TestingPages/Modal1.tsx";
-import TrainingHomePage from "./pages/TrainingHomePage/TrainingHomePage.tsx";
 import {buttonConfigs, UrlExerciceMode} from "./components/ThreeModComponent/buttonConfigData.ts";
-import QuizMacroForm from "./components/QuizMacroForm/QuizMacroForm.tsx";
+import QuizMacroForm from "./components/MacroForm/QuizMacroForm.tsx";
+import TrainingHomePage from "./pages/TrainingHomePage/TrainingHomePage.tsx";
+import QuizMicroForm from "./components/MicroForm/QuizMicroForm.tsx";
 
 
 const App: React.FC = () => {
@@ -35,7 +36,7 @@ const App: React.FC = () => {
 
           <Route path={UrlExerciceMode} element={<TrainingHomePage/>}>
             <Route path={buttonConfigs[0].partialPath} element={<QuizMacroForm/>}/>
-            <Route path={buttonConfigs[1].partialPath} element={<h1>mod2</h1>}/>
+            <Route path={buttonConfigs[1].partialPath} element={<QuizMicroForm/>}/>
             <Route path={buttonConfigs[2].partialPath} element={<h1>mod3</h1>}/>
           </Route>
 

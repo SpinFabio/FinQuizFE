@@ -15,7 +15,7 @@ const theme = createTheme({
       main: '#f4f1bb',
     },
     success: {
-      main: '#9bc1bc',
+      main: '#28a745',
     },
     warning:{ // ricordati che lo usi per i FLAG nei QUIZ
       main: '#ffc107',

@@ -27,6 +27,8 @@ const TrainingHomePage: React.FC = () => {
       />
 
       <Outlet />
+
+
     </Box>
   );
 }

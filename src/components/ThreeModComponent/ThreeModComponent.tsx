@@ -42,14 +42,15 @@ const ThreeModComponent: React.FC<ThreeModComponentProps> = ({
           width: '100%',
         }}
       >
-        {buttonConfigs.map((config) => (
-          <Tooltip key={config.id} title={config.tooltip} arrow>
+        {buttonConfigs.map((buttonConfig) => (
+          <Tooltip key={buttonConfig.id} title={buttonConfig.tooltip} arrow>
             <Button
-              variant={currentMode === config.id ? 'contained' : 'outlined'}
-              onClick={() => handleModeChange(config.id)}
-              className={config.className}
+              variant={currentMode === buttonConfig.id ? 'contained' : 'outlined'}
+              onClick={() => handleModeChange(buttonConfig.id)}
+              className={buttonConfig.className}
               component={Link}
-              to={config.to}
+              disabled={buttonConfig.isDisabled}
+              to={buttonConfig.to}
               sx={{
                 borderRadius: 4,
                 p: { xs: '8px 16px', md: '10px 20px' },
@@ -61,7 +62,7 @@ const ThreeModComponent: React.FC<ThreeModComponentProps> = ({
                   fontSize: { xs: '0.8rem', sm: '0.9rem', md: '1rem', lg: '1.1rem' },
                 }}
               >
-                {config.text}
+                {buttonConfig.text}
               </Typography>
             </Button>
 
