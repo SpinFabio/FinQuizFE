@@ -23,9 +23,10 @@ const QuantitySelector: React.FC<QuantitySelectorProps> = ({
         alignItems: 'center',
         gap: 2,
         mx: 2,
+        flexShrink: 0,
+
       }}
     >
-      {/* Bottone per decrementare */}
       <Icon
         color="primary"
         onClick={() => handleQuantityChange(index, -1, subIndex)}
@@ -57,12 +58,11 @@ const QuantitySelector: React.FC<QuantitySelectorProps> = ({
             '&::-webkit-outer-spin-button, &::-webkit-inner-spin-button': {
               display: 'none',
             },
-            '-moz-appearance': 'textfield',
+            'MozAppearance': 'textfield',
           },
         }}
       />
 
-      {/* Bottone per incrementare */}
       <Icon
         color="primary"
         onClick={() => handleQuantityChange(index, +1, subIndex)} // Condizione gestita automaticamente

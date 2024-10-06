@@ -1,32 +1,54 @@
-import React, {useCallback, useState} from "react";
-import {initialMacroQuizData, MacroQuiz} from "../../components/MacroForm/QuizMacroFormData.ts";
+import React, {useCallback, useEffect, useState} from "react";
+import {initialMacroQuizData, MacroQuiz} from "../../components/MacroForm/MacroFormData.ts";
 import {buttonConfigs} from "../../components/ThreeModComponent/buttonConfigData.ts";
-import {initialMicroQuizData, MicroQuiz} from "../../components/MicroForm/QuizMicroFormData.ts";
+import {initialMicroQuizData, MicroQuiz} from "../../components/MicroForm/MicroFormData.ts";
+import {useLocation} from "react-router-dom";
 
 
-export const trainingHomeHook =()=>{
+export const trainingHomeHook = () => {
+  const location = useLocation();
   const [currentMode, setCurrentMode] = useState(buttonConfigs[0].id);
+
+  useEffect(() => {
+    const pathSegments = location.pathname.split('/');
+    const lastSegment = pathSegments[pathSegments.length - 1];
+
+    const matchedConfig = buttonConfigs.find(config => config.partialPath === lastSegment);
+
+    if (matchedConfig) {
+      setCurrentMode(matchedConfig.id);
+    }
+  }, [location.pathname]); // si trigghera ad ogni cambio del path
 
   const handleModeChange = (modeId: string) => {
     setCurrentMode(modeId);
   };
 
-  return{
+  return {
     currentMode,
     handleModeChange,
-  }
+  };
+};
+
+
+export interface MacroFormContextType {
+  quizDataMacro: MacroQuiz[];
+  handleCheckboxChangeMacro: (index: number) => void;
+  handleQuantityChangeMacro: (index: number, delta: number) => void;
+  handleInputNumberChangeMacro: (index: number, event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 }
 
 export const trainingHomeHookMacro = () => {
   const [quizDataMacro, setQuizData] = useState<MacroQuiz[]>(initialMacroQuizData);
 
-  const handleCheckboxChangeMacro = useCallback((index: number) => {
-    setQuizData((prevData) => {
-      const updatedData = [...prevData];
-      updatedData[index].isChecked = !updatedData[index].isChecked;
+  const handleCheckboxChangeMacro = (index: number) => {
+    setQuizData(prevData => {
+      const updatedData: MacroQuiz[] = [...prevData];
+      updatedData[index] = { ...updatedData[index], isChecked: !updatedData[index].isChecked };
       return updatedData;
     });
-  }, []);
+  };
+
 
   const handleQuantityChangeMacro = useCallback((index: number, delta: number) => {
     setQuizData((prevData) => {
@@ -56,25 +78,24 @@ export const trainingHomeHookMacro = () => {
 };
 
 
+export interface MicroFormContextType{
+  microQuizData:MicroQuiz[];
+  handleCheckboxChangeMicro:(categoryIndex: number)=>void;
+  handleSubcategoryCheckboxChange:(categoryIndex: number, subcategoryIndex: number)=>void;
+  handleQuantityChangeMicro:(categoryIndex: number, delta: number, subIndex?: number)=>void;
+}
+
 export const trainingHomeHookMicro = () => {
   const [microQuizData, setMicroQuizData] = useState<MicroQuiz[]>(initialMicroQuizData);
 
   const handleCheckboxChangeMicro = useCallback((categoryIndex: number) => {
-    setMicroQuizData(prevData => {
-      const updatedCategory = {
-        ...prevData[categoryIndex],
-        isChecked: !prevData[categoryIndex].isChecked,
-      };
+    const newState: MicroQuiz[] = [...microQuizData];
+    const targetMicro:MicroQuiz={...newState[categoryIndex]}
 
-      if (updatedCategory.isChecked === prevData[categoryIndex].isChecked) {
-        return prevData;
-      }
-
-      return prevData.map((category, index) =>
-        index === categoryIndex ? updatedCategory : category
-      );
-    });
-  }, []);
+    targetMicro.isChecked=!targetMicro.isChecked;
+    newState[categoryIndex]=targetMicro;
+    setMicroQuizData(newState);
+  },[])
 
   const handleSubcategoryCheckboxChange = useCallback((categoryIndex: number, subcategoryIndex: number) => {
     setMicroQuizData(prevData => {

@@ -1,13 +1,12 @@
 import React from 'react';
-import {MicroQuiz} from "../MicroForm/QuizMicroFormData.ts";
+import {MicroQuiz} from "../MicroForm/MicroFormData.ts";
 import CustomCheckboxComponent from "../CustomCheckboxComponent/CustomCheckboxComponent.tsx";
 import {Paper, Typography} from "@mui/material";
-import {trainingHomeHookMicro} from "../../pages/TrainingHomePage/TrainingHomeHooks.tsx";
+import {useMicroFormContext} from "../MicroForm/MicroFormContext.tsx";
 
 interface MicroListHeadComponent{
   microQuiz: MicroQuiz;
   categoryIndex:number;
-
 }
 
 
@@ -17,7 +16,7 @@ const MicroListHeadComponent: React.FC<MicroListHeadComponent> = ({
 }) => {
   const {
     handleCheckboxChangeMicro,
-  } = trainingHomeHookMicro();
+  } = useMicroFormContext();
 
   return (
     <Paper
@@ -51,4 +50,4 @@ const MicroListHeadComponent: React.FC<MicroListHeadComponent> = ({
   );
 };
 
-export default MicroListHeadComponent;
+export default React.memo(MicroListHeadComponent);

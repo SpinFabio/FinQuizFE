@@ -5,7 +5,7 @@ export interface MacroQuiz {
   isChecked: boolean;
 }
 
-export const initialMacroQuizData: MacroQuiz[] = [
+export let initialMacroQuizData: MacroQuiz[] = [
   {
     categoryName: 'Diritto del mercato',
     quantitySelected: 24,

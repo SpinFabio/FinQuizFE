@@ -9,9 +9,9 @@ import QuizMainPage from "./pages/QuizMainPage/QuizMainPage.tsx";
 import SubNav from "./pages/_TestingPages/SubNav.tsx";
 import Modal1 from "./pages/_TestingPages/Modal1.tsx";
 import {buttonConfigs, UrlExerciceMode} from "./components/ThreeModComponent/buttonConfigData.ts";
-import QuizMacroForm from "./components/MacroForm/QuizMacroForm.tsx";
+import QuizMacroForm from "./components/MacroForm/MacroForm.tsx";
 import TrainingHomePage from "./pages/TrainingHomePage/TrainingHomePage.tsx";
-import QuizMicroForm from "./components/MicroForm/QuizMicroForm.tsx";
+import QuizMicroForm from "./components/MicroForm/MicroForm.tsx";
 
 
 const App: React.FC = () => {

@@ -2,8 +2,8 @@ import React from 'react';
 import { Paper, Typography } from '@mui/material';
 import CustomCheckboxComponent from '../CustomCheckboxComponent/CustomCheckboxComponent';
 import QuantitySelector from '../QuantitySelector/QuantitySelector.tsx';
-import {trainingHomeHookMicro} from "../../pages/TrainingHomePage/TrainingHomeHooks.tsx";
-import {subArgMicro} from "../MicroForm/QuizMicroFormData.ts";
+import {subArgMicro} from "../MicroForm/MicroFormData.ts";
+import {useMicroFormContext} from "../MicroForm/MicroFormContext.tsx";
 
 interface MicroListBodyComponentProps {
   subcategory: subArgMicro;
@@ -19,7 +19,7 @@ const MicroListBodyComponent: React.FC<MicroListBodyComponentProps> = ({
   const {
     handleQuantityChangeMicro,
     handleSubcategoryCheckboxChange,
-  } = trainingHomeHookMicro();
+  } = useMicroFormContext();
 
   return (
     <Paper
@@ -62,4 +62,4 @@ const MicroListBodyComponent: React.FC<MicroListBodyComponentProps> = ({
   );
 };
 
-export default MicroListBodyComponent;
+export default React.memo(MicroListBodyComponent);

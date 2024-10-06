@@ -12,7 +12,7 @@ const CustomCheckboxComponent: React.FC<CustomCheckboxComponentProps> = ({ id, n
 
   useEffect(() => {
     console.log(`customCheckBox: ${name} ${checked ? 'true' : 'false'}`);
-  }, [checked]); // Il log sarà eseguito ogni volta che cechek cambia
+  }, [checked]);
 
 
   return (
