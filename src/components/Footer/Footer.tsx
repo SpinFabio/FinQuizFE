@@ -28,7 +28,7 @@ const InfoCard: React.FC<{ title: string; children: React.ReactNode }> = ({
 
 
   return (
-    <Box sx={{ maxWidth: 300, width: '100%', textAlign: 'left' }}>
+    <Box sx={{ maxWidth: 250, width: '100%', textAlign: 'left' }}>
       <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>
         {title}
       </Typography>
