@@ -19,6 +19,7 @@ const MicroListBodyComponent: React.FC<MicroListBodyComponentProps> = ({
   const {
     handleQuantityChangeMicro,
     handleSubcategoryCheckboxChange,
+    handleInputNumberChangeMicro,
   } = useMicroFormContext();
 
   return (
@@ -29,8 +30,12 @@ const MicroListBodyComponent: React.FC<MicroListBodyComponentProps> = ({
         alignItems: 'center',
         justifyContent: 'space-between',
         mb: 1,
-        p: 1,
+        p: 0.2,
         borderRadius: 4,
+        transition: "transform 0.3s ease",
+        "&:hover": {
+          transform: "scale(1.02)",
+        },
         opacity: subcategory.isChecked ? 1 : 0.5,
       }}
     >
@@ -42,10 +47,10 @@ const MicroListBodyComponent: React.FC<MicroListBodyComponentProps> = ({
       />
 
       <Typography
+        onClick={() => handleSubcategoryCheckboxChange(categoryIndex, subcategoryIndex)}
         sx={{
           flexGrow: 1,
           textAlign: 'left',
-          ml: 2,
         }}
       >
         {subcategory.subcategoryName}
@@ -56,7 +61,7 @@ const MicroListBodyComponent: React.FC<MicroListBodyComponentProps> = ({
         handleQuantityChange={handleQuantityChangeMicro}
         index={categoryIndex}
         subIndex={subcategoryIndex}
-        handleInputNumberChange={() => {}}
+        handleInputNumberChange={handleInputNumberChangeMicro}
       />
     </Paper>
   );

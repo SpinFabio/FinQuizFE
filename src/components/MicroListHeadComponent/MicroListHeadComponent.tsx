@@ -1,22 +1,16 @@
 import React from 'react';
 import {MicroQuiz} from "../MicroForm/MicroFormData.ts";
-import CustomCheckboxComponent from "../CustomCheckboxComponent/CustomCheckboxComponent.tsx";
 import {Paper, Typography} from "@mui/material";
-import {useMicroFormContext} from "../MicroForm/MicroFormContext.tsx";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 interface MicroListHeadComponent{
   microQuiz: MicroQuiz;
-  categoryIndex:number;
 }
 
 
 const MicroListHeadComponent: React.FC<MicroListHeadComponent> = ({
                                                                     microQuiz,
-                                                                    categoryIndex,
 }) => {
-  const {
-    handleCheckboxChangeMicro,
-  } = useMicroFormContext();
 
   return (
     <Paper
@@ -25,14 +19,15 @@ const MicroListHeadComponent: React.FC<MicroListHeadComponent> = ({
         alignItems: 'center',
         justifyContent: 'space-between',
         width: '100%',
+        p:0.5,
         borderRadius: 4,
       }}
     >
-      <CustomCheckboxComponent
-        id={microQuiz.categoryID.toString()}
-        name={microQuiz.categoryName}
-        checked={microQuiz.isChecked}
-        onChange={() => handleCheckboxChangeMicro(categoryIndex)}
+
+      <ExpandMoreIcon
+        sx={{
+          ml: 2,
+        }}
       />
 
       <Typography
@@ -46,6 +41,9 @@ const MicroListHeadComponent: React.FC<MicroListHeadComponent> = ({
       >
         {microQuiz.categoryName}
       </Typography>
+
+
+
     </Paper>
   );
 };

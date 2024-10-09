@@ -75,8 +75,8 @@ const HomePage: React.FC<HomePageProps> = ({ buttonsArray }) => {
             justifyContent="center"
             sx={{ mt: 4 }}
           >
-            {buttonsArray.map(({ id, to, tooltip, text, className }) => (
-              <Tooltip key={id} title={tooltip} placement={isMobile ? 'bottom' : 'top'}>
+            {buttonsArray.map(({  to, tooltip, text, className }) => (
+              <Tooltip key={to} title={tooltip} placement={isMobile ? 'bottom' : 'top'}>
                 <Button
                   component={Link}
                   to={to}

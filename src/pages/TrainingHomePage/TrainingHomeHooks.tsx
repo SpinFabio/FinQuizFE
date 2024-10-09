@@ -7,7 +7,10 @@ import {useLocation} from "react-router-dom";
 
 export const trainingHomeHook = () => {
   const location = useLocation();
-  const [currentMode, setCurrentMode] = useState(buttonConfigs[0].id);
+  const [currentMode, setCurrentMode] = useState(() => {
+    const pathSegments = location.pathname.split('/');
+    return pathSegments[pathSegments.length - 1];
+  });
 
   useEffect(() => {
     const pathSegments = location.pathname.split('/');
@@ -16,12 +19,12 @@ export const trainingHomeHook = () => {
     const matchedConfig = buttonConfigs.find(config => config.partialPath === lastSegment);
 
     if (matchedConfig) {
-      setCurrentMode(matchedConfig.id);
+      setCurrentMode(matchedConfig.partialPath);
     }
-  }, [location.pathname]); // si trigghera ad ogni cambio del path
+  }, [location.pathname]);
 
-  const handleModeChange = (modeId: string) => {
-    setCurrentMode(modeId);
+  const handleModeChange = (partialPath: string) => {
+    setCurrentMode(partialPath);
   };
 
   return {
@@ -29,6 +32,7 @@ export const trainingHomeHook = () => {
     handleModeChange,
   };
 };
+
 
 
 export interface MacroFormContextType {
@@ -48,7 +52,6 @@ export const trainingHomeHookMacro = () => {
       return updatedData;
     });
   };
-
 
   const handleQuantityChangeMacro = useCallback((index: number, delta: number) => {
     setQuizData((prevData) => {
@@ -83,6 +86,7 @@ export interface MicroFormContextType{
   handleCheckboxChangeMicro:(categoryIndex: number)=>void;
   handleSubcategoryCheckboxChange:(categoryIndex: number, subcategoryIndex: number)=>void;
   handleQuantityChangeMicro:(categoryIndex: number, delta: number, subIndex?: number)=>void;
+  handleInputNumberChangeMicro: (categoryIndex: number,  event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,subcategoryIndex?: number)=>void;
 }
 
 export const trainingHomeHookMicro = () => {
@@ -148,10 +152,26 @@ export const trainingHomeHookMicro = () => {
     });
   }, []);
 
+  const handleInputNumberChangeMicro = useCallback(
+    (categoryIndex: number, event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, subcategoryIndex?: number)=>{
+      if (subcategoryIndex !== undefined) {
+        let input = event.target.value.replace(/^0+/, '');
+        if (input.length > 3) input = input.slice(0, 3);
+
+        setMicroQuizData((prevData) => {
+          const updatedData = [...prevData];
+          updatedData[categoryIndex].subArgArray[subcategoryIndex].quantitySelected = Math.max(0, parseInt(input, 10) || 0);
+          return updatedData;
+        })
+      }
+
+    },[])
+
   return {
     microQuizData,
     handleCheckboxChangeMicro,
     handleSubcategoryCheckboxChange,
     handleQuantityChangeMicro,
+    handleInputNumberChangeMicro,
   };
 };

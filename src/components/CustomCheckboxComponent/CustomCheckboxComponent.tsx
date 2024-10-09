@@ -8,7 +8,11 @@ interface CustomCheckboxComponentProps {
   onChange: () => void;
 }
 
-const CustomCheckboxComponent: React.FC<CustomCheckboxComponentProps> = ({ id, name, checked, onChange }) => {
+const CustomCheckboxComponent: React.FC<CustomCheckboxComponentProps> = ({
+                                                                           id,
+                                                                           name,
+                                                                           checked,
+                                                                           onChange }) => {
 
   useEffect(() => {
     console.log(`customCheckBox: ${name} ${checked ? 'true' : 'false'}`);

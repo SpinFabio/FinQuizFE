@@ -15,10 +15,10 @@ const BackGroundModComponent: React.FC<BackGroundModComponentProps> = ({ title, 
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        maxWidth: { xs: '100%', md: '700px' }, // Larghezza massima responsiva
-        minWidth: { xs: '300px', sm: '500px' }, // Larghezza minima per i piccoli schermi
+        maxWidth: { xs: '100%', md: '700px' },
+        minWidth: { xs: '300px', sm: '500px' },
         m: 'auto',
-        borderRadius: 4, // Arrotonda l'intero gruppo
+        borderRadius: 4,
       }}
     >
       <Paper
@@ -53,9 +53,10 @@ const BackGroundModComponent: React.FC<BackGroundModComponentProps> = ({ title, 
           <Typography
             sx={{
               color: 'primary.contrastText',
-              fontSize: '1.2rem',
+              fontSize: '2rem',
               fontWeight: 'bold',
             }}
+            variant="h1"
           >
             {title}
           </Typography>

@@ -43,10 +43,10 @@ const ThreeModComponent: React.FC<ThreeModComponentProps> = ({
         }}
       >
         {buttonConfigs.map((buttonConfig) => (
-          <Tooltip key={buttonConfig.id} title={buttonConfig.tooltip} arrow>
+          <Tooltip key={buttonConfig.partialPath} title={buttonConfig.tooltip} arrow>
             <Button
-              variant={currentMode === buttonConfig.id ? 'contained' : 'outlined'}
-              onClick={() => handleModeChange(buttonConfig.id)}
+              variant={currentMode === buttonConfig.partialPath ? 'contained' : 'outlined'}
+              onClick={() => handleModeChange(buttonConfig.partialPath)}
               className={buttonConfig.className}
               component={Link}
               disabled={buttonConfig.isDisabled}

@@ -1,7 +1,6 @@
 import React from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import NavBar from './components/Navbar/Navbar.tsx';
-import HomePage from './pages/HomePage/HomePage.tsx';
 import TestPage from "./pages/_TestingPages/TestPage.tsx";
 import { Container } from '@mui/material';
 import Footer from "./components/Footer/Footer.tsx";
@@ -12,6 +11,7 @@ import {buttonConfigs, UrlExerciceMode} from "./components/ThreeModComponent/but
 import QuizMacroForm from "./components/MacroForm/MacroForm.tsx";
 import TrainingHomePage from "./pages/TrainingHomePage/TrainingHomePage.tsx";
 import QuizMicroForm from "./components/MicroForm/MicroForm.tsx";
+import LandingPage from "./pages/LandingPage/LandingPage.tsx";
 
 
 const App: React.FC = () => {
@@ -31,7 +31,7 @@ const App: React.FC = () => {
         }}
       >
         <Routes>
-          <Route path="/" element={<HomePage buttonsArray={buttonConfigs}/>}/>
+          <Route path="/" element={<LandingPage/>}/>
           <Route path={'quiz-main'} element={<QuizMainPage/>}/>
 
           <Route path={UrlExerciceMode} element={<TrainingHomePage/>}>

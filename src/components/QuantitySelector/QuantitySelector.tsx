@@ -6,7 +6,7 @@ interface QuantitySelectorProps {
   index: number;
   subIndex?: number;
   handleQuantityChange: (index: number, delta: number, subIndex?: number,) => void;
-  handleInputNumberChange: (index: number, event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  handleInputNumberChange: (index: number, event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, subIndex?: number) => void;
 }
 
 const QuantitySelector: React.FC<QuantitySelectorProps> = ({
@@ -46,8 +46,9 @@ const QuantitySelector: React.FC<QuantitySelectorProps> = ({
         value={quantity}
         variant="outlined"
         color="primary"
-        onChange={(event) => handleInputNumberChange(index, event)}
+        onChange={(event) => handleInputNumberChange(index, event, subIndex)}
         sx={{
+
           maxWidth: '60px',
           '& .MuiOutlinedInput-root': {
             borderRadius: 4,
@@ -55,6 +56,7 @@ const QuantitySelector: React.FC<QuantitySelectorProps> = ({
           '& input': {
             textAlign: 'center',
             fontSize: '1rem',
+            padding: '4px 0px',
             '&::-webkit-outer-spin-button, &::-webkit-inner-spin-button': {
               display: 'none',
             },

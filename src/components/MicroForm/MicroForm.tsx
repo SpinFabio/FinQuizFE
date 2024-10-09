@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import BackGroundModComponent from '../BackGroundModComponent/BackGroundModComponent';
 import {MicroFormContext} from './MicroFormContext';
 import MicroListHeadComponent from "../MicroListHeadComponent/MicroListHeadComponent";
@@ -13,6 +12,7 @@ const MicroForm: React.FC = () => {
     handleCheckboxChangeMicro,
     handleSubcategoryCheckboxChange,
     handleQuantityChangeMicro,
+    handleInputNumberChangeMicro,
   } = trainingHomeHookMicro();
 
   const [expandedAccordion, setExpandedAccordion] = useState<number | false>(false);
@@ -32,6 +32,7 @@ const MicroForm: React.FC = () => {
         handleCheckboxChangeMicro,
         handleSubcategoryCheckboxChange,
         handleQuantityChangeMicro,
+        handleInputNumberChangeMicro,
       }}
     >
 
@@ -47,14 +48,12 @@ const MicroForm: React.FC = () => {
           onChange={() => handleAccordionChange(categoryIndex)}
           sx={{
             width: '100%',
-            mb: 2,
             backgroundColor: 'transparent',
             boxShadow: 'none',
             border: 'none',
           }}
         >
           <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
             aria-controls={`panel${categoryIndex}-content`}
             id={`panel${categoryIndex}-header`}
             sx={{
@@ -70,12 +69,16 @@ const MicroForm: React.FC = () => {
           >
             <MicroListHeadComponent
               microQuiz={microQuiz}
-              categoryIndex={categoryIndex}
             />
           </AccordionSummary>
 
           {expandedAccordion === categoryIndex && (
-            <AccordionDetails>
+            <AccordionDetails
+              sx={{
+                pt: 0,
+                pb: 0,
+              }}
+            >
               {microQuiz.subArgArray.map((subcategory, subcategoryIndex) => (
                 <MicroListBodyComponent
                   key={subcategory.subcategoryName}

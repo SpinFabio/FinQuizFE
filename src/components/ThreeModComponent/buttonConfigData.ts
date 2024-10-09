@@ -2,7 +2,6 @@
 export const UrlExerciceMode= '/esercitati';
 
 export interface ButtonConfig {
-  id: string;
   partialPath: string;
   to: string;
   tooltip: string;
@@ -13,7 +12,6 @@ export interface ButtonConfig {
 
 export const buttonConfigs: ButtonConfig[] = [
   {
-    id: 'quiz-macro',
     partialPath:'quiz-macro',
     to: UrlExerciceMode+'/quiz-macro',
     tooltip: 'Simula un esame completo come se fosse reale.',
@@ -22,7 +20,6 @@ export const buttonConfigs: ButtonConfig[] = [
     className: 'mode1',
   },
   {
-    id: 'quiz-micro',
     partialPath:'quiz-micro',
     to: UrlExerciceMode+'/quiz-micro',
     tooltip: 'Fai quiz suddivisi per argomento specifico.',
@@ -31,7 +28,6 @@ export const buttonConfigs: ButtonConfig[] = [
     className: 'mode2',
   },
   {
-    id: 'coming-soon',//'VeroEsame',
     partialPath: 'coming-soon',//'vero-esame',
     to: UrlExerciceMode+'/vero-esame',
     tooltip: 'coming soon ',// 'Testa la vera modalità d\'esame, identica all\'originale.',

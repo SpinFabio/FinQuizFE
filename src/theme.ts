@@ -30,7 +30,13 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: 'Roboto, Arial, sans-serif',
+    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    h1: {
+      fontSize: '2.5rem',
+    },
+    h2: {
+      fontSize: '2rem',
+    },
   },
   components: {
     // Personalizza i componenti MUI globalmente se necessario
