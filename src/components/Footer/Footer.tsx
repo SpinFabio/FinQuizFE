@@ -40,9 +40,9 @@ const InfoCard: React.FC<{ title: string; children: React.ReactNode }> = ({
 
 const BulletPoint: React.FC<{text: string}> = ({ text }) => {
   return (
-    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+    <>
       <span style={{ marginRight: 8 }}>•</span> {text}
-    </Box>
+    </>
   );
 };
 

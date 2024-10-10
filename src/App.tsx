@@ -53,7 +53,7 @@ const App: React.FC = () => {
       </Container>
 
 
-    <Footer/>
+      <Footer/>
 
     </BrowserRouter >
   );

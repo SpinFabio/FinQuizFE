@@ -8,6 +8,7 @@ const Modal1: React.FC<Modal1Props> = ({ num }) => {
   return (
     <>
       <h1>Siamo in Modalità {num}</h1>
+
     </>
   );
 };
