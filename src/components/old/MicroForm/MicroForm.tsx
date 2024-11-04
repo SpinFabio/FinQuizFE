@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
-import BackGroundModComponent from '../BackGroundModComponent/BackGroundModComponent';
-import {MicroFormContext} from './MicroFormContext';
-import MicroListHeadComponent from "../MicroListHeadComponent/MicroListHeadComponent";
-import MicroListBodyComponent from "../MicroListBodyComponent/MicroListBodyComponent";
-import {trainingHomeHookMicro} from "../../pages/TrainingHomePage/TrainingHomeHooks.tsx";
+import BackGroundModComponent from '../BackGroundModComponent/BackGroundModComponent.tsx';
+import {MicroFormContext} from './MicroFormContext.tsx';
+import MicroListHeadComponent from "../MicroListHeadComponent/MicroListHeadComponent.tsx";
+import MicroListBodyComponent from "../MicroListBodyComponent/MicroListBodyComponent.tsx";
+import {trainingHomeHookMicro} from "../../../pages/TrainingHomePage/TrainingHomeHooks.tsx";
 
 const MicroForm: React.FC = () => {
   const {

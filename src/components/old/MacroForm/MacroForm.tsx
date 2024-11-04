@@ -1,8 +1,8 @@
 import React from 'react';
-import { trainingHomeHookMacro } from "../../pages/TrainingHomePage/TrainingHomeHooks.tsx";
-import BackGroundModComponent from '../BackGroundModComponent/BackGroundModComponent';
+import { trainingHomeHookMacro } from "../../../pages/TrainingHomePage/TrainingHomeHooks.tsx";
+import BackGroundModComponent from '../BackGroundModComponent/BackGroundModComponent.tsx';
 import MacroListComponent from "../MacroListComponent/MacroListComponent.tsx";
-import { MacroFormContext } from "./MacroFormContext";
+import { MacroFormContext } from "./MacroFormContext.tsx";
 
 const MacroForm: React.FC = () => {
   const {

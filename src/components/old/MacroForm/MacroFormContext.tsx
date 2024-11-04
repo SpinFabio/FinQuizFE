@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react';
-import {MacroFormContextType} from "../../pages/TrainingHomePage/TrainingHomeHooks.tsx";
+import {MacroFormContextType} from "../../../pages/TrainingHomePage/TrainingHomeHooks.tsx";
 
 
 export const MacroFormContext =

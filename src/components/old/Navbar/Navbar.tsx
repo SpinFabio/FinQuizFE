@@ -8,7 +8,7 @@ import {
   useTheme
 } from '@mui/material';
 import { Link } from 'react-router-dom';
-import logo from '../../images/finquizLogoTiniOrizontal.png';
+import logo from '../../../images/finquizLogoTiniOrizontal.png';
 
 const NavBar: React.FC = () => {
   const theme = useTheme();

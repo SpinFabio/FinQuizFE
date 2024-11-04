@@ -1,6 +1,6 @@
 import React from 'react';
 import { Paper, Typography } from '@mui/material';
-import CustomCheckboxComponent from '../CustomCheckboxComponent/CustomCheckboxComponent';
+import CustomCheckboxComponent from '../CustomCheckboxComponent/CustomCheckboxComponent.tsx';
 import QuantitySelector from '../QuantitySelector/QuantitySelector.tsx';
 import {subArgMicro} from "../MicroForm/MicroFormData.ts";
 import {useMicroFormContext} from "../MicroForm/MicroFormContext.tsx";

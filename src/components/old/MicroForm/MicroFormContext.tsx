@@ -1,4 +1,4 @@
-import { MicroFormContextType } from "../../pages/TrainingHomePage/TrainingHomeHooks.tsx";
+import { MicroFormContextType } from "../../../pages/TrainingHomePage/TrainingHomeHooks.tsx";
 import { createContext, useContext } from "react";
 
 export const MicroFormContext = createContext<MicroFormContextType | undefined>(undefined);

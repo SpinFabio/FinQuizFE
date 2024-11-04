@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import {Quiz} from "../../pages/QuizMainPage/dummyData.ts";
+import {Quiz} from "../../../pages/QuizMainPage/dummyData.ts";
 import {
   CardContent,
   Typography,

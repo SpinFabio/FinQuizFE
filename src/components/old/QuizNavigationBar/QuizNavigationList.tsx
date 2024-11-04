@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button, Box, useTheme, Typography} from '@mui/material';
-import {Quiz} from "../../pages/QuizMainPage/dummyData.ts";
+import {Quiz} from "../../../pages/QuizMainPage/dummyData.ts";
 
 interface QuizNavigationBarProps {
   quizData: Quiz[],

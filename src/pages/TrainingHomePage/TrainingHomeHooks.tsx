@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useState} from "react";
-import {initialMacroQuizData, MacroQuiz} from "../../components/MacroForm/MacroFormData.ts";
+import {initialMacroQuizData, MacroQuiz} from "../../components/old/MacroForm/MacroFormData.ts";
 import {buttonConfigs} from "../../components/ThreeModComponent/buttonConfigData.ts";
-import {initialMicroQuizData, MicroQuiz} from "../../components/MicroForm/MicroFormData.ts";
+import {initialMicroQuizData, MicroQuiz} from "../../components/old/MicroForm/MicroFormData.ts";
 import {useLocation} from "react-router-dom";
 
 

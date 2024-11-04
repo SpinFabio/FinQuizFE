@@ -1,8 +1,8 @@
 import React from 'react';
 import { Container } from '@mui/material';
-import QuizComponent from "../../components/QuizComponent/QuizComponent.tsx";
-import QuizNavigationList from "../../components/QuizNavigationBar/QuizNavigationList.tsx";
-import QuizNavigationControls from "../../components/QuizNavigationControls/QuizNavigationControls.tsx";
+import QuizComponent from "../../components/old/QuizComponent/QuizComponent.tsx";
+import QuizNavigationList from "../../components/old/QuizNavigationBar/QuizNavigationList.tsx";
+import QuizNavigationControls from "../../components/old/QuizNavigationControls/QuizNavigationControls.tsx";
 import { quizData } from "./dummyData.ts";
 import {quizManagerHook} from "./QuizMainPageHooks.tsx";
 

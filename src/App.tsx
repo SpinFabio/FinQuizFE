@@ -1,16 +1,16 @@
 import React from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import NavBar from './components/Navbar/Navbar.tsx';
+import NavBar from './components/old/Navbar/Navbar.tsx';
 import TestPage from "./pages/_TestingPages/TestPage.tsx";
 import { Container } from '@mui/material';
-import Footer from "./components/Footer/Footer.tsx";
+import Footer from "./components/old/Footer/Footer.tsx";
 import QuizMainPage from "./pages/QuizMainPage/QuizMainPage.tsx";
 import SubNav from "./pages/_TestingPages/SubNav.tsx";
 import Modal1 from "./pages/_TestingPages/Modal1.tsx";
 import {buttonConfigs, UrlExerciceMode} from "./components/ThreeModComponent/buttonConfigData.ts";
-import QuizMacroForm from "./components/MacroForm/MacroForm.tsx";
+import QuizMacroForm from "./components/old/MacroForm/MacroForm.tsx";
 import TrainingHomePage from "./pages/TrainingHomePage/TrainingHomePage.tsx";
-import QuizMicroForm from "./components/MicroForm/MicroForm.tsx";
+import QuizMicroForm from "./components/old/MicroForm/MicroForm.tsx";
 import LandingPage from "./pages/LandingPage/LandingPage.tsx";
 
 

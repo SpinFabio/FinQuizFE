@@ -1,6 +1,6 @@
 import React, {useState, ChangeEvent, useEffect} from 'react';
 import { Box, Checkbox } from "@mui/material";
-import { ButtonConfig } from "../ThreeModComponent/buttonConfigData.ts";
+import { ButtonConfig } from "../../ThreeModComponent/buttonConfigData.ts";
 
 interface ListEntryTestInterface {
   button: ButtonConfig;
