@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import TestPage from "./pages/_TestingPages/TestPage.tsx";
+import TestPage from "./pages/_TestingPages_/TestPage.tsx";
 import QuizMainPage from "./pages/QuizMainPage/QuizMainPage.tsx";
 import {buttonConfigs, UrlExerciceMode} from "./components/ThreeModComponent/buttonConfigData.ts";
 import QuizMacroForm from "./components/old/MacroForm/MacroForm.tsx";
@@ -8,7 +8,7 @@ import TrainingHomePage from "./pages/TrainingHomePage/TrainingHomePage.tsx";
 import QuizMicroForm from "./components/old/MicroForm/MicroForm.tsx";
 import LandingPage from "./pages/LandingPage/LandingPage.tsx";
 import NavAndFooter from "./components/old/NavAndFooter/NavAndFooter.tsx";
-
+import './index.css'
 
 const App: React.FC = () => {
   return (
