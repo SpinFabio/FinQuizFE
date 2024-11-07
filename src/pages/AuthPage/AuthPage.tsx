@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import LogoBlue from "../../components/user-auth/LogoBlue";
-import { useAuthPage } from "./useAuthPage";
+import { useAuthPage } from "../../components/user-auth/useAuthPage";
 import LoginForm from "../../components/user-auth/LoginForm";
 
 interface AuthPageProps {

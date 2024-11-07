@@ -3,12 +3,13 @@ import AuthInput from "./AuthInput";
 import LoginWithButton from "./LoginWithButton";
 import AuthButton from "./AuthButton";
 import Separator from "./Separator";
-import { useAuthPage } from "../../pages/AuthPage/useAuthPage";
+import { useAuthPage } from "./useAuthPage";
+import ErrorMessage from "./ErrorMessage";
 
-interface LoginFormProps1 {
+interface LoginFormProps {
   typeAuth: "login" | "register";
 }
-const LoginForm: React.FC<LoginFormProps1> = ({ typeAuth }) => {
+const LoginForm: React.FC<LoginFormProps> = ({ typeAuth }) => {
   const titleText = typeAuth === "login" ? "Accedi" : "Registrati";
   const {
     emailError,
@@ -51,6 +52,7 @@ const LoginForm: React.FC<LoginFormProps1> = ({ typeAuth }) => {
             autocomplete="email"
             setValue={setEmail}
           />
+          <ErrorMessage errorState={emailError}/>
           <p className={styleAuthDescriptions}>Password</p>
           <AuthInput
             inputError={passError}
@@ -62,6 +64,7 @@ const LoginForm: React.FC<LoginFormProps1> = ({ typeAuth }) => {
             autocomplete="new-password"
             setValue={setPassword}
           />
+          <ErrorMessage errorState={passError}/>
           <AuthButton type={typeAuth} />
         </form>
       </div>
