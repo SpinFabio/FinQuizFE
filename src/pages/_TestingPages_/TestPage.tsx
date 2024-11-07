@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from "react";
+import AuthPage from '../AuthPage/AuthPage';
 
 const TestPage: React.FC = () => {
-
   return (
-    <>
-      <h1 className="text-green-800">Devi fare la Login page per smartphone eper PC</h1>
-    </>
+    <AuthPage/>
   );
 };
+
+function classNames(...classes: string[]): string {
+  return classes.join(` `);
+}
 
 export default TestPage;

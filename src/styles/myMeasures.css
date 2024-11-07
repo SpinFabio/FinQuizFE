@@ -1,0 +1,132 @@
+
+.my-border-1{
+    @apply rounded-[4px] border-[1px]
+}
+
+.my-w-1 {
+    width: 0.25rem; /* 4px */
+}
+
+.my-w-2 {
+    width: 0.5rem; /* 8px */
+}
+
+.my-w-3 {
+    width: 0.75rem; /* 12px */
+}
+
+.my-w-4 {
+    width: 1rem; /* 16px */
+}
+
+.my-w-5 {
+    width: 1.5rem; /* 24px */
+}
+
+.my-w-6 {
+    width: 2rem; /* 32px */
+}
+
+.my-w-7 {
+    width: 3rem; /* 48px */
+}
+
+.my-w-8 {
+    width: 4rem; /* 64px */
+}
+
+.my-w-9 {
+    width: 6rem; /* 96px */
+}
+
+.my-w-10 {
+    width: 8rem; /* 128px */
+}
+
+.my-w-11 {
+    width: 12rem; /* 192px */
+}
+
+.my-w-12 {
+    width: 16rem; /* 256px */
+}
+
+.my-w-13 {
+    width: 24rem; /* 384px */
+}
+
+.my-w-14 {
+    width: 32rem; /* 512px */
+}
+
+.my-w-15 {
+    width: 40rem; /* 640px */
+}
+
+.my-w-16 {
+    width: 48rem; /* 768px */
+}
+
+.my-h-1 {
+    height: 0.25rem; /* 4px */
+}
+
+.my-h-2 {
+    height: 0.5rem; /* 8px */
+}
+
+.my-h-3 {
+    height: 0.75rem; /* 12px */
+}
+
+.my-h-4 {
+    height: 1rem; /* 16px */
+}
+
+.my-h-5 {
+    height: 1.5rem; /* 24px */
+}
+
+.my-h-6 {
+    height: 2rem; /* 32px */
+}
+
+.my-h-7 {
+    height: 3rem; /* 48px */
+}
+
+.my-h-8 {
+    height: 4rem; /* 64px */
+}
+
+.my-h-9 {
+    height: 6rem; /* 96px */
+}
+
+.my-h-10 {
+    height: 8rem; /* 128px */
+}
+
+.my-h-11 {
+    height: 12rem; /* 192px */
+}
+
+.my-h-12 {
+    height: 16rem; /* 256px */
+}
+
+.my-h-13 {
+    height: 24rem; /* 384px */
+}
+
+.my-h-14 {
+    height: 32rem; /* 512px */
+}
+
+.my-h-15 {
+    height: 40rem; /* 640px */
+}
+
+.my-h-16 {
+    height: 48rem; /* 768px */
+}

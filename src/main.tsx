@@ -1,17 +1,17 @@
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import { ThemeProvider,CssBaseline } from '@mui/material';
-import App from './App.tsx';
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider, CssBaseline } from "@mui/material";
+import App from "./App.tsx";
 import theme from "./theme.ts";
-import './index.css';
+import "./index.css";
+import "./styles/typography.css";
+import "./styles/myMeasures.css";
 
-
-
-createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById("root")!).render(
   <ThemeProvider theme={theme}>
     <StrictMode>
-        <CssBaseline />
-        <App />
+      <CssBaseline />
+      <App />
     </StrictMode>
-  </ThemeProvider>
+  </ThemeProvider>,
 );
