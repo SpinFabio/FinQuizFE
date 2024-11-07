@@ -1,5 +1,7 @@
 import { useState } from "react";
 import * as Yup from "yup";
+import { BE_DOMAIN } from "../../../myenv";
+import { getOrCreateDeviceID, loginUser } from "../../utils/auth-functions";
 
 export type ErrorState = "empty" | "valid" | { error: string };
 
@@ -26,7 +28,7 @@ export const useAuthPage = () => {
       if (value === "") {
         if (fieldName === "email") setEmailError("empty");
         if (fieldName === "password") setPassError("empty");
-        return
+        return;
       }
 
       await schemaLogin.validateAt(fieldName, { [fieldName]: value });
@@ -49,19 +51,16 @@ export const useAuthPage = () => {
     await validateField("email", email);
     await validateField("password", password);
 
-    console.log("Stato attuale:");
-    console.log("Email:", email);
-    console.log("Password:", password);
-    console.log("Email Error:", emailError);
-    console.log("Password Error:", passError);
+    console.log(getOrCreateDeviceID());
+    await loginUser(email, password);
 
-    if (!emailError && !passError) {
+    if (emailError === "valid" && passError === "valid") {
       console.log("form inviato con successo");
+
+      //await fetchTestData();
     } else {
       console.log("ci sono problemi nel form");
     }
-
-    console.log(`ecco qui ${email} \n ${password}`);
   }
 
   return {
@@ -83,3 +82,17 @@ let schemaLogin = Yup.object().shape({
     .min(7, "password troppo corta")
     .required("Manca la Password"),
 });
+
+async function fetchTestData() {
+  try {
+    const response = await fetch(BE_DOMAIN + "/api/test", {
+      method: "GET",
+    });
+    if (!response.ok) throw new Error("Errore nella richiesta");
+
+    const data = await response.json();
+    console.log("Dati ricevuti dal backend:", data);
+  } catch (error) {
+    console.error("Errore nella richiesta al backend:", error);
+  }
+}

@@ -4,7 +4,7 @@ import { Box, Typography } from '@mui/material';
 const TestPage: React.FC = () => {
   const [testNames, setTestNames] = useState(['carlo', 'giulio', 'rossella']);
 
-  function handleClick() {
+  async function handleClick() {
     fetch('http://localhost:5000/users')
       .then((res) => {
         return res.json();
