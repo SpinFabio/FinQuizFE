@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AuthPage from '../AuthPage/AuthPage';
+import AuthPage from "../AuthPage/AuthPage";
 
 const TestPage: React.FC = () => {
   return (

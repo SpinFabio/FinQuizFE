@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import LogoBlue from "../../components/user-auth/LogoBlue";
 import LoginForm from "../../components/user-auth/LoginForm";
 
@@ -14,7 +14,7 @@ const AuthPage: React.FC<AuthPageProps> = (
   return (
     <div className="bg-pr flex h-screen w-screen flex-col items-center">
       <LogoBlue />
-      <LoginForm typeAuth={"register"} />
+      <LoginForm typeAuth={"login"} />
     </div>
   );
 };

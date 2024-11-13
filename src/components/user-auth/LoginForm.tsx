@@ -19,7 +19,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ typeAuth }) => {
     setPassword,
     handlePasswordValidation,
     handleSubmit,
-  } = useAuthPage();
+  } = useAuthPage(typeAuth);
 
   const styleAuthDescriptions =
     "typo-body info-color mt-2 self-start text-info";

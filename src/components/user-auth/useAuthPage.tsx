@@ -1,16 +1,18 @@
 import { useState } from "react";
 import * as Yup from "yup";
-import { BE_DOMAIN } from "../../../myenv";
-import { getOrCreateDeviceID, loginUser } from "../../utils/auth-functions";
+import { BE_DOMAIN } from "../../config/myenv";
+import { getOrCreateDeviceID, registerUser, useAuthActions } from "../../api/useAuthActions";
 
 export type ErrorState = "empty" | "valid" | { error: string };
 
-export const useAuthPage = () => {
+export const useAuthPage = (typeAuth: "login" | "register") => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const [emailError, setEmailError] = useState<ErrorState>("empty");
   const [passError, setPassError] = useState<ErrorState>("empty");
+
+  const{loginUser}=useAuthActions()
 
   const handleEmailValidation = (
     e: React.ChangeEvent<HTMLInputElement> | React.FocusEvent<HTMLInputElement>,
@@ -46,18 +48,22 @@ export const useAuthPage = () => {
   async function handleSubmit(
     e: React.FormEvent<HTMLFormElement>,
   ): Promise<void> {
-    e.preventDefault();
+    e.preventDefault(); // evita che si ricarichi lla pagina quando si invia il form
 
     await validateField("email", email);
     await validateField("password", password);
 
     console.log(getOrCreateDeviceID());
+    console.log(typeAuth);
     await loginUser(email, password);
 
     if (emailError === "valid" && passError === "valid") {
       console.log("form inviato con successo");
-
-      //await fetchTestData();
+      if (typeAuth === "login") {
+        await loginUser(email, password);
+      } else {
+        
+      }
     } else {
       console.log("ci sono problemi nel form");
     }

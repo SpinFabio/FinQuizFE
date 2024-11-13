@@ -3,7 +3,7 @@ import { MacroQuiz } from "../MacroForm/MacroFormData.ts";
 import CustomCheckboxComponent from "../CustomCheckboxComponent/CustomCheckboxComponent.tsx";
 import { Paper, Typography } from "@mui/material";
 import QuantitySelector from "../QuantitySelector/QuantitySelector.tsx";
-import {useMacroFormContext} from "../MacroForm/MacroFormContext.tsx";
+import { useMacroFormContext } from "../MacroForm/MacroFormContext.tsx";
 
 interface MacroListComponentProps {
   MacroTopic: MacroQuiz;
@@ -11,15 +11,23 @@ interface MacroListComponentProps {
 }
 
 const MacroListComponent: React.FC<MacroListComponentProps> = ({
-                                                                 MacroTopic,
-                                                                 index,
-                                                               }) => {
+  MacroTopic,
+  index,
+}) => {
+  const {
+    handleCheckboxChangeMacro,
+    handleQuantityChangeMacro,
+    handleInputNumberChangeMacro,
+  } = useMacroFormContext();
 
-  const { handleCheckboxChangeMacro, handleQuantityChangeMacro, handleInputNumberChangeMacro } = useMacroFormContext();
-
-
-  if (!handleCheckboxChangeMacro || !handleQuantityChangeMacro || !handleInputNumberChangeMacro) {
-    throw new Error("MacroListComponent must be used within a MacroFormContext.Provider");
+  if (
+    !handleCheckboxChangeMacro ||
+    !handleQuantityChangeMacro ||
+    !handleInputNumberChangeMacro
+  ) {
+    throw new Error(
+      "MacroListComponent must be used within a MacroFormContext.Provider",
+    );
   }
 
   return (

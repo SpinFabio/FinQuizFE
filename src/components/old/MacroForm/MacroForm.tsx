@@ -7,9 +7,6 @@ import { MacroFormContext } from "./MacroFormContext.tsx";
 const MacroForm: React.FC = () => {
   const {
     quizDataMacro,
-    handleQuantityChangeMacro,
-    handleInputNumberChangeMacro,
-    handleCheckboxChangeMacro,
   } = trainingHomeHookMacro();
 
   const handleStartButtonClick = () => {
@@ -17,12 +14,7 @@ const MacroForm: React.FC = () => {
   };
 
   return (
-    <MacroFormContext.Provider value={{
-      quizDataMacro,
-      handleQuantityChangeMacro,
-      handleInputNumberChangeMacro,
-      handleCheckboxChangeMacro
-    }}>
+    <MacroFormContext.Provider value={trainingHomeHookMacro()}>
       <BackGroundModComponent
         title="Seleziona i Macro Argomenti"
         buttonText="Inizia"

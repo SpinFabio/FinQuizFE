@@ -42,7 +42,7 @@ export interface MacroFormContextType {
   handleInputNumberChangeMacro: (index: number, event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 }
 
-export const trainingHomeHookMacro = () => {
+export function  trainingHomeHookMacro():MacroFormContextType {
   const [quizDataMacro, setQuizData] = useState<MacroQuiz[]>(initialMacroQuizData);
 
   const handleCheckboxChangeMacro = (index: number) => {

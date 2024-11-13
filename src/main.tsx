@@ -6,12 +6,15 @@ import theme from "./theme.ts";
 import "./index.css";
 import "./styles/typography.css";
 import "./styles/myMeasures.css";
+import { AuthContextProvider } from "./hooks/useAuthContext.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <ThemeProvider theme={theme}>
-    <StrictMode>
-      <CssBaseline />
-      <App />
-    </StrictMode>
+    <AuthContextProvider>
+      <StrictMode>
+        <CssBaseline />
+        <App />
+      </StrictMode>
+    </AuthContextProvider>
   </ThemeProvider>,
 );
