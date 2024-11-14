@@ -1,18 +1,25 @@
 import { useState } from "react";
 import * as Yup from "yup";
-import { BE_DOMAIN } from "../../config/myenv";
 import { useAuthAPI } from "../../api/useAuthAPI";
 
 export type ErrorState = "empty" | "valid" | { error: string };
 
 export const useAuthPage = (typeAuth: "login" | "register") => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const [emailError, setEmailError] = useState<ErrorState>("empty");
   const [passError, setPassError] = useState<ErrorState>("empty");
+  const [nameError, setNameError] = useState<ErrorState>("empty");
 
-  const { loginUser } = useAuthAPI();
+  const{loginUser,registerUser}= useAuthAPI()
+
+  const handleNameValidation = (
+    e: React.ChangeEvent<HTMLInputElement> | React.FocusEvent<HTMLInputElement>,
+  ) => {
+    validateField("name", name);
+  };
 
   const handleEmailValidation = (
     e: React.ChangeEvent<HTMLInputElement> | React.FocusEvent<HTMLInputElement>,
@@ -28,52 +35,76 @@ export const useAuthPage = (typeAuth: "login" | "register") => {
   async function validateField(fieldName: string, value: string) {
     try {
       if (value === "") {
+        if (fieldName === "name") setNameError("empty");
         if (fieldName === "email") setEmailError("empty");
         if (fieldName === "password") setPassError("empty");
         return;
       }
 
-      await schemaLogin.validateAt(fieldName, { [fieldName]: value });
+      if (typeAuth === "login") {
+        await schemaLogin.validateAt(fieldName, { [fieldName]: value });
+      } else {
+        await schemaRegister.validateAt(fieldName, { [fieldName]: value });
+      }
 
+      if (fieldName === "name") setEmailError("valid");
       if (fieldName === "email") setEmailError("valid");
       if (fieldName === "password") setPassError("valid");
     } catch (error) {
       if (error instanceof Yup.ValidationError) {
+        if (fieldName === "name") setEmailError({ error: error.message });
         if (fieldName === "email") setEmailError({ error: error.message });
         if (fieldName === "password") setPassError({ error: error.message });
       }
     }
+    return;
   }
 
   async function handleSubmit(
     e: React.FormEvent<HTMLFormElement>,
   ): Promise<void> {
-    e.preventDefault(); // evita che si ricarichi lla pagina quando si invia il form
+    e.preventDefault(); // evita che si ricarichi la pagina quando si invia il form
 
+    if (typeAuth === "register") await validateField("name", name);
     await validateField("email", email);
     await validateField("password", password);
 
-    if (emailError === "valid" && passError === "valid") {
-      console.log("Form valido");
-      if (typeAuth === "login") {
-        await loginUser(email, password);
-      } else {
-      }
+    if (
+      typeAuth === "login" &&
+      emailError === "valid" &&
+      passError === "valid"
+    ) {
+      console.log("login form valido");
+
+      await loginUser(email, password);
+    } else if (
+      typeAuth === "register" &&
+      nameError === "valid" &&
+      emailError === "valid" &&
+      passError === "valid"
+    ) {
+      console.log("register form valido");
+      await registerUser(name, email, passError);
     } else {
       console.log("Ci sono problemi nel form");
     }
   }
 
   return {
+    name,
+    nameError,
+    setName,
     email,
+    emailError,
     setEmail,
     password,
+    passError,
     setPassword,
-    handleSubmit,
+    
+    handleNameValidation,
     handleEmailValidation,
     handlePasswordValidation,
-    emailError,
-    passError,
+    handleSubmit,
   };
 };
 
@@ -84,16 +115,10 @@ let schemaLogin = Yup.object().shape({
     .required("Manca la Password"),
 });
 
-async function fetchTestData() {
-  try {
-    const response = await fetch(BE_DOMAIN + "/api/test", {
-      method: "GET",
-    });
-    if (!response.ok) throw new Error("Errore nella richiesta");
-
-    const data = await response.json();
-    console.log("Dati ricevuti dal backend:", data);
-  } catch (error) {
-    console.error("Errore nella richiesta al backend:", error);
-  }
-}
+let schemaRegister = Yup.object().shape({
+  name: Yup.string().min(4).max(16).required("Manca il nome"),
+  email: Yup.string().email("Email non valida").required("Manca l'email"),
+  password: Yup.string()
+    .min(7, "password troppo corta")
+    .required("Manca la Password"),
+});

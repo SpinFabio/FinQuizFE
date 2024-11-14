@@ -22,9 +22,10 @@ export async function unauthFetch(
     throw new Error(`UnauthFetch failed with status: ${response.status}`);
   }
 
-  const data: AuthBodyReqRes = await authBodyReqResSchema.validate(
-    response.json,
-  );
+  const responseData = await response.json();
+  const data: AuthBodyReqRes = await authBodyReqResSchema.validate(responseData);
+
+  console.log(data)
   setAccessToken(data.accessToken);
 
   return;

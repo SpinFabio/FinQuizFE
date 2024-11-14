@@ -1,7 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
 import {
-  AuthBodyReqRes,
-  authBodyReqResSchema,
   userLoginRequestSchema,
   userRegisterRequestSchema,
   UserRequest,
@@ -9,7 +7,6 @@ import {
 import { BE_DOMAIN } from "../config/myenv";
 import { ValidationError } from "yup";
 import { unauthFetch } from "../utils/fetch-utils";
-import { setAccessToken } from "../utils/acces-token-utils";
 
 const DEVICE_ID_KEY_NAME = "deviceId";
 
@@ -30,6 +27,8 @@ export function useAuthAPI() {
       password: password_u,
       uuid: deviceId,
     };
+
+    console.log(userLoginInfo)
     try {
       await userLoginRequestSchema.validate(userLoginInfo, {
         abortEarly: false,
@@ -76,5 +75,6 @@ export function useAuthAPI() {
 
   return {
     loginUser,
+    registerUser,
   };
 }

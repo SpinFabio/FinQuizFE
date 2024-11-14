@@ -12,11 +12,14 @@ interface LoginFormProps {
 const LoginForm: React.FC<LoginFormProps> = ({ typeAuth }) => {
   const titleText = typeAuth === "login" ? "Accedi" : "Registrati";
   const {
-    emailError,
+    setName,
+    nameError,
+    handleNameValidation,
     setEmail,
+    emailError,
     handleEmailValidation,
-    passError,
     setPassword,
+    passError,
     handlePasswordValidation,
     handleSubmit,
   } = useAuthPage(typeAuth);
@@ -41,6 +44,24 @@ const LoginForm: React.FC<LoginFormProps> = ({ typeAuth }) => {
         <Separator type={typeAuth} />
 
         <form onSubmit={handleSubmit} className="w-full">
+          {typeAuth === "register" ? (
+            <>
+              <p className={styleAuthDescriptions}>Nome</p>
+              <AuthInput
+                inputError={nameError}
+                name="name"
+                type="username"
+                id="name"
+                handleValidate={handleNameValidation}
+                ariaLabel="name"
+                autocomplete="username"
+                setValue={setName}
+              />
+            </>
+          ) : (
+            <></>
+          )}
+
           <p className={styleAuthDescriptions}>Email</p>
           <AuthInput
             inputError={emailError}
@@ -52,7 +73,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ typeAuth }) => {
             autocomplete="email"
             setValue={setEmail}
           />
-          <ErrorMessage errorState={emailError}/>
+          <ErrorMessage errorState={emailError} />
           <p className={styleAuthDescriptions}>Password</p>
           <AuthInput
             inputError={passError}
@@ -64,7 +85,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ typeAuth }) => {
             autocomplete="new-password"
             setValue={setPassword}
           />
-          <ErrorMessage errorState={passError}/>
+          <ErrorMessage errorState={passError} />
           <AuthButton type={typeAuth} />
         </form>
       </div>
