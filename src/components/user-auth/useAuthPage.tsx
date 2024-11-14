@@ -1,7 +1,7 @@
 import { useState } from "react";
 import * as Yup from "yup";
 import { BE_DOMAIN } from "../../config/myenv";
-import { getOrCreateDeviceID, registerUser, useAuthActions } from "../../api/useAuthActions";
+import { useAuthAPI } from "../../api/useAuthAPI";
 
 export type ErrorState = "empty" | "valid" | { error: string };
 
@@ -12,7 +12,7 @@ export const useAuthPage = (typeAuth: "login" | "register") => {
   const [emailError, setEmailError] = useState<ErrorState>("empty");
   const [passError, setPassError] = useState<ErrorState>("empty");
 
-  const{loginUser}=useAuthActions()
+  const { loginUser } = useAuthAPI();
 
   const handleEmailValidation = (
     e: React.ChangeEvent<HTMLInputElement> | React.FocusEvent<HTMLInputElement>,
@@ -53,19 +53,14 @@ export const useAuthPage = (typeAuth: "login" | "register") => {
     await validateField("email", email);
     await validateField("password", password);
 
-    console.log(getOrCreateDeviceID());
-    console.log(typeAuth);
-    await loginUser(email, password);
-
     if (emailError === "valid" && passError === "valid") {
-      console.log("form inviato con successo");
+      console.log("Form valido");
       if (typeAuth === "login") {
         await loginUser(email, password);
       } else {
-        
       }
     } else {
-      console.log("ci sono problemi nel form");
+      console.log("Ci sono problemi nel form");
     }
   }
 

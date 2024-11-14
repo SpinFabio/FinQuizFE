@@ -38,12 +38,12 @@ export const userRegisterRequestSchema = Yup.object({
     .required("Il nome è obbligatorio"),
 });
 
-export interface AuthBodyResponse {
+export interface AuthBodyReqRes {
   message?: string;
   accessToken: string;
 }
 
-export const authBodyResSchema = Yup.object({
+export const authBodyReqResSchema = Yup.object({
   message: Yup.string(),
   accessToken: Yup.string().required("Manca l'accessToken"),
 });

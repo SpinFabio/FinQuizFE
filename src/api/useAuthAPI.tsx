@@ -1,16 +1,15 @@
 import { v4 as uuidv4 } from "uuid";
 import {
-  AuthBodyResponse,
-  authBodyResSchema,
+  AuthBodyReqRes,
+  authBodyReqResSchema,
   userLoginRequestSchema,
   userRegisterRequestSchema,
   UserRequest,
 } from "../common/user-interfaces";
 import { BE_DOMAIN } from "../config/myenv";
-import { useAuthContext } from "../hooks/useAuthContext";
-import { useEffect } from "react";
 import { ValidationError } from "yup";
 import { unauthFetch } from "../utils/fetch-utils";
+import { setAccessToken } from "../utils/acces-token-utils";
 
 const DEVICE_ID_KEY_NAME = "deviceId";
 
@@ -23,13 +22,7 @@ export function getOrCreateDeviceID(): string {
   return deviceId;
 }
 
-export function useAuthActions() {
-  const { accessToken, setAccessToken } = useAuthContext();
-
-  useEffect(() => {
-    if (accessToken) console.log(accessToken);
-  }, [accessToken]);
-
+export function useAuthAPI() {
   async function loginUser(email_u: string, password_u: string): Promise<void> {
     const deviceId = getOrCreateDeviceID();
     const userLoginInfo: UserRequest = {
@@ -37,19 +30,11 @@ export function useAuthActions() {
       password: password_u,
       uuid: deviceId,
     };
-
     try {
       await userLoginRequestSchema.validate(userLoginInfo, {
         abortEarly: false,
       });
-      const data: AuthBodyResponse = await unauthFetch<AuthBodyResponse>(
-        BE_DOMAIN + "/api/user/login",
-        "POST",
-        userLoginInfo,
-      );
-      const verifiedData = await authBodyResSchema.validate(data);
-      setAccessToken(verifiedData.accessToken);
-      //console.log(verifiedData);
+      await unauthFetch(BE_DOMAIN + "/api/user/login", "POST", userLoginInfo);
     } catch (error) {
       if (error instanceof ValidationError) {
         console.error("Errore di validazione", error.errors);
@@ -72,19 +57,14 @@ export function useAuthActions() {
       name: name_u,
     };
     try {
-      console.log(userRegisterInfo);
       await userRegisterRequestSchema.validate(userRegisterInfo, {
         abortEarly: false,
       });
-      const data: AuthBodyResponse = await unauthFetch<AuthBodyResponse>(
+      await unauthFetch(
         BE_DOMAIN + "/api/user/register",
         "POST",
         userRegisterInfo,
       );
-      const verifiedData = await authBodyResSchema.validate(data);
-      setAccessToken(verifiedData.accessToken);
-      
-      console.log(verifiedData);
     } catch (error) {
       if (error instanceof ValidationError) {
         console.log("Errore di validazione", error.errors);
