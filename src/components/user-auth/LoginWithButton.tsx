@@ -50,7 +50,7 @@ const LoginWithButton: React.FC<LoginWithButtonProps> = ({ type , titletext}) =>
   return (
     <button className="gsi-material-button m-1 flex w-full items-center justify-center space-x-2 rounded border-[1px] border-info p-1 hover:bg-slate-100 hover:border-primary">
       <div className="gsi-material-button-icon scale-[50%]">{Icon}</div>
-      <span className="gsi-material-button-contents text-body text-info">{text}</span>
+      <span className="gsi-material-button-contents typo-body text-info">{text}</span>
     </button>
   );
 };

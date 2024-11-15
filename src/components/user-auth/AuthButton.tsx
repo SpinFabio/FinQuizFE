@@ -14,7 +14,7 @@ const AuthButton: React.FC<AuthButtonProps> = ({ type }) => {
       }
       type="submit"
     >
-      <p className={"typo-body text-contrast-primary"}>{text}</p>
+      <p className={"typo-body text-primary-contrast"}>{text}</p>
     </button>
   );
 };

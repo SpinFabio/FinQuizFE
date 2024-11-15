@@ -13,7 +13,7 @@ export const useAuthPage = (typeAuth: "login" | "register") => {
   const [passError, setPassError] = useState<ErrorState>("empty");
   const [nameError, setNameError] = useState<ErrorState>("empty");
 
-  const{loginUser,registerUser}= useAuthAPI()
+  const { loginUser, registerUser } = useAuthAPI();
 
   const handleNameValidation = (
     e: React.ChangeEvent<HTMLInputElement> | React.FocusEvent<HTMLInputElement>,
@@ -47,14 +47,15 @@ export const useAuthPage = (typeAuth: "login" | "register") => {
         await schemaRegister.validateAt(fieldName, { [fieldName]: value });
       }
 
-      if (fieldName === "name") setEmailError("valid");
+      if (fieldName === "name") setNameError("valid");
       if (fieldName === "email") setEmailError("valid");
       if (fieldName === "password") setPassError("valid");
     } catch (error) {
       if (error instanceof Yup.ValidationError) {
-        if (fieldName === "name") setEmailError({ error: error.message });
+        if (fieldName === "name") setNameError({ error: error.message });
         if (fieldName === "email") setEmailError({ error: error.message });
         if (fieldName === "password") setPassError({ error: error.message });
+        return;
       }
     }
     return;
@@ -65,9 +66,13 @@ export const useAuthPage = (typeAuth: "login" | "register") => {
   ): Promise<void> {
     e.preventDefault(); // evita che si ricarichi la pagina quando si invia il form
 
-    if (typeAuth === "register") await validateField("name", name);
+    if (typeAuth === "register") {
+      await validateField("name", name);
+    }
     await validateField("email", email);
     await validateField("password", password);
+
+    console.log(password);
 
     if (
       typeAuth === "login" &&
@@ -84,7 +89,7 @@ export const useAuthPage = (typeAuth: "login" | "register") => {
       passError === "valid"
     ) {
       console.log("register form valido");
-      await registerUser(name, email, passError);
+      await registerUser(name, email, password);
     } else {
       console.log("Ci sono problemi nel form");
     }
@@ -100,7 +105,6 @@ export const useAuthPage = (typeAuth: "login" | "register") => {
     password,
     passError,
     setPassword,
-    
     handleNameValidation,
     handleEmailValidation,
     handlePasswordValidation,
@@ -115,10 +119,17 @@ let schemaLogin = Yup.object().shape({
     .required("Manca la Password"),
 });
 
-let schemaRegister = Yup.object().shape({
-  name: Yup.string().min(4).max(16).required("Manca il nome"),
-  email: Yup.string().email("Email non valida").required("Manca l'email"),
+const schemaRegister = Yup.object().shape({
+  name: Yup.string()
+    .min(4, "Il nome deve avere almeno 4 caratteri")
+    .max(16, "Il nome non può superare i 16 caratteri")
+    .required("Il campo Nome è obbligatorio"),
+
+  email: Yup.string()
+    .email("Inserisci un'email valida, ad esempio nome@email.com")
+    .required("Il campo Email è obbligatorio"),
+
   password: Yup.string()
-    .min(7, "password troppo corta")
-    .required("Manca la Password"),
+    .min(7, "La password deve contenere almeno 7 caratteri")
+    .required("Il campo Password è obbligatorio"),
 });

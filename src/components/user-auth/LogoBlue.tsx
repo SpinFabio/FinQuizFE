@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import FinquizLogoBlu from "../../images/FinquizLogoBlu.png";
 
 interface LogoBlueProps {
@@ -8,6 +9,7 @@ interface LogoBlueProps {
 const LogoBlue: React.FC<LogoBlueProps> = ({ /* props */ }) => {
   return (
       <div className={"w-full "}>
+        <Link to="/">
         <div id={"logo-container"} className={"my-h-5 m-5 "}>
           <img
             src={FinquizLogoBlu}
@@ -15,6 +17,7 @@ const LogoBlue: React.FC<LogoBlueProps> = ({ /* props */ }) => {
             className={"w-auto h-full"}
           />
         </div>
+        </Link>
       </div>
     
   );

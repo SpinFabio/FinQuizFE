@@ -16,15 +16,10 @@ const Separator: React.FC<SeparatorProps> = ({ type }) => {
 
   return (
     <div className="flex h-auto w-full flex-grow items-center justify-center">
-      <p className="mb-2 mt-4 text-sm text-info">{text}</p>
+      <p className=" mt-3 text-sm typo-info text-info">{text}</p>
     </div>
   );
 };
 
-const Line: React.FC = () => {
-  return (
-    <div className="flex h-[1px] w-auto flex-grow border border-info text-info"></div>
-  );
-};
 
 export default Separator;

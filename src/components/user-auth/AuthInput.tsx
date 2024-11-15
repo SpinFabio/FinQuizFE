@@ -48,7 +48,6 @@ const AuthInput: React.FC<AuthInputProps> = ({
       onBlur={handleValidate}
       autoComplete={autocomplete}
       onChange={(e) => {
-        //handleValidate(e);
         setValue(e.target.value);
       }}
     />

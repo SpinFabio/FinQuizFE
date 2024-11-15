@@ -1,56 +1,68 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 body {
-    font-family: 'Roboto', sans-serif;
     font-size: 1rem;
     line-height: 1.5;
+    @apply font-roboto;
 }
 
 
+/*-----------------------------mobile fonts-------------------------------------------------*/
 
-.text-contrast-primary{
-    @apply text-white
-}
-
-
-.typo-h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
+.typo-h1-mb {
+    font-size: 2.3rem;
     line-height: 1.2;
+    @apply font-roboto;
 }
 
-.typo-h2 {
+.typo-h2-mb {
     font-size: 1.7rem;
     font-weight: 600;
     line-height: 1.3;
+    @apply font-roboto;
+
 }
 
-.typo-h3 {
-    font-size: 1.5rem; /* 24px */
-    font-weight: 400;
-    line-height: 1.4;
-}
-
-.typo-body-bold {
-    font-size: 1rem; /* 16px */
-    font-weight: 500;
-    line-height: 1.6;
-}
-
-.typo-body {
+.typo-body-mb {
     font-size: 1rem; /* 16px */
     font-weight: 400;
     line-height: 1.6;
+    @apply font-roboto;
 }
 
-.typo-info {
+.typo-info-mb{
     font-size: 0.875rem; /* 14px */
     font-weight: 300;
     line-height: 1.4;
+    @apply font-roboto;
 }
 
-.typo-caption {
-    font-size: 0.75rem; /* 12px */
-    font-weight: 300;
+
+/*-----------------------------desktop fonts-------------------------------------------------*/
+
+.typo-h1-dt {
+    font-size: 2.3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    @apply font-roboto;
+}
+
+.typo-h2-dt {
+    font-size: 1.7rem;
+    font-weight: 600;
     line-height: 1.3;
+    @apply font-roboto;
+}
+
+.typo-body-dt{
+    font-size: 1rem; /* 16px */
+    font-weight: 400;
+    line-height: 1.6;
+    @apply font-roboto;
+}
+
+.typo-info-dt{
+    font-size: 0.875rem; /* 14px */
+    font-weight: 300;
+    line-height: 1.4;
+    @apply font-roboto;
 }

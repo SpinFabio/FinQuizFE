@@ -1,14 +1,20 @@
-import React, { useState } from "react";
-import AuthPage from "../AuthPage/AuthPage";
+import HomePageMB from "../HomePage/HomePageMB";
+import HomePageDT from "../HomePage/HomePageDT";
+import { modes, resumeButton } from "../HomePage/useHomePage";
 
 const TestPage: React.FC = () => {
+  
+  
   return (
-    <AuthPage/>
+    <>
+    <div className="block sm:hidden">
+      <HomePageMB resumeButton={resumeButton} userName="Marco" modeArray={modes}/>
+    </div>
+    <div className="hidden sm:block">
+      <HomePageDT />
+    </div>
+    </>
   );
 };
-
-function classNames(...classes: string[]): string {
-  return classes.join(` `);
-}
 
 export default TestPage;

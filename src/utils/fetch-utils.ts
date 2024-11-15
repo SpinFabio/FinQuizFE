@@ -18,14 +18,17 @@ export async function unauthFetch(
     message_u,
   );
 
+  const responseData = await response.json();
+  const data: AuthBodyReqRes =
+    await authBodyReqResSchema.validate(responseData);
+
   if (!response.ok) {
-    throw new Error(`UnauthFetch failed with status: ${response.status}`);
+    throw new Error(
+      `UnauthFetch failed with status: ${response.status} \n message: ${responseData.message}`,
+    );
   }
 
-  const responseData = await response.json();
-  const data: AuthBodyReqRes = await authBodyReqResSchema.validate(responseData);
-
-  console.log(data)
+  console.log(data);
   setAccessToken(data.accessToken);
 
   return;

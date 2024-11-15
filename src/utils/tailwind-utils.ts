@@ -6,3 +6,7 @@ export function classNameTW(...stringList: string[]): string {
   });
   return completeString.trim();
 }
+
+export function classNames(...classes: string[]): string {
+  return classes.join(` `);
+}

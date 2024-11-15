@@ -3,18 +3,14 @@ import LogoBlue from "../../components/user-auth/LogoBlue";
 import LoginForm from "../../components/user-auth/LoginForm";
 
 interface AuthPageProps {
-  /* propName: propType */
+  typeAuth: "login" | "register";
 }
 
-const AuthPage: React.FC<AuthPageProps> = (
-  {
-    /* props */
-  },
-) => {
+const AuthPage: React.FC<AuthPageProps> = ({ typeAuth }) => {
   return (
     <div className="bg-pr flex h-screen w-screen flex-col items-center">
       <LogoBlue />
-      <LoginForm typeAuth={"login"} />
+      <LoginForm typeAuth={typeAuth} />
     </div>
   );
 };
