@@ -28,6 +28,6 @@ export interface ResumeButtonInterface{
 }
 
 export const resumeButton:ResumeButtonInterface= {
-  buttonText: "Riprendi la Prova Precedente",
+  buttonText: "Riprendi la prova precedente",
   linkTo:"/prova-precedente"
 }

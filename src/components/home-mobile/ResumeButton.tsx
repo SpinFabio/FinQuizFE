@@ -8,9 +8,9 @@ interface ResumeButtonProps {
 
 const ResumeButton: React.FC<ResumeButtonProps> = ({ buttonText, linkTo }) => {
   return (
-    <div className="from-my-green to-my-green-dark inline-flex h-auto w-auto rounded-full bg-gradient-to-r p-4 shadow-slate-300 shadow-xl hover:scale-[101%] ">
+    <div className=" animate-popIn px-6 mb-4 inline-flex h-auto w-auto rounded-full bg-gradient-to-r from-my-green to-my-green-dark p-4 shadow-xl shadow-slate-300 hover:scale-[101%]">
       <Link to={linkTo}>
-        <p className="font-roboto font-h1-mb text-primary-contrast h-auto w-auto">
+        <p className="h-auto w-auto font-roboto font-h1-mb text-primary-contrast">
           {buttonText}
         </p>
       </Link>

@@ -6,6 +6,31 @@ body {
 }
 
 
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.example {
+    animation-name: fadeIn; /* Corretto da "animazion-name" */
+    animation-duration: 5s; /* Corretto da "animazion-duration" */
+}
+
+@keyframes popIn{
+    0%{transform: scale(0);}
+    50%{transform: scale(1.1);}
+    100%{transform: scale(1);}
+}
+
+.example2{
+    animation: popIn 0.5s ease; 
+}
+
 /*-----------------------------mobile fonts-------------------------------------------------*/
 
 .typo-h1-mb {
@@ -66,3 +91,6 @@ body {
     line-height: 1.4;
     @apply font-roboto;
 }
+
+
+

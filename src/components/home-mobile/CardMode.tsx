@@ -4,13 +4,21 @@ import { Link } from "react-router-dom";
 interface CardModeProps {
   modeName: string;
   linkTo: string;
+  appearDelay: number;
 }
 
-const CardMode: React.FC<CardModeProps> = ({ modeName, linkTo }) => {
+const CardMode: React.FC<CardModeProps> = ({
+  modeName,
+  linkTo,
+  appearDelay,
+}) => {
   return (
-    <div className="to-primary-dark my-2 w-full rounded-md bg-gradient-to-r from-primary p-4 pb-6  shadow-slate-400 shadow-xl transition hover:scale-[101%]">
+    <div
+      className="animate-appearIn my-2 h-10 w-full rounded-md bg-gradient-to-r from-primary to-primary-dark p-4 pb-6 opacity-0 shadow-xl shadow-slate-400 transition hover:scale-[101%]"
+      style={{ animationDelay: `${appearDelay}ms` }}
+    >
       <Link to={linkTo}>
-        <h3 className="text-primary-contrast font-roboto font-h2-mb text-h2-mb">
+        <h3 className="font-roboto text-h2-mb font-h2-mb text-primary-contrast">
           {modeName}
         </h3>
       </Link>

@@ -6,3 +6,8 @@
 # colore principale
 * #0074D9
 * ciao
+
+
+# come centrare elementi in un flex
+* justify-center: allinea il contenuto rispetto all'ASSE PRINCIPALE
+* content-center: allinea i contenuti rispetto lì ASSE SECONDARIO 

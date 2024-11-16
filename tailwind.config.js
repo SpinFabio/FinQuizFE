@@ -6,14 +6,12 @@ export default {
       colors: {
         primary: "#0074D9",
         "primary-hover": "#005AA8",
-        'primary-dark': '#293B4A',
+        "primary-dark": "#293B4A",
         "primary-contrast": "#FFFFFF",
         info: "rgb(75 85 99 )",
-        'my-green': '#34C759',       
-        'my-green-light': '#A7F3D0', 
-        'my-green-dark': '#065F46',  
-        
-        
+        "my-green": "#34C759",
+        "my-green-light": "#A7F3D0",
+        "my-green-dark": "#065F46",
       },
       borderColor: {
         primary: "#0074D9",
@@ -40,10 +38,11 @@ export default {
       },
     },
     fontFamily: {
-      roboto: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'],
-      lobster: ['Lobster', 'cursive'], // Font personalizzato
+      roboto: ["Roboto", "Helvetica", "Arial", "sans-serif"],
+      lobster: ["Lobster", "cursive"], // Font personalizzato
     },
-    fontSize:{//text-{size}
+    fontSize: {
+      //text-{size}
       // Mobile
       "h1-mb": "2.3rem",
       "h2-mb": "1.7rem",
@@ -51,23 +50,48 @@ export default {
       "info-mb": "0.875rem",
 
       // Desktop (DT)
-      "h1-dt": "2.3rem",  // Aggiungi la dimensione per h1 del desktop
-      "h2-dt": "1.7rem",  // Aggiungi la dimensione per h2 del desktop
-      "body-dt": "1rem",  // Aggiungi la dimensione per il corpo del desktop
+      "h1-dt": "2.3rem", // Aggiungi la dimensione per h1 del desktop
+      "h2-dt": "1.7rem", // Aggiungi la dimensione per h2 del desktop
+      "body-dt": "1rem", // Aggiungi la dimensione per il corpo del desktop
       "info-dt": "0.875rem", // Aggiungi la dimensione per info del desktop
     },
-    fontWeight: {// font-{weight}
+    fontWeight: {
+      // font-{weight}
       // Mobile font weights
-      "h1-mb": 600,  // Peso per h1 su mobile
-      "h2-mb": 500,  // Peso per h2 su mobile
+      "h1-mb": 600, // Peso per h1 su mobile
+      "h2-mb": 500, // Peso per h2 su mobile
       "body-mb": 400, // Peso per il corpo su mobile
       "info-mb": 300, // Peso per info su mobile
 
       // Desktop font weights
-      "h1-dt": 700,  // Peso per h1 su desktop
-      "h2-dt": 600,  // Peso per h2 su desktop
+      "h1-dt": 700, // Peso per h1 su desktop
+      "h2-dt": 600, // Peso per h2 su desktop
       "body-dt": 400, // Peso per il corpo su desktop
       "info-dt": 300, // Peso per info su desktop
+    },
+    keyframes: {
+      popIn: {
+        "0%": { transform: "scale(0)",opacity: 0, },
+        "50%": { transform: "scale(1.1)" },
+        "100%": { transform: "scale(1)",opacity: 1, },
+      },
+      appearIn: {
+        "0%": {
+          transform: "scale(0)",
+          opacity: 0,
+          transform: "translateY(20px)",
+        },
+        "80%": { transform: "scale(1.01)" },
+        "100%": {
+          transform: "scale(1)",
+          opacity: 1,
+          transform: "translateY(0)",
+        },
+      },
+    },
+    animation: {
+      popIn: "popIn 0.5s ease forwards ",
+      appearIn: "appearIn 0.4s ease forwards ",
     },
   },
   plugins: [],
