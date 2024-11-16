@@ -1,20 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-interface UserIconProps {}
+interface UserIconPropsMB {}
 
-const UserIcon: React.FC<UserIconProps> = () => {
+const UserIconMB: React.FC<UserIconPropsMB> = () => {
   return (
-    <div className="mb-8 flex w-full items-start justify-end">
+    <div className="z-50 flex items-start justify-end">
       <Link to={"/profile"}>
-        <div className="flex rounded-bl-[50px] bg-gradient-to-r from-primary to-primary-dark p-4">
+        <div className="flex rounded-bl-[50px] bg-gradient-to-b from-primary to-primary-dark p-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="size-8 text-primary-contrast "
+            className="size-6 text-primary-contrast"
           >
             <path
               strokeLinecap="round"
@@ -28,4 +28,4 @@ const UserIcon: React.FC<UserIconProps> = () => {
   );
 };
 
-export default UserIcon;
+export default UserIconMB;

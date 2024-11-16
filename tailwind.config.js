@@ -6,7 +6,7 @@ export default {
       colors: {
         primary: "#0074D9",
         "primary-hover": "#005AA8",
-        "primary-dark": "#293B4A",
+        "primary-dark": "#003D73",
         "primary-contrast": "#FFFFFF",
         info: "rgb(75 85 99 )",
         "my-green": "#34C759",
