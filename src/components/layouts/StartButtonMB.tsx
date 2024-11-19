@@ -10,7 +10,7 @@ const StartButtonMB: React.FC<StartButtonMBProps> = (
   },
 ) => {
   return (
-    <div className="bg-green-500 flex flex-row items-center justify-evenly w-10 rounded-full p-2 shadow-lg shadow-white">
+    <div className="animate-appearIn bg-green-500 flex flex-row items-center justify-evenly w-10 rounded-full p-2 shadow-lg shadow-white">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         height="28"
@@ -23,9 +23,9 @@ const StartButtonMB: React.FC<StartButtonMBProps> = (
         <path
           d="M2.16666 2L20.8333 14L2.16666 26V2Z"
           stroke="#FDFDFD"
-          stroke-width="4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="4"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
 

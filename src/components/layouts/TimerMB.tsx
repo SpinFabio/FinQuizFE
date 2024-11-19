@@ -10,9 +10,9 @@ const TimerMB: React.FC<TimerMBProps> = (
   },
 ) => {
   return (
-    <div className="flex h-full w-full flex-col rounded-2xl border border-info bg-white text-center">
+    <div className="flex flex-col rounded-2xl border border-info bg-white text-center">
       <p className="pt-2 text-info">Tempo della Prova</p>
-      <div className="flex h-full flex-row items-center justify-center text-h1-mb text-info">
+      <div className="flex h-full flex-row items-center justify-center text-h2-mb text-info py-1">
         <p>01</p>
         <p className="font-info-mb">h</p>
         <p>:</p>

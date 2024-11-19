@@ -13,7 +13,7 @@ const HomeIconMB: React.FC<HomeIconMBProps> = (
   return (
     <div className="z-50 flex items-start justify-start">
       <Link to={"/home"}>
-        <div className="flex rounded-br-[50px] bg-gradient-to-b from-primary to-primary-dark py-4 pl-3 pr-5">
+        <div className="flex rounded-br-[50px] bg-gradient-to-b from-primary to-primary-dark py-4 pl-3 pr-6">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

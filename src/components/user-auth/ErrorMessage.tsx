@@ -1,12 +1,11 @@
 import React from "react";
-import { ErrorState } from "./useAuthPage";
+import { ErrorState } from "../../pages/AuthPage/useAuthPage";
 
 interface ErrorMessageProps {
   errorState: ErrorState;
 }
 
 const ErrorMessage: React.FC<ErrorMessageProps> = ({ errorState }) => {
-  
   return (
     <div className="h-auto w-full">
       {typeof errorState === "object" ? (

@@ -3,10 +3,10 @@ import AuthInput from "./AuthInput";
 import LoginWithButton from "./LoginWithButton";
 import AuthButton from "./AuthButton";
 import Separator from "./Separator";
-import { useAuthPage } from "./useAuthPage";
+import { useAuthPage } from "../../pages/AuthPage/useAuthPage";
 import ErrorMessage from "./ErrorMessage";
 import RedirectAuth from "./RedirectAuth";
-import { classNames } from '../../utils/tailwind-utils';
+import { classNames } from "../../utils/tailwind-utils";
 
 interface LoginFormProps {
   typeAuth: "login" | "register";
@@ -26,13 +26,12 @@ const LoginForm: React.FC<LoginFormProps> = ({ typeAuth }) => {
     handleSubmit,
   } = useAuthPage(typeAuth);
 
-  const styleAuthDescriptions =
-    "typo-body text-info mt-2 self-start text-info";
+  const styleAuthDescriptions = "typo-body text-info mt-2 self-start text-info";
 
   return (
     <div
       id="div-bottom-half"
-      className="flex w-full items-center justify-center h-screen"
+      className="flex h-screen w-full items-center justify-center"
     >
       <div
         id="form-container"
@@ -59,7 +58,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ typeAuth }) => {
                 autocomplete="username"
                 setValue={setName}
               />
-              <ErrorMessage errorState={nameError}/>
+              <ErrorMessage errorState={nameError} />
             </>
           ) : (
             <></>

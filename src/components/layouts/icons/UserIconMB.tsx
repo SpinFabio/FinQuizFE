@@ -7,7 +7,7 @@ const UserIconMB: React.FC<UserIconPropsMB> = () => {
   return (
     <div className="z-50 flex items-start justify-end">
       <Link to={"/profile"}>
-        <div className="flex rounded-bl-[50px] bg-gradient-to-b from-primary to-primary-dark p-4">
+        <div className="flex rounded-bl-[50px] bg-gradient-to-b from-primary to-primary-dark p-4 pl-6">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

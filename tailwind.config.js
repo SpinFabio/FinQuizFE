@@ -6,7 +6,7 @@ export default {
       colors: {
         primary: "#0074D9",
         "primary-hover": "#005AA8",
-        "primary-dark": "#003D73",
+        "primary-dark": "#004D90",
         "primary-contrast": "#FFFFFF",
         info: "rgb(75 85 99 )",
         "my-green": "#34C759",
@@ -71,9 +71,9 @@ export default {
     },
     keyframes: {
       popIn: {
-        "0%": { transform: "scale(0)",opacity: 0, },
+        "0%": { transform: "scale(0)", opacity: 0 },
         "50%": { transform: "scale(1.1)" },
-        "100%": { transform: "scale(1)",opacity: 1, },
+        "100%": { transform: "scale(1)", opacity: 1 },
       },
       appearIn: {
         "0%": {
@@ -88,10 +88,20 @@ export default {
           transform: "translateY(0)",
         },
       },
+      slideFromDX: {
+        "0%": { opacity: 0, transform: "translateX(100%)" },
+        "100%": { opacity: 1, transform: "translateX(0)" },
+      },
+      emergeIn:{
+        "0%":{opacity:0},
+        "100":{opacity:1}
+      }
     },
     animation: {
       popIn: "popIn 0.5s ease forwards ",
       appearIn: "appearIn 0.4s ease forwards ",
+      slideFromDX: "slideFromDX 0.4s ease forwards",
+      emergeIn:"emergeIn 0.4s ease forwards"
     },
   },
   plugins: [],
