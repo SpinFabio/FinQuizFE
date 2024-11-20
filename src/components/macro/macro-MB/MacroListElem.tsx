@@ -19,7 +19,7 @@ const MacroListElem: React.FC<MacroListElemProps> = ({ macro }) => {
         <div className="px-4 pt-1">
           <input
             type="checkbox"
-            defaultChecked={macro.isChecked}
+            checked={macro.isChecked}
             onChange={() => macroHook.handleCheckBox(macro.id)}
           />
         </div>
@@ -53,7 +53,15 @@ const MacroListElem: React.FC<MacroListElemProps> = ({ macro }) => {
         >
           <div className="flex h-full flex-grow flex-row items-center justify-evenly rounded-bl-2xl rounded-br-lg bg-gradient-to-b from-primary to-primary-dark text-h2-mb font-h2-mb text-primary-contrast">
             <PlusMinusIcons type="minus" />
-            <p>{macro.selectednumber}</p>
+            <input
+              type="text"
+              value={" " + macro.selectednumber}
+              onChange={(e)=>macroHook.handleChangeSelected(macro.id, Number(e.target.value))}
+              className="flex w-auto bg-transparent"
+              style={{
+                width: `${macro.selectednumber.toString().length + 1}ch`,
+              }}
+            />
             <PlusMinusIcons type="plus" />
           </div>
         </div>

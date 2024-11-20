@@ -1,6 +1,7 @@
 import React from "react";
 import DesktopLayout from "./layout-DT/DesktopLayout";
 import MobileLayout from "./layout-MB/MobileLayout";
+import { MacroContextProvider } from "../macro/macro-MB/useMacro";
 
 interface LayoutProps {
   /* propName: propType */
@@ -13,8 +14,14 @@ const Layout: React.FC<LayoutProps> = (
 ) => {
   return (
     <>
-      <div className="block sm:hidden"><MobileLayout/></div>
-      <div className="hidden sm:block"><DesktopLayout/></div>
+      <div className="block sm:hidden">
+        <MacroContextProvider>
+          <MobileLayout />
+        </MacroContextProvider>
+      </div>
+      <div className="hidden sm:block">
+        <DesktopLayout />
+      </div>
     </>
   );
 };

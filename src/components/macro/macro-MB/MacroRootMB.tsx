@@ -13,9 +13,7 @@ const MacroRootMB: React.FC<MacroRootMBProps> = (
 ) => {
   return (
     <div>
-      <MacroContextProvider>
-        <MacroList />
-      </MacroContextProvider>
+      <MacroList />
     </div>
   );
 };

@@ -8,7 +8,7 @@ interface IconMenuProps {
 
 const IconMenu: React.FC<IconMenuProps> = ({ onAction, description, draw }) => {
   return (
-    <div className="flex w-8 flex-col items-center justify-center py-4">
+    <div className="flex w-8 flex-col items-center justify-center py-4 " onClick={() => onAction && onAction()}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

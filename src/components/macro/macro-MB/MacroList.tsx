@@ -1,11 +1,13 @@
 import React from "react";
-import { macroTopicArray } from "../../../state/macro/macroTopicList";
 import MacroListElem from "./MacroListElem";
+import { useMacroConsumer, UseMacroInterface } from "./useMacro";
 
 const MacroList: React.FC = () => {
+  const macroHook: UseMacroInterface = useMacroConsumer();
+
   return (
     <div>
-      {macroTopicArray.map((macroT, i) => (
+      {macroHook.macroState.map((macroT, i) => (
         <div
           key={i}
           className="animate-slideFromDX opacity-0"
