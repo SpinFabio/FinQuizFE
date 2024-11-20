@@ -1,90 +1,148 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import {
+  getFav,
   MacroTopic,
   macroTopicArray,
+  setFav,
 } from "../../../state/macro/macroTopicList";
 import { MAX_MACRO_QUIZZES } from "../../../config/myenv";
 import { toast } from "react-toastify";
 
 export function useMacro() {
   const [macroState, setMacroState] = useState<MacroTopic[]>(macroTopicArray);
-  const [sum,setSum]= useState<number>(macroTopicArray.reduce((acc,curr)=>{
-    return acc+curr.defaultNumber
-  },0))
+  const [sum, setSum] = useState<number>(
+    macroTopicArray.reduce((acc, curr) => {
+      return acc + curr.defaultNumber;
+    }, 0),
+  );
 
-  function handleCheckBox(id: number) {
-    setMacroState((prevMacroState) => {
-      const updatedState = prevMacroState.map((macroT) => {
+  useEffect(() => {
+    console.log(macroState);
+  }, [macroState]);
+
+  useEffect(() => {
+    console.log(sum);
+  }, [sum]);
+
+  function handleReset() {
+    const newState = macroState.map((elem) => ({
+      ...elem,
+      selectedNumber: elem.defaultNumber,
+    }));
+    setMacroState(newState);
+
+    const newSum = newState.reduce((acc, curr) => acc + curr.selectedNumber, 0);
+    setSum(newSum);
+  }
+
+  function handleChangeSelected(id: number, currentValue: number) {
+    console.log(id, currentValue, sum);
+    const prevValue = macroState.find((f) => f.id === id)?.selectedNumber;
+
+    if (prevValue === undefined) {
+      throw new Error("invaklid Macro id in handleChangeSelected");
+    }
+    const nextSum = sum + currentValue - prevValue;
+
+    if (Number.isNaN(currentValue)) {
+      return;
+    }
+
+    if (nextSum > MAX_MACRO_QUIZZES) {
+      toast.warning(
+        `non puoi inserire più del massimo consentito di quiz! (${MAX_MACRO_QUIZZES})`,
+      );
+      return;
+    }
+
+    setSum(nextSum);
+
+    setMacroState((prev) => {
+      const newState = prev.map((macroT) => {
         if (macroT.id === id) {
           return {
             ...macroT,
-            isChecked: !macroT.isChecked,
+            selectedNumber: currentValue,
           };
         } else {
           return macroT;
         }
       });
-      console.log("Nuovo stato:", updatedState);
-      return updatedState;
+
+      return newState;
     });
+
+    console.log(id, currentValue, sum);
   }
 
-  function handleReset() {
-    console.log("ciao sono stato chiamato")
-    setMacroState((prev) => {
-      const newState = prev.map((elem) => {
-        return {
-          ...elem,
-          isChecked: true,
-          selectednumber: elem.defaultNumber,
-        };
-      });
-      console.log(newState)
-      console.log(macroState)
-      return [...newState];
-    });
-  }
+  function handleAdd(id: number) {
+    let newSum = sum;
 
-  function handleChangeSelected(id:number,currentValue:number){
-    console.log(id,currentValue,sum)
-    const nextSum=sum+currentValue
-
-    if(Number.isNaN(currentValue)){
-      return
-    }
-
-    if(nextSum>MAX_MACRO_QUIZZES){
-      toast.error(`Hai superato il massimo consentito di quiz! (${MAX_MACRO_QUIZZES})`);
-      return
-    }
-
-
-    setMacroState((prev)=>{
-      const newState= prev.map((macroT)=>{
-        if(macroT.id===id){
-          return{
-            ...macroT,
-            selectednumber:currentValue
+    setMacroState((prevState) => {
+      const newState = prevState.map((macro) => {
+        if (macro.id === id) {
+          newSum = sum + 1;
+          if (newSum > MAX_MACRO_QUIZZES) {
+            toast.warning(
+              `non puoi inserire più del massimo consentito di quiz! (${MAX_MACRO_QUIZZES})`,
+            );
+            return macro;
           }
-        } else{
-          return macroT
+          return {
+            ...macro,
+            selectedNumber: macro.selectedNumber + 1,
+          };
         }
+        return macro;
+      });
 
-      })
+      setSum(newSum);
+      return newState;
+    });
+  }
 
-      return newState
-    })
+  function handleSub(id: number) {
+    let newSum = sum;
 
-    console.log(id,currentValue,sum)
+    setMacroState((prevState) => {
+      const newState = prevState.map((macro) => {
+        if (macro.id === id) {
+          newSum = sum - 1;
 
+          if (macro.selectedNumber <= 0 || newSum < 0) {
+            return macro;
+          }
+          return {
+            ...macro,
+            selectedNumber: macro.selectedNumber - 1,
+          };
+        } else {
+          return macro;
+        }
+      });
 
+      setSum(newSum);
+      return newState;
+    });
+  }
+
+  function handleSetFav(){
+    setFav(macroState)
+  }
+
+  function handleGetFav(){
+    const newMacro = getFav(macroState)
+    setMacroState(newMacro)
   }
 
   return {
     macroState,
     handleReset,
+    handleAdd,
+    handleSub,
+    handleSetFav,
     handleChangeSelected,
-    handleCheckBox,
+    handleGetFav,
   };
 }
 

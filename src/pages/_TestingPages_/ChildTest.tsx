@@ -11,6 +11,7 @@ const ChildTest: React.FC<ChildTestProps> = ({ /* props */ }) => {
   const myHook= useMyContextConsumer()
   const setStringa=myHook.setStringa
   
+  
   const notify = () => toast("Wow so easy!");
   return (
     <div onClick={notify} className='bg-red-400 p-5'>

@@ -1,106 +1,86 @@
+import { toast } from "react-toastify";
+
 export interface MacroTopic {
   id: number;
-  nome: string;
-  isChecked: boolean;
+  name: string;
   quizTot: number;
   defaultNumber: number;
-  selectednumber: number;
+  selectedNumber: number;
   completedPercentage: number;
 }
 
 export const macroTopicArray: MacroTopic[] = [
   {
     id: 1,
-    nome: "Diritto di mercato e degli intermediari",
-    isChecked: true,
+    name: "Diritto di mercato e degli intermediari",
     quizTot: 2000,
     defaultNumber: 5,
-    selectednumber: 5,
+    selectedNumber: 5,
     completedPercentage: 0,
   },
   {
     id: 2,
-    nome: "Diritto previdenziale e assicurativo",
-    isChecked: true,
+    name: "Diritto previdenziale e assicurativo",
     quizTot: 500,
     defaultNumber: 6,
-    selectednumber: 6,
+    selectedNumber: 6,
     completedPercentage: 0,
   },
   {
     id: 3,
-    nome: "Diritto privato e commerciale",
-    isChecked: true,
+    name: "Diritto privato e commerciale",
     quizTot: 400,
     defaultNumber: 6,
-    selectednumber: 6,
+    selectedNumber: 6,
     completedPercentage: 0,
   },
   {
     id: 4,
-    nome: "Diritto tributario del mercato finanziario",
-    isChecked: true,
+    name: "Diritto tributario del mercato finanziario",
     quizTot: 500,
     defaultNumber: 19,
-    selectednumber: 19,
+    selectedNumber: 19,
     completedPercentage: 0,
   },
   {
     id: 5,
-    nome: "Matematica e economia del mercato",
-    isChecked: true,
+    name: "Matematica e economia del mercato",
     quizTot: 1600,
     defaultNumber: 24,
-    selectednumber: 24,
+    selectedNumber: 24,
     completedPercentage: 0,
   },
 ];
 
 export interface UserMacroFav {
   id: number;
-  isCheckedFav: boolean;
   selectedNumberFav: number;
 }
 
-const macroTopicFavArray: UserMacroFav[] = [
-  {
-    id: 1,
-    isCheckedFav: true, // Predefinito basato sull'immagine
-    selectedNumberFav: 5, // Default per "Diritto di mercato e degli intermediari"
-  },
-  {
-    id: 2,
-    isCheckedFav: true,
-    selectedNumberFav: 6, // Default per "Diritto previdenziale e assicurativo"
-  },
-  {
-    id: 3,
-    isCheckedFav: true,
-    selectedNumberFav: 6, // Default per "Diritto privato e commerciale"
-  },
-  {
-    id: 4,
-    isCheckedFav: true,
-    selectedNumberFav: 19, // Default per "Diritto tributario del mercato finanziario"
-  },
-  {
-    id: 5,
-    isCheckedFav: true,
-    selectedNumberFav: 24, // Default per "Matematica e economia del mercato"
-  },
-];
-
-//---------------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------- gestione del preferito -----------------------------------------------------------------------------------------------
 
 const USER_MACRO_FAV_KEY_NAME = "macroTopicFavArray";
 
-function setFav(favArray: UserMacroFav[]): void {
+export function setFav(macroTopicArray: MacroTopic[]): void {
+  const favArray: UserMacroFav[] = macroTopicArray.map((macro) => {
+    const fav: UserMacroFav = {
+      id: macro.id,
+      selectedNumberFav: macro.selectedNumber,
+    };
+    return fav;
+  });
+
+  console.log(favArray);
+
   localStorage.setItem(USER_MACRO_FAV_KEY_NAME, JSON.stringify(favArray));
 }
 
-function getFav(macroArray: MacroTopic[]): MacroTopic[] {
+export function getFav(macroArray: MacroTopic[]): MacroTopic[] {
   const favData = localStorage.getItem(USER_MACRO_FAV_KEY_NAME);
   if (!favData) {
+    toast.warning(
+      "Non esiste alcun preferito per questa categoria su questo dispositivo",
+    );
     return macroArray;
   }
 
@@ -114,12 +94,13 @@ function getFav(macroArray: MacroTopic[]): MacroTopic[] {
     if (fav) {
       return {
         ...macroT,
-        isChecked: fav.isCheckedFav,
-        selectednumber: fav.selectedNumberFav,
+        selectedNumber: fav.selectedNumberFav,
       } as MacroTopic;
     }
     return macroT;
   });
+
+  console.log(newMacroArray)
 
   return newMacroArray;
 }
