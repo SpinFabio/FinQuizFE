@@ -1,6 +1,6 @@
 import React from "react";
-import MobileLayout from "./MobileLayout";
-import DesktopLayout from "./DesktopLayout";
+import DesktopLayout from "./layout-DT/DesktopLayout";
+import MobileLayout from "./layout-MB/MobileLayout";
 
 interface LayoutProps {
   /* propName: propType */

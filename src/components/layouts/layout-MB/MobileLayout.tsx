@@ -1,11 +1,11 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import UserIconMB from "./icons/UserIconMB";
-import TimerMB from "./TimerMB";
 import IconMenu from "./icons/IconMenu";
-import StartButtonMB from "./StartButtonMB";
 import HomeIconMB from "./icons/HomeIconMB";
-import { menuButtons } from "../../state/mode1/menuButtons";
+import TimerMB from "./TimerMB";
+import StartButtonMB from "./StartButtonMB";
+import { menuButtons } from "../../../state/macro/menuButtons";
 
 interface MobileLayoutProps {
   // Aggiungi prop qui se necessario
@@ -14,7 +14,10 @@ interface MobileLayoutProps {
 const MobileLayout: React.FC<MobileLayoutProps> = () => {
   return (
     <div id="layout" className="h-screen w-screen overflow-x-hidden">
-      <div id="top" className="fixed top-0 z-50 flex h-auto w-full flex-col animate-emergeIn ">
+      <div
+        id="top"
+        className="fixed top-0 z-50 flex h-auto w-full animate-emergeIn flex-col"
+      >
         <div id="icons" className="flex h-auto w-full bg-white">
           <HomeIconMB />
           <div
@@ -41,14 +44,14 @@ const MobileLayout: React.FC<MobileLayoutProps> = () => {
       </div>
 
       <div id="padding-for-content">
-        <div className="h-52"/>
+        <div className="h-52" />
 
         <Outlet />
 
-        <div className="h-72 w-full"/>
+        <div className="h-72 w-full" />
       </div>
 
-      <div id="menu" className="fixed bottom-0 z-50 w-full animate-emergeIn" >
+      <div id="menu" className="fixed bottom-0 z-50 w-full animate-emergeIn">
         <div className="flex h-9 items-center justify-center bg-gradient-to-t from-white to-transparent">
           <StartButtonMB />
         </div>

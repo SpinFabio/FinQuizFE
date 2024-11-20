@@ -1,29 +1,37 @@
-import React, { useContext } from "react";
-import { MacroTopic } from "../../state/mode1/macroTopicList";
+import React from "react";
+import { MacroTopic } from "../../../state/macro/macroTopicList";
 import PlusMinusIcons from "./PlusMinusIcons";
-import { Mode1Context } from "./Mode1Context";
+import { useMacroConsumer, UseMacroInterface } from "./useMacro";
 
 interface MacroListElemProps {
   macro: MacroTopic;
 }
 
 const MacroListElem: React.FC<MacroListElemProps> = ({ macro }) => {
+  const macroHook: UseMacroInterface = useMacroConsumer();
 
   return (
-    <div className="flex w-full flex-col px-4 py-3  ">
+    <div className="flex w-full flex-col px-4 py-3">
       <div
         id="top-part"
         className="flex h-7 flex-row items-center justify-start rounded-t-lg border border-info"
       >
         <div className="px-4 pt-1">
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            defaultChecked={macro.isChecked}
+            onChange={() => macroHook.handleCheckBox(macro.id)}
+          />
         </div>
         <div className="text-body-mb font-h2-mb">
           <h2>{macro.nome}</h2>
         </div>
       </div>
 
-      <div id="bottom-part" className="flex w-full flex-row rounded-b-lg shadow-md shadow-slate-300">
+      <div
+        id="bottom-part"
+        className="flex w-full flex-row rounded-b-lg shadow-md shadow-slate-300"
+      >
         <div
           id="left-bottom"
           className="flex flex-row rounded-bl-lg bg-gradient-to-b from-primary to-primary-dark text-white"

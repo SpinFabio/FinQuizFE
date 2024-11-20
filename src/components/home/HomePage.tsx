@@ -1,7 +1,7 @@
 import React from 'react';
-import { modes, resumeButton } from './useHomePage';
-import HomePageMB from './HomePageMB';
-import HomePageDT from './HomePageDT';
+import HomePageMB from './home-MB/HomePageMB';
+import HomePageDT from './home-DT/HomePageDT';
+import { modes, resumeButton } from './home-MB/useHomePage';
 
 interface HomePageProps {
   /* propName: propType */

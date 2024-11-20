@@ -1,8 +1,8 @@
 import React from "react";
 import { Modes, ResumeButtonInterface } from "./useHomePage";
-import CardMode from "../../components/home-mobile/CardMode";
-import ResumeButton from "../../components/home-mobile/ResumeButton";
-import UserIconMB from "../../components/layouts/icons/UserIconMB";
+import UserIconMB from "../../layouts/layout-MB/icons/UserIconMB";
+import CardMode from "./CardMode";
+import ResumeButton from "./ResumeButton";
 
 interface HomePageMBProps {
   userName: string;
@@ -20,7 +20,7 @@ const HomePageMB: React.FC<HomePageMBProps> = ({
       <div className="flex h-screen flex-col">
         <UserIconMB />
         <div id="Text-Box" className="item-start mx-5 flex flex-col">
-          <h1 className=" mt-8 font-robot fonto-body text-h1-mb leading-tight">
+          <h1 className="font-robot fonto-body mt-8 text-h1-mb leading-tight">
             Benvenuto {userName}
           </h1>
           <h2 className="font-roboto text-body-mb font-info-mb">
