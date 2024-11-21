@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import LandingPage from "./pages/LandingPage/LandingPage.tsx";
 import "./index.css";
 import AuthPage from "./pages/AuthPage/AuthPage.tsx";
 import Page404 from "./pages/ErrorPages/Page404.tsx";
@@ -16,8 +15,6 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/login" element={<AuthPage typeAuth="login" />} />
         <Route path="/register" element={<AuthPage typeAuth="register" />} />
-
-        <Route path="/" element={<LandingPage />} />
 
         <Route path="/home" element={<HomePage />} />
 

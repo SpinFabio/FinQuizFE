@@ -1,6 +1,9 @@
 import React from "react";
 import MacroListElem from "./MacroListElem";
 import { useMacroConsumer, UseMacroInterface } from "./useMacro";
+import ModalMB from "../../modal/ModalMB";
+import TimerMB from "../../layouts/layout-MB/TimerMB";
+import ModalTimeSetter from "./ModalTimeSetter";
 
 const MacroList: React.FC = () => {
   const macroHook: UseMacroInterface = useMacroConsumer();
@@ -16,6 +19,12 @@ const MacroList: React.FC = () => {
           <MacroListElem key={i} macro={macroT} />
         </div>
       ))}
+      <ModalMB
+        isOpen={macroHook.isOpenTimeModal}
+        onClose={macroHook.hanldeCloseTimeModal}
+      >
+        <ModalTimeSetter currenHook={macroHook} />
+      </ModalMB>
     </div>
   );
 };

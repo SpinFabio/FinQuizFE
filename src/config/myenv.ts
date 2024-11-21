@@ -4,3 +4,7 @@ export const FEATURE_FLAG = true;
 export const APP_VERSION = "1.0.0";
 
 export const MAX_MACRO_QUIZZES=120
+
+
+export const MAX_HOURS=5
+export const MAX_MINUTES=60 // questo non toccarlo

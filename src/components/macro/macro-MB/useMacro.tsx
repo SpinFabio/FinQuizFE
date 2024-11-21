@@ -7,6 +7,7 @@ import {
 } from "../../../state/macro/macroTopicList";
 import { MAX_MACRO_QUIZZES } from "../../../config/myenv";
 import { toast } from "react-toastify";
+import { useTimer, UseTimerInterface } from "../../layouts/layout-MB/useTimer";
 
 export function useMacro() {
   const [macroState, setMacroState] = useState<MacroTopic[]>(macroTopicArray);
@@ -15,6 +16,8 @@ export function useMacro() {
       return acc + curr.defaultNumber;
     }, 0),
   );
+  const [isOpenTimeModal, setIsOpenTimeModal] = useState(false);
+  const timerHook:UseTimerInterface = useTimer();
 
   useEffect(() => {
     console.log(macroState);
@@ -126,13 +129,21 @@ export function useMacro() {
     });
   }
 
-  function handleSetFav(){
-    setFav(macroState)
+  function handleSetFav() {
+    setFav(macroState);
   }
 
-  function handleGetFav(){
-    const newMacro = getFav(macroState)
-    setMacroState(newMacro)
+  function handleGetFav() {
+    const newMacro = getFav(macroState);
+    setMacroState(newMacro);
+  }
+
+  function handleOpenTimeModal() {
+    setIsOpenTimeModal(true);
+  }
+
+  function hanldeCloseTimeModal() {
+    setIsOpenTimeModal(false);
   }
 
   return {
@@ -143,6 +154,10 @@ export function useMacro() {
     handleSetFav,
     handleChangeSelected,
     handleGetFav,
+    isOpenTimeModal,
+    handleOpenTimeModal,
+    hanldeCloseTimeModal,
+    timerHook,
   };
 }
 
