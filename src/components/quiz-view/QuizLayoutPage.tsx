@@ -1,5 +1,4 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
 import QuizLayoutMB from "./quiz-view-MB/layout/QuizLayoutMB";
 import QuizLayoutDT from "./quiz-view-DT/QuizLayoutDT";
 
@@ -20,7 +19,6 @@ const QuizLayoutPage: React.FC<QuizLayoutPageProps> = (
       <div className="hidden sm:block">
         <QuizLayoutDT />
       </div>
-      <Outlet />
     </div>
   );
 };

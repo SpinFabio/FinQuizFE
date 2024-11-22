@@ -19,7 +19,7 @@ const TimerMB: React.FC<TimerMBProps> = ({ timerHook, isInteractable }) => {
   }
 
   return (
-    <div className="flex flex-col rounded-2xl border border-info bg-white px-4 text-center">
+    <div className="w-11 flex flex-col rounded-2xl border border-info bg-white px-4 text-center">
       <p className="pt-2 text-info">Tempo della Prova</p>
       <div className="flex h-full flex-row items-center justify-center py-1 text-h2-mb text-info">
         <input
