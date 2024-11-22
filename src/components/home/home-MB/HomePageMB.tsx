@@ -1,8 +1,8 @@
 import React from "react";
 import { Modes, ResumeButtonInterface } from "./useHomePage";
-import ProfileIconMB from "../../layouts/layout-MB/ProfileIconMB";
 import CardMode from "./CardMode";
 import ResumeButton from "./ResumeButton";
+import ProfileIconMB from "../../layouts/layout-MB/icons/ProfileIconMB";
 
 interface HomePageMBProps {
   userName: string;

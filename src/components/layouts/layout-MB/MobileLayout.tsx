@@ -20,7 +20,7 @@ const MobileLayout: React.FC<MobileLayoutProps> = () => {
       <LayoutTop timerHook={currenHook.timerHook} />
 
       <div id="padding-for-content">
-        <div className="h-52" />
+        <div className="h-40" />
 
         <Outlet />
 

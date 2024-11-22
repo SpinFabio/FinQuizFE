@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { HOME_PAGE_ROUTE } from "../../../../config/routes";
+import { HOME_PAGE_ROUTE } from "../../config/routes";
 
 interface BaseHomeIconProps {
   /* propName: propType */
@@ -14,17 +14,18 @@ const BaseHomeIcon: React.FC<BaseHomeIconProps> = (
   return (
     <Link to={HOME_PAGE_ROUTE}>
       <svg
-        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        viewBox="0 0 32 32"
         fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={1.5}
-        stroke="currentColor"
-        className="size-6 text-primary-contrast"
+        xmlns="http://www.w3.org/2000/svg"
       >
         <path
+          d="M12 29.3334V16H20V29.3334M4 12L16 2.66669L28 12V26.6667C28 27.3739 27.719 28.0522 27.219 28.5523C26.7189 29.0524 26.0406 29.3334 25.3333 29.3334H6.66667C5.95942 29.3334 5.28115 29.0524 4.78105 28.5523C4.28095 28.0522 4 27.3739 4 26.6667V12Z"
+          stroke="white"
+          strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
         />
       </svg>
     </Link>

@@ -16,19 +16,19 @@ const LayoutTop: React.FC<LayoutTopProps> = ({ timerHook }) => {
     >
       <div id="icons" className="flex h-auto w-full bg-white">
         <HomeIconMB />
+
         <div
           id="bridge"
-          className="z-40 -mx-[1.134rem] flex flex-grow flex-col items-center justify-end rounded-b-3xl bg-gradient-to-b from-primary to-primary-dark"
+          className="flex w-full justify-center overflow-hidden bg-gradient-to-b from-primary to-primary-dark"
         >
-          <div className="flex h-[50%] w-full flex-col-reverse rounded-t-full bg-white">
-            <div className="h-5 w-full bg-white"></div>
-          </div>
+          <div className=" h-[60px] w-[100%] self-end rounded-t-[24px] bg-white -mx-[10px]"></div>
         </div>
+
         <ProfileIconMB />
       </div>
       <div
         id="timer-and-fade"
-        className="flex h-9 items-center justify-center bg-gradient-to-b from-white to-transparent align-middle"
+        className="flex h-7 items-center justify-center bg-gradient-to-b from-white to-transparent align-middle"
       >
         <div
           id="timer-container"

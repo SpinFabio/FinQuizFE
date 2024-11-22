@@ -1,6 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import QuizLayoutMB from "./quiz-view-MB/Layout/QuizLayoutMB";
+import QuizLayoutMB from "./quiz-view-MB/layout/QuizLayoutMB";
 import QuizLayoutDT from "./quiz-view-DT/QuizLayoutDT";
 
 interface QuizLayoutPageProps {

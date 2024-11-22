@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { PROFILE_PAGE_ROUTE } from "../../../../config/routes";
+import { PROFILE_PAGE_ROUTE } from "../../config/routes";
 
 interface BaseProfileIconProps {
   /* propName: propType */

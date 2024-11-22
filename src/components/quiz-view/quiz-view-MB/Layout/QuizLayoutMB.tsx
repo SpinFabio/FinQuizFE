@@ -1,5 +1,5 @@
 import React from "react";
-import BaseHomeIcon from "../../../base-icons/BaseHomeIcon";
+import QuizHomeIcon from "./icons/QuizHomeIcon";
 
 interface QuizLayoutMBProps {
   /* propName: propType */
@@ -12,7 +12,7 @@ const QuizLayoutMB: React.FC<QuizLayoutMBProps> = (
 ) => {
   return (
     <div>
-      <BaseHomeIcon />
+      <QuizHomeIcon />
     </div>
   );
 };

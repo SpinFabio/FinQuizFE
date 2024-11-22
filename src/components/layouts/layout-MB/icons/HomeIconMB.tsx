@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import BaseHomeIcon from "../../../base-icons/BaseHomeIcon";
 
 interface HomeIconMBProps {
@@ -13,7 +12,7 @@ const HomeIconMB: React.FC<HomeIconMBProps> = (
 ) => {
   return (
     <div className="z-50 flex items-start justify-start">
-      <div className="flex rounded-br-[50px] bg-gradient-to-b from-primary to-primary-dark py-4 pl-3 pr-6">
+      <div className="flex rounded-br-[42px] bg-gradient-to-b from-primary to-primary-dark p-5">
         <BaseHomeIcon />
       </div>
     </div>
