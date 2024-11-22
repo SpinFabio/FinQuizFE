@@ -1,6 +1,6 @@
 import React from "react";
 import { Modes, ResumeButtonInterface } from "./useHomePage";
-import UserIconMB from "../../layouts/layout-MB/icons/UserIconMB";
+import ProfileIconMB from "../../layouts/layout-MB/ProfileIconMB";
 import CardMode from "./CardMode";
 import ResumeButton from "./ResumeButton";
 
@@ -18,7 +18,7 @@ const HomePageMB: React.FC<HomePageMBProps> = ({
   return (
     <>
       <div className="flex h-screen flex-col">
-        <UserIconMB />
+        <ProfileIconMB />
         <div id="Text-Box" className="item-start mx-5 flex flex-col">
           <h1 className="font-robot fonto-body mt-8 text-h1-mb leading-tight">
             Benvenuto {userName}

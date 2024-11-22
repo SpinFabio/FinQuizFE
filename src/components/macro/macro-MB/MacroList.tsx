@@ -2,7 +2,6 @@ import React from "react";
 import MacroListElem from "./MacroListElem";
 import { useMacroConsumer, UseMacroInterface } from "./useMacro";
 import ModalMB from "../../modal/ModalMB";
-import TimerMB from "../../layouts/layout-MB/TimerMB";
 import ModalTimeSetter from "./ModalTimeSetter";
 
 const MacroList: React.FC = () => {

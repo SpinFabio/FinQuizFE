@@ -61,7 +61,7 @@ export interface UserMacroFav {
 
 const USER_MACRO_FAV_KEY_NAME = "macroTopicFavArray";
 
-export function setFav(macroTopicArray: MacroTopic[]): void {
+export function setFavMacro(macroTopicArray: MacroTopic[]): void {
   const favArray: UserMacroFav[] = macroTopicArray.map((macro) => {
     const fav: UserMacroFav = {
       id: macro.id,
@@ -75,7 +75,7 @@ export function setFav(macroTopicArray: MacroTopic[]): void {
   localStorage.setItem(USER_MACRO_FAV_KEY_NAME, JSON.stringify(favArray));
 }
 
-export function getFav(macroArray: MacroTopic[]): MacroTopic[] {
+export function getFavMacro(macroArray: MacroTopic[]): MacroTopic[] {
   const favData = localStorage.getItem(USER_MACRO_FAV_KEY_NAME);
   if (!favData) {
     toast.warning(
@@ -100,7 +100,7 @@ export function getFav(macroArray: MacroTopic[]): MacroTopic[] {
     return macroT;
   });
 
-  console.log(newMacroArray)
+  console.log(newMacroArray);
 
   return newMacroArray;
 }

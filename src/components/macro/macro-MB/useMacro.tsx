@@ -1,13 +1,15 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import {
-  getFav,
+  getFavMacro,
   MacroTopic,
   macroTopicArray,
-  setFav,
+  setFavMacro,
 } from "../../../state/macro/macroTopicList";
 import { MAX_MACRO_QUIZZES } from "../../../config/myenv";
 import { toast } from "react-toastify";
-import { useTimer, UseTimerInterface } from "../../layouts/layout-MB/useTimer";
+import { DEFAULT_TIME, useTimer, UseTimerInterface } from "../../layouts/layout-MB/useTimer";
+import { MenuHandler } from "../../layouts/layout-MB/MenuContent";
+import { getFavTimeMacro, setFavTimeMacro } from "../../../state/macro/macroTime";
 
 export function useMacro() {
   const [macroState, setMacroState] = useState<MacroTopic[]>(macroTopicArray);
@@ -17,7 +19,7 @@ export function useMacro() {
     }, 0),
   );
   const [isOpenTimeModal, setIsOpenTimeModal] = useState(false);
-  const timerHook:UseTimerInterface = useTimer();
+  const timerHook: UseTimerInterface = useTimer();
 
   useEffect(() => {
     console.log(macroState);
@@ -33,7 +35,7 @@ export function useMacro() {
       selectedNumber: elem.defaultNumber,
     }));
     setMacroState(newState);
-
+    timerHook.setTime(DEFAULT_TIME)
     const newSum = newState.reduce((acc, curr) => acc + curr.selectedNumber, 0);
     setSum(newSum);
   }
@@ -130,12 +132,15 @@ export function useMacro() {
   }
 
   function handleSetFav() {
-    setFav(macroState);
+    setFavMacro(macroState);
+    setFavTimeMacro(timerHook.time)
   }
 
   function handleGetFav() {
-    const newMacro = getFav(macroState);
+    const newMacro = getFavMacro(macroState);
+    const newTime= getFavTimeMacro()
     setMacroState(newMacro);
+    timerHook.setTime(newTime)
   }
 
   function handleOpenTimeModal() {
@@ -146,18 +151,23 @@ export function useMacro() {
     setIsOpenTimeModal(false);
   }
 
+  const menuHandler: MenuHandler = {
+    handleOptions: () => {},
+    handleSaveFav: handleSetFav,
+    handleLoadFav: handleGetFav,
+    handleReset: handleReset,
+    handleTime: handleOpenTimeModal,
+  };
+
   return {
     macroState,
-    handleReset,
     handleAdd,
     handleSub,
-    handleSetFav,
     handleChangeSelected,
-    handleGetFav,
     isOpenTimeModal,
-    handleOpenTimeModal,
     hanldeCloseTimeModal,
     timerHook,
+    menuHandler,
   };
 }
 

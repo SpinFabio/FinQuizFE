@@ -1,5 +1,4 @@
 import React from "react";
-import { UseMacroInterface } from "../../macro/macro-MB/useMacro";
 import { classNames } from "../../../utils/tailwind-utils";
 import { UseTimerInterface } from "./useTimer";
 

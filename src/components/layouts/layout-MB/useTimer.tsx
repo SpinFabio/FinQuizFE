@@ -7,11 +7,13 @@ export interface TimeInterface {
   minutes: string;
 }
 
+export const DEFAULT_TIME: TimeInterface = {
+  hours: "01",
+  minutes: "30",
+};
+
 export function useTimer() {
-  const [time, setTime] = useState<TimeInterface>({
-    hours: "01",
-    minutes: "30",
-  });
+  const [time, setTime] = useState<TimeInterface>(DEFAULT_TIME);
 
   function hanldeSelectHours(selectedH: string) {
     const selNumH = Number(selectedH);
@@ -63,6 +65,7 @@ export function useTimer() {
     time,
     hanldeSelectHours,
     handleSelectMinutes,
+    setTime
   };
 }
 

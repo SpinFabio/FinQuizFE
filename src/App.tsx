@@ -8,6 +8,8 @@ import PageForbidden403 from "./pages/ErrorPages/PageForbidden403.tsx";
 import Layout from "./components/layouts/Layout.tsx";
 import TestPage from "./pages/_TestingPages_/TestPage.tsx";
 import MacroContent from "./components/macro/MacroContent.tsx";
+import QuizLayoutPage from "./components/quiz-view/QuizLayoutPage.tsx";
+import QuizContentPage from "./components/quiz-view/QuizContentPage.tsx";
 
 const App: React.FC = () => {
   return (
@@ -20,6 +22,10 @@ const App: React.FC = () => {
 
         <Route element={<Layout />}>
           <Route path="/esercitati" element={<MacroContent />} />
+        </Route>
+
+        <Route element={<QuizLayoutPage/>}>
+          <Route path="/quiz" element={<QuizContentPage/>} />
         </Route>
 
         <Route path="/test" element={<TestPage />} />
