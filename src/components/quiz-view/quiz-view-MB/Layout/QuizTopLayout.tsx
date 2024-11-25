@@ -2,7 +2,10 @@ import React from "react";
 import QuizHomeIcon from "./icons/QuizHomeIcon";
 import TimerMB from "../../../layouts/layout-MB/TimerMB";
 import { useTimer } from "../../../layouts/layout-MB/useTimer";
-import { array } from "yup";
+import { useQuizConsumer } from "../useQuiz";
+import { classNames } from "../../../../utils/tailwind-utils";
+import { motion } from "framer-motion";
+import Dots from "./Dots";
 
 interface QuizTopLayoutProps {
   /* propName: propType */
@@ -13,6 +16,9 @@ const QuizTopLayout: React.FC<QuizTopLayoutProps> = (
     /* props */
   },
 ) => {
+  const myStyle = "px-4 mx-2 pt-4  pb-3";
+  const myHook = useQuizConsumer();
+
   const listIcon = (
     <svg
       width="32"
@@ -41,7 +47,11 @@ const QuizTopLayout: React.FC<QuizTopLayoutProps> = (
     >
       <path
         d="M5.33325 20.0001C5.33325 20.0001 6.66659 18.6667 10.6666 18.6667C14.6666 18.6667 17.3333 21.3334 21.3333 21.3334C25.3333 21.3334 26.6666 20.0001 26.6666 20.0001V4.00008C26.6666 4.00008 25.3333 5.33341 21.3333 5.33341C17.3333 5.33341 14.6666 2.66675 10.6666 2.66675C6.66659 2.66675 5.33325 4.00008 5.33325 4.00008V20.0001ZM5.33325 20.0001V29.3334"
-        stroke="#1E1E1E"
+        className={
+          myHook.getCurrentQuiz().isFlagged
+            ? "stroke-my-orange"
+            : "stroke-black"
+        }
         strokeWidth="3"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -81,10 +91,6 @@ const QuizTopLayout: React.FC<QuizTopLayoutProps> = (
     </svg>
   );
 
-  const myStyle = "px-5  pt-4  pb-3";
-
-  const NumberOfDots=9
-
   return (
     <div>
       <div className="fixed z-0 h-10 w-full bg-white"></div>
@@ -102,29 +108,13 @@ const QuizTopLayout: React.FC<QuizTopLayoutProps> = (
         className="fixed z-10 mt-[90px] flex w-full flex-row items-center justify-between bg-white"
       >
         <div className={myStyle}>{listIcon}</div>
-        <div className="mt-1 flex w-full flex-row items-center justify-evenly">
-          {Array.from({ length: NumberOfDots }, (_, i) => {
-            if (i === 0 || i === NumberOfDots-1) {
-              return (
-                <div key={i} className="size-1 rounded-full bg-slate-400"></div>
-              );
-            }
-            if (i === 1 || i === NumberOfDots-2) {
-              return (
-                <div key={i} className="size-2 rounded-full bg-slate-400"></div>
-              );
-            }
-            if(i===(NumberOfDots-1)/2){
-              return (
-                <div key={i} className="size-4 rounded-full bg-slate-400"></div>
-              );
-            }
-            return (
-              <div key={i} className="size-3 rounded-full bg-slate-400"></div>
-            );
-          })}
+        <Dots />
+        <div
+          className={classNames(myStyle, "")}
+          onClick={myHook.handleFlagCurrentQuiz}
+        >
+          {flagIcon}
         </div>
-        <div className={myStyle}>{flagIcon}</div>
       </div>
     </div>
   );

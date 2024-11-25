@@ -1,12 +1,7 @@
-import React, { useEffect } from "react";
-
-import { DUMMY_DATA_QUIZ } from "../../dummyQuiz";
-import {
-  getCurrentQuizzes,
-  QuizLocalState,
-  setCurrentQuizzes,
-} from "../../../../state/quiz/quiz";
 import AnswareContainer from "./AnswareContainer";
+import { useQuizConsumer } from "../useQuiz";
+import { DUMMY_DATA_QUIZ } from "../../dummyQuiz";
+import { setCurrentQuizzes } from "../../../../state/quiz/quiz";
 
 interface QuizContentMBProps {
   /* propName: propType */
@@ -17,24 +12,35 @@ const QuizContentMB: React.FC<QuizContentMBProps> = (
     /* props */
   },
 ) => {
+  const myHook = useQuizConsumer();
+  
 
 
-  console.log("ciao io sono qui");
-  const currQuizArray: QuizLocalState[] = getCurrentQuizzes();
-  const firstQuiz: QuizLocalState | undefined = currQuizArray.pop();
-  if (!firstQuiz) {
-    throw new Error(" non ci sono quiz nell' array");
-  }
-  console.log(firstQuiz);
+  const currentQuiz = myHook.getCurrentQuiz();
+  console.log(currentQuiz);
+
   return (
     <>
-      <div className="h-full w-full px-4">
+      <div
+        key={myHook.triggerAnimation}
+        className="flex h-full w-full animate-appearIn flex-col items-center justify-center px-4"
+      >
         <div id="question">
-          <div>{firstQuiz.question}</div>
+          <div className="mb-5 rounded-lg border border-info p-2">
+            <div className="flex flex-row justify-between py-1 text-info-mb font-h1-mb">
+              <div>{currentQuiz.macro}</div>
+              <div>{currentQuiz.score}</div>
+            </div>
+            <div className="text-quiz-mb">{currentQuiz.question}</div>
+          </div>
         </div>
         <div id="answares">
-          {firstQuiz.allAnswers.map((opt, i) => (
-            <AnswareContainer key={i} question={opt} />
+          {currentQuiz.allAnswers.map((opt, i) => (
+            <AnswareContainer
+              key={i}
+              question={opt}
+              isSelected={opt === currentQuiz.selectedAnswer}
+            />
           ))}
         </div>
       </div>

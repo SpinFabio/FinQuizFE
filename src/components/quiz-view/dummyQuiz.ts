@@ -15,7 +15,9 @@ export const DUMMY_DATA_QUIZ: QuizLocalState[] = [
       "un regolamento dell'Unione europea, anche se attengono a strumenti finanziari negoziati su un sistema organizzato di negoziazione italiano",
     ],
     score: 1,
-    isViewed: false,
+    selectedAnswer:"",
+    isViewed:false,
+    isFlagged:false
   },
   {
     macro: "Abusi di mercato",
@@ -32,6 +34,8 @@ export const DUMMY_DATA_QUIZ: QuizLocalState[] = [
     ],
     score: 2,
     isViewed: false,
+    selectedAnswer:"",
+    isFlagged:false
   },
   {
     macro: "Abusi di mercato",
@@ -48,6 +52,8 @@ export const DUMMY_DATA_QUIZ: QuizLocalState[] = [
     ],
     score: 2,
     isViewed: false,
+    selectedAnswer:"",
+    isFlagged:false
   },
   {
     macro: "Abusi di mercato",
@@ -64,6 +70,8 @@ export const DUMMY_DATA_QUIZ: QuizLocalState[] = [
     ],
     score: 1,
     isViewed: false,
+    selectedAnswer:"",
+    isFlagged:false
   },
   {
     macro: "Abusi di mercato",
@@ -80,6 +88,8 @@ export const DUMMY_DATA_QUIZ: QuizLocalState[] = [
     ],
     score: 1,
     isViewed: false,
+    selectedAnswer:"",
+    isFlagged:false
   },
   {
     macro: "Abusi di mercato",
@@ -96,6 +106,8 @@ export const DUMMY_DATA_QUIZ: QuizLocalState[] = [
     ],
     score: 2,
     isViewed: false,
+    selectedAnswer:"",
+    isFlagged:false
   },
   {
     macro: "Abusi di mercato",
@@ -112,6 +124,8 @@ export const DUMMY_DATA_QUIZ: QuizLocalState[] = [
     ],
     score: 2,
     isViewed: false,
+    selectedAnswer:"",
+    isFlagged:false
   },
   {
     macro: "Abusi di mercato",
@@ -128,6 +142,8 @@ export const DUMMY_DATA_QUIZ: QuizLocalState[] = [
     ],
     score: 1,
     isViewed: false,
+    selectedAnswer:"",
+    isFlagged:false
   },
   {
     macro: "Abusi di mercato",
@@ -144,6 +160,8 @@ export const DUMMY_DATA_QUIZ: QuizLocalState[] = [
     ],
     score: 2,
     isViewed: false,
+    selectedAnswer:"",
+    isFlagged:false
   },
   {
     macro: "Abusi di mercato",
@@ -160,6 +178,8 @@ export const DUMMY_DATA_QUIZ: QuizLocalState[] = [
     ],
     score: 2,
     isViewed: false,
+    selectedAnswer:"",
+    isFlagged:false
   },
   {
     macro: "Abusi di mercato",
@@ -176,6 +196,8 @@ export const DUMMY_DATA_QUIZ: QuizLocalState[] = [
     ],
     score: 1,
     isViewed: false,
+    selectedAnswer:"",
+    isFlagged:false
   },
   {
     macro: "Abusi di mercato",
@@ -192,5 +214,7 @@ export const DUMMY_DATA_QUIZ: QuizLocalState[] = [
     ],
     score: 1,
     isViewed: false,
+    selectedAnswer:"",
+    isFlagged:false
   },
 ];

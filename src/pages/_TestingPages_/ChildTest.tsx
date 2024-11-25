@@ -1,8 +1,5 @@
 import React, { useContext, useState } from "react";
-import {
-  useMyContextConsumer,
-} from "./TestHookPage";
-import ModalMB from "../../components/modal/ModalMB";
+import { motion } from "framer-motion";
 
 interface ChildTestProps {
   /* propName: propType */
@@ -13,18 +10,22 @@ const ChildTest: React.FC<ChildTestProps> = (
     /* props */
   },
 ) => {
-  const myHook = useMyContextConsumer();
-  const setStringa = myHook.setStringa;
-
-  const[modalState,setModalState]= useState(false)
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [slider,setSlider]=useState(50)
 
   return (
-    <>
-      <ModalMB isOpen={modalState} onClose={()=>{setModalState((prev)=>!prev)}}>ciao</ModalMB>
-      <div onClick={()=>{setModalState((prev)=>!prev)}} className="bg-red-400 p-5">
-        <p>{myHook.stringa}</p>
-      </div>
-    </>
+    <motion.div
+      onClick={() => setIsAnimating(!isAnimating)}
+      initial={{x: "100%"}}
+      animate={{
+        x:"0%",
+        opacity: slider/100,
+      }}
+      className="bg-red-600 p-8"
+    >
+      <input type="range" min="10" max="100" value={slider} onChange={e=>setSlider(Number(e.target.value))}></input>
+      {slider}
+    </motion.div>
   );
 };
 

@@ -7,9 +7,16 @@ import {
 } from "../../../state/macro/macroTopicList";
 import { MAX_MACRO_QUIZZES } from "../../../config/myenv";
 import { toast } from "react-toastify";
-import { DEFAULT_TIME, useTimer, UseTimerInterface } from "../../layouts/layout-MB/useTimer";
+import {
+  DEFAULT_TIME,
+  useTimer,
+  UseTimerInterface,
+} from "../../layouts/layout-MB/useTimer";
 import { MenuHandler } from "../../layouts/layout-MB/MenuContent";
-import { getFavTimeMacro, setFavTimeMacro } from "../../../state/macro/macroTime";
+import {
+  getFavTimeMacro,
+  setFavTimeMacro,
+} from "../../../state/macro/macroTime";
 
 export function useMacro() {
   const [macroState, setMacroState] = useState<MacroTopic[]>(macroTopicArray);
@@ -20,14 +27,17 @@ export function useMacro() {
   );
   const [isOpenTimeModal, setIsOpenTimeModal] = useState(false);
   const timerHook: UseTimerInterface = useTimer();
+  const [animationTrigger, setAnimationTrigger] = useState(0);
 
-  useEffect(() => {
+  /*   useEffect(() => {
+
     console.log(macroState);
   }, [macroState]);
 
   useEffect(() => {
     console.log(sum);
   }, [sum]);
+ */
 
   function handleReset() {
     const newState = macroState.map((elem) => ({
@@ -35,9 +45,10 @@ export function useMacro() {
       selectedNumber: elem.defaultNumber,
     }));
     setMacroState(newState);
-    timerHook.setTime(DEFAULT_TIME)
+    timerHook.setTime(DEFAULT_TIME);
     const newSum = newState.reduce((acc, curr) => acc + curr.selectedNumber, 0);
     setSum(newSum);
+    setAnimationTrigger((prev) => prev+1);
   }
 
   function handleChangeSelected(id: number, currentValue: number) {
@@ -133,14 +144,16 @@ export function useMacro() {
 
   function handleSetFav() {
     setFavMacro(macroState);
-    setFavTimeMacro(timerHook.time)
+    setFavTimeMacro(timerHook.time);
   }
 
   function handleGetFav() {
     const newMacro = getFavMacro(macroState);
-    const newTime= getFavTimeMacro()
+    const newTime = getFavTimeMacro();
     setMacroState(newMacro);
-    timerHook.setTime(newTime)
+
+    setAnimationTrigger((prev) => prev+1);
+    timerHook.setTime(newTime);
   }
 
   function handleOpenTimeModal() {
@@ -160,6 +173,7 @@ export function useMacro() {
   };
 
   return {
+    animationTrigger,
     macroState,
     handleAdd,
     handleSub,

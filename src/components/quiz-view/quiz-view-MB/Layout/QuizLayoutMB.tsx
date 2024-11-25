@@ -15,15 +15,15 @@ const QuizLayoutMB: React.FC<QuizLayoutMBProps> = (
 ) => {
   return (
     <div>
-      <div className="fixed top-0">
-        <QuizTopLayout/>
+      <div className="fixed top-0 z-50">
+        <QuizTopLayout />
       </div>
 
-      <div>
-        <div className="h-11"></div>
+      <div className="z-0 h-full">
+        <div className="h-[150px]"></div>
         <Outlet />
+
         <div className="h-11"></div>
-        
       </div>
 
       <div className="fixed bottom-0 w-full">

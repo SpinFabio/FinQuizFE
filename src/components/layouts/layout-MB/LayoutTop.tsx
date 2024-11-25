@@ -21,7 +21,7 @@ const LayoutTop: React.FC<LayoutTopProps> = ({ timerHook }) => {
           id="bridge"
           className="flex w-full justify-center overflow-hidden bg-gradient-to-b from-primary to-primary-dark"
         >
-          <div className=" h-[60px] w-[100%] self-end rounded-t-[24px] bg-white -mx-[10px]"></div>
+          <div className="-mx-[10px] h-[60px] w-[100%] self-end rounded-t-[24px] bg-white"></div>
         </div>
 
         <ProfileIconMB />
@@ -32,7 +32,7 @@ const LayoutTop: React.FC<LayoutTopProps> = ({ timerHook }) => {
       >
         <div
           id="timer-container"
-          className="bg z-50 -mt-7 w-[200px] rounded-2xl bg-red-500"
+          className="bg z-50 -mt-7 rounded-2xl bg-red-500"
         >
           <TimerMB isInteractable={false} timerHook={timerHook} />
         </div>

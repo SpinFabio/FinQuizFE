@@ -1,5 +1,6 @@
 import React from "react";
 import { classNames } from "../../../../utils/tailwind-utils";
+import { useQuizConsumer } from "../useQuiz";
 
 interface QuizBottomLayoutMBProps {
   /* propName: propType */
@@ -10,7 +11,7 @@ const QuizBottomLayoutMB: React.FC<QuizBottomLayoutMBProps> = (
     /* props */
   },
 ) => {
-  const arrowStyle = "size-7";
+  const arrowStyle = "size-[42px]";
 
   const leftIcon = (
     <div>
@@ -25,7 +26,7 @@ const QuizBottomLayoutMB: React.FC<QuizBottomLayoutMBProps> = (
         <path
           d="M25.3333 15.9999H6.66658M6.66658 15.9999L15.9999 25.3333M6.66658 15.9999L15.9999 6.66658"
           stroke="white"
-          strokeWidth="3"
+          strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
@@ -45,19 +46,21 @@ const QuizBottomLayoutMB: React.FC<QuizBottomLayoutMBProps> = (
       <path
         d="M6.66675 15.9999H25.3334M25.3334 15.9999L16.0001 25.3333M25.3334 15.9999L16.0001 6.66658"
         stroke="white"
-        strokeWidth="3"
+        strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
     </svg>
   );
 
+  const myHook= useQuizConsumer()
+
   const className = "px-3 py-3 bg-gradient-to-b from-primary to-primary-dark ";
 
   return (
     <>
       <div className="fixed bottom-0 z-50 flex w-full flex-row">
-        <div className={classNames(className, "rounded-tr-[48px]")}>
+        <div className={classNames(className, "rounded-tr-[48px] pr-5")} onClick={myHook.handlePrev}>
           <div>{leftIcon}</div>
         </div>
 
@@ -72,7 +75,7 @@ const QuizBottomLayoutMB: React.FC<QuizBottomLayoutMBProps> = (
           </div>
         </div>
 
-        <div className={classNames(className, "rounded-tl-[48px]")}>
+        <div className={classNames(className, "rounded-tl-[48px] pl-5")} onClick={myHook.handleNext}>
           <div>{rightIcon}</div>
         </div>
       </div>

@@ -8,7 +8,7 @@ const MacroList: React.FC = () => {
   const macroHook: UseMacroInterface = useMacroConsumer();
 
   return (
-    <div>
+    <div key={macroHook.animationTrigger}>
       {macroHook.macroState.map((macroT, i) => (
         <div
           key={macroT.name}

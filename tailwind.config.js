@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         primary: "#0074D9",
+        "primary-light":"#7DE7FF",
         "primary-hover": "#005AA8",
         "primary-dark": "#004D90",
         "primary-contrast": "#FFFFFF",
@@ -12,6 +13,7 @@ export default {
         "my-green": "#34C759",
         "my-green-light": "#A7F3D0",
         "my-green-dark": "#065F46",
+        "my-orange":"#fb923c"
       },
       borderColor: {
         primary: "#0074D9",
@@ -48,6 +50,7 @@ export default {
       "h2-mb": "1.7rem",
       "body-mb": "1rem",
       "info-mb": "0.875rem",
+      "quiz-mb":"1rem",
 
       // Desktop (DT)
       "h1-dt": "2.3rem", // Aggiungi la dimensione per h1 del desktop

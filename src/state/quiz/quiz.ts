@@ -5,9 +5,11 @@ export interface QuizLocalState {
   micro: string;
   question: string;
   correctAnswer: string;
+  selectedAnswer:string;
   allAnswers: string[];
   score: 1 | 2;
   isViewed: boolean;
+  isFlagged:boolean;
 }
 
 const LOCAL_STORAGE_CURRENT_QUIZ_KEY: string = "currentQuizSession";
@@ -26,6 +28,9 @@ export function getCurrentQuizzes(): QuizLocalState[] {
     throw new Error("No QuizLocalState[]  was found in local storage");
   } else {
     const properQuizzes: QuizLocalState[] = JSON.parse(quizzes);
+    properQuizzes.forEach((quiz) => {
+      quiz.allAnswers = shuffleArray(quiz.allAnswers);
+    });
     return properQuizzes;
   }
 }
@@ -42,4 +47,12 @@ export function getCurrentTime(): TimeInterface {
     const parsedTime: TimeInterface = JSON.parse(time);
     return parsedTime;
   }
+}
+
+
+function shuffleArray(array: string[]): string[] {
+  return array
+    .map((value) => ({ value, sort: Math.random() })) // Aggiunge un valore casuale
+    .sort((a, b) => a.sort - b.sort) // Ordina in base al valore casuale
+    .map(({ value }) => value); // Rimuove i valori casuali, lasciando solo gli elementi originali
 }
