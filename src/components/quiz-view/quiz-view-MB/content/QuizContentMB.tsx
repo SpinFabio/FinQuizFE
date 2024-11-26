@@ -18,7 +18,7 @@ const QuizContentMB: React.FC<QuizContentMBProps> = (
   const myHook = useQuizConsumer();
 
   const currentQuiz = myHook.getCurrentQuiz();
-  console.log(currentQuiz);
+  //console.log(currentQuiz);
 
   return (
     <>

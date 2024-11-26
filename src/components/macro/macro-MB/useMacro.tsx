@@ -18,6 +18,9 @@ import {
   setFavTimeMacro,
 } from "../../../state/macro/macroTime";
 import { setCurrentTimer } from "../../../state/time/timer";
+import { getMacroQuiz } from "../../../api/useMacroAPI";
+import { MacroTopicBase } from "../../../common/macro-interfaces";
+import { useNavigate } from "react-router-dom";
 
 export function useMacro() {
   const [macroState, setMacroState] = useState<MacroTopic[]>(macroTopicArray);
@@ -29,6 +32,7 @@ export function useMacro() {
   const [isOpenTimeModal, setIsOpenTimeModal] = useState(false);
   const timerHook: UseTimerInterface = useTimer();
   const [animationTrigger, setAnimationTrigger] = useState(0);
+  const navigate = useNavigate();
 
   /*   useEffect(() => {
 
@@ -49,7 +53,7 @@ export function useMacro() {
     timerHook.setTime(DEFAULT_TIME);
     const newSum = newState.reduce((acc, curr) => acc + curr.selectedNumber, 0);
     setSum(newSum);
-    setAnimationTrigger((prev) => prev+1);
+    setAnimationTrigger((prev) => prev + 1);
   }
 
   function handleChangeSelected(id: number, currentValue: number) {
@@ -153,7 +157,7 @@ export function useMacro() {
     const newTime = getFavTimeMacro();
     setMacroState(newMacro);
 
-    setAnimationTrigger((prev) => prev+1);
+    setAnimationTrigger((prev) => prev + 1);
     timerHook.setTime(newTime);
   }
 
@@ -165,9 +169,25 @@ export function useMacro() {
     setIsOpenTimeModal(false);
   }
 
-  function handleStart(){
-    setCurrentTimer(timerHook.time)
-    console.log("salvato il time ", timerHook.time)
+  function handleStart() {
+    setCurrentTimer(timerHook.time);
+    //console.log("salvato il time ", timerHook.time);
+
+    try {
+      const macroReqArray: MacroTopicBase[] = macroState.map((macro) => {
+        const tmp: MacroTopicBase = {
+          quantitySelected: macro.selectedNumber,
+          macroID: macro.id,
+        };
+        return tmp;
+      });
+      getMacroQuiz(macroReqArray);
+    } catch {
+      console.log(
+        "qualcosa è andato storto con la richiesta al server Macro Topic",
+      );
+    }
+    navigate("/quiz");
   }
 
   const menuHandler: MenuHandler = {

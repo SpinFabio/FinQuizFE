@@ -13,12 +13,12 @@ export function useQuiz() {
   });
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [triggerAnimation, setAnimationTrigger] = useState(0);
-  const [isOpenListModal,setIsOpenListModal]=useState(false)
-
+  const [isOpenListModal, setIsOpenListModal] = useState(false);
+  /* 
   useEffect(() => {
     console.log("salvataggio in memoria avvenuto");
     setCurrentQuizzes(quizArray);
-  }, [quizArray]);
+  }, [quizArray]); */
 
   function getCurrentQuiz(): QuizLocalState {
     return quizArray[currentIndex];
@@ -90,15 +90,13 @@ export function useQuiz() {
     });
   }
 
-  function handleCloseListModal(){
-    setIsOpenListModal(false)
+  function handleCloseListModal() {
+    setIsOpenListModal(false);
   }
 
-  function handleOpenListModal(){
-    setIsOpenListModal(true)
+  function handleOpenListModal() {
+    setIsOpenListModal(true);
   }
-
-
 
   return {
     triggerAnimation,
@@ -112,7 +110,7 @@ export function useQuiz() {
     setCurrentIndex,
     handleOpenListModal,
     handleCloseListModal,
-    isOpenListModal
+    isOpenListModal,
   };
 }
 

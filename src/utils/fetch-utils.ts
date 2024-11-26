@@ -38,8 +38,7 @@ export async function authFetch<T>(
   endpoint_u: string,
   method_u: string,
   payload_u: object,
-  message_u: string,
-  onUnauthorized: () => void,
+  message_u?: string,
 ): Promise<T> {
   let response: Response = await myFetch(
     endpoint_u,
@@ -53,7 +52,7 @@ export async function authFetch<T>(
       const accessToken = await refreshTokens();
       setAccessToken(accessToken);
     } catch (error) {
-      onUnauthorized();
+      window.location.href = "/login";
       throw new Error("Refresh faield");
     }
     response = await myFetch(endpoint_u, method_u, payload_u, message_u);

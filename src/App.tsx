@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
 import "./index.css";
 import AuthPage from "./pages/AuthPage/AuthPage.tsx";
 import Page404 from "./pages/ErrorPages/Page404.tsx";
@@ -13,6 +13,7 @@ import QuizContentPage from "./components/quiz-view/QuizContentPage.tsx";
 
 const App: React.FC = () => {
   return (
+
     <BrowserRouter basename="/">
       <Routes>
         <Route path="/login" element={<AuthPage typeAuth="login" />} />
@@ -24,8 +25,8 @@ const App: React.FC = () => {
           <Route path="/esercitati" element={<MacroContent />} />
         </Route>
 
-        <Route element={<QuizLayoutPage/>}>
-          <Route path="/quiz" element={<QuizContentPage/>} />
+        <Route element={<QuizLayoutPage />}>
+          <Route path="/quiz" element={<QuizContentPage />} />
         </Route>
 
         <Route path="/test" element={<TestPage />} />

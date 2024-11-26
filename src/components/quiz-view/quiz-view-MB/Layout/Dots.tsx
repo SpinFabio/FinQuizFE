@@ -53,7 +53,7 @@ const Dots: React.FC<DotsProps> = (
     }
 
     if (currentIndex > maxArrayIndex - middleIndex - 1) {
-      console.log("dobbiamo coprire qualcosa");
+      //console.log("dobbiamo coprire qualcosa");
       if (i > coveredIndexDX) {
         canColor = false;
         bgColor = "bg-white";
@@ -75,9 +75,9 @@ const Dots: React.FC<DotsProps> = (
       }
     }
 
-    console.log(
+    /* console.log(
       `Current Index: ${currentIndex}, Max Array Index: ${maxArrayIndex}, Middle Index: ${middleIndex}, Covered Index DX: ${coveredIndexDX}`,
-    );
+    ); */
 
     return (
       <div

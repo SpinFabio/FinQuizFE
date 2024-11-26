@@ -28,7 +28,8 @@ export function useAuthAPI() {
       uuid: deviceId,
     };
 
-    console.log(userLoginInfo)
+    //console.log(userLoginInfo)
+    
     try {
       await userLoginRequestSchema.validate(userLoginInfo, {
         abortEarly: false,
