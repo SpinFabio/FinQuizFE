@@ -1,11 +1,10 @@
 import React from "react";
 import QuizHomeIcon from "./icons/QuizHomeIcon";
-import TimerMB from "../../../layouts/layout-MB/TimerMB";
-import { useTimer } from "../../../layouts/layout-MB/useTimer";
 import { useQuizConsumer } from "../useQuiz";
 import { classNames } from "../../../../utils/tailwind-utils";
-import { motion } from "framer-motion";
 import Dots from "./Dots";
+import CountDownTimer from "./CountDownTimer";
+import AnimatedButton from "../../../wigets/animated-buttons/AnimatedButton";
 
 interface QuizTopLayoutProps {
   /* propName: propType */
@@ -16,10 +15,9 @@ const QuizTopLayout: React.FC<QuizTopLayoutProps> = (
     /* props */
   },
 ) => {
-  const myStyle = "px-4 mx-2 pt-4  pb-3";
   const myHook = useQuizConsumer();
 
-  const listIcon = (
+  const LogOutIcon = (
     <svg
       width="32"
       height="32"
@@ -28,7 +26,7 @@ const QuizTopLayout: React.FC<QuizTopLayoutProps> = (
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M10.6667 8H28M10.6667 16H28M10.6667 24H28M4 8H4.01333M4 16H4.01333M4 24H4.01333"
+        d="M12.5 28H7.16667C6.45942 28 5.78115 27.719 5.28105 27.219C4.78095 26.7189 4.5 26.0406 4.5 25.3333V6.66667C4.5 5.95942 4.78095 5.28115 5.28105 4.78105C5.78115 4.28095 6.45942 4 7.16667 4H12.5M21.8333 22.6667L28.5 16M28.5 16L21.8333 9.33333M28.5 16H12.5"
         stroke="#1E1E1E"
         strokeWidth="3"
         strokeLinecap="round"
@@ -59,6 +57,8 @@ const QuizTopLayout: React.FC<QuizTopLayoutProps> = (
     </svg>
   );
 
+  const myStyle =
+    "px-4 mx-2 pb-3 -mt-2 flex flex-col justify-center items-center ";
   const settingIcon = (
     <svg
       width="32"
@@ -96,24 +96,42 @@ const QuizTopLayout: React.FC<QuizTopLayoutProps> = (
       <div className="fixed z-0 h-10 w-full bg-white"></div>
       <div className="fixed z-50 flex w-full flex-row items-center justify-between">
         <QuizHomeIcon />
-        <div className="px-5">{settingIcon}</div>
+        <div className="flex flex-col items-center justify-center px-5">
+          <div className="flex w-4 flex-col content-center items-center">
+            <p className="texy-info text-info-mb font-info-mb">opzioni</p>
+          </div>
+          <AnimatedButton>{settingIcon}</AnimatedButton>
+        </div>
       </div>
 
       <div id="timer" className="fixed z-30 my-3 flex w-full justify-center">
-        <TimerMB isInteractable={false} timerHook={useTimer()} />
+        <CountDownTimer />
       </div>
 
       <div
         id="quizList+caroselDots+Flag"
         className="fixed z-10 mt-[90px] flex w-full flex-row items-center justify-between bg-white"
       >
-        <div className={myStyle}>{listIcon}</div>
+        <div className={classNames(myStyle)}>
+          <div className="flex w-4 flex-col content-center items-center">
+            <p className="texy-info text-info-mb font-info-mb">termina</p>
+          </div>
+          <AnimatedButton>{LogOutIcon}</AnimatedButton>
+        </div>
         <Dots />
         <div
-          className={classNames(myStyle, "")}
+          className={classNames(
+            myStyle,
+            myHook.getCurrentQuiz().isFlagged ? "text-my-orange" : "text-black",
+          )}
           onClick={myHook.handleFlagCurrentQuiz}
         >
-          {flagIcon}
+          <div className="flex w-4 flex-col content-center items-center">
+            <p className="texy-info text-info-mb font-info-mb">
+              {myHook.getCurrentQuiz().isFlagged ? "smarca" : " marca"}
+            </p>
+          </div>
+          <AnimatedButton>{flagIcon}</AnimatedButton>
         </div>
       </div>
     </div>

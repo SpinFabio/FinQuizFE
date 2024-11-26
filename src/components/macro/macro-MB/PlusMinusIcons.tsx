@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { animate, motion } from "framer-motion";
 
 interface PlusMinusIconsProps {
   onAction: () => void;
@@ -11,8 +12,18 @@ const PlusMinusIcons: React.FC<PlusMinusIconsProps> = ({
   onAction,
   style,
 }) => {
+  const [click, setClick] = useState(false);
   return (
-    <div onClick={onAction}>
+    <motion.div
+      initial={{ scale: 1 }}
+      animate={{ scale: click ? 1.1 : 1 }}
+      transition={{ duration: 0.1 }}
+      onClick={() => {
+        onAction();
+        setClick((prev) => !prev);
+        setTimeout(() => setClick(false), 100);
+      }}
+    >
       <svg
         width="44"
         height="44"
@@ -32,7 +43,7 @@ const PlusMinusIcons: React.FC<PlusMinusIconsProps> = ({
           strokeLinejoin="round"
         />
       </svg>
-    </div>
+    </motion.div>
   );
 };
 

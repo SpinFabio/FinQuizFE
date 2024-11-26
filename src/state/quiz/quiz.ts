@@ -35,19 +35,6 @@ export function getCurrentQuizzes(): QuizLocalState[] {
   }
 }
 
-export function setCurrentTimer(time: TimeInterface): void {
-  localStorage.setItem(LOCAL_STORAGE_CURRENT_TIME_KEY, JSON.stringify(time));
-}
-
-export function getCurrentTime(): TimeInterface {
-  const time = localStorage.getItem(LOCAL_STORAGE_CURRENT_TIME_KEY);
-  if (!time) {
-    throw new Error("No TimeInterface was found in local storage");
-  } else {
-    const parsedTime: TimeInterface = JSON.parse(time);
-    return parsedTime;
-  }
-}
 
 
 function shuffleArray(array: string[]): string[] {

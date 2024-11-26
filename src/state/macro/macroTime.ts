@@ -17,3 +17,5 @@ export function getFavTimeMacro():TimeInterface{
     return DEFAULT_TIME
   }
 }
+
+

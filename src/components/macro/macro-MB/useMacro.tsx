@@ -17,6 +17,7 @@ import {
   getFavTimeMacro,
   setFavTimeMacro,
 } from "../../../state/macro/macroTime";
+import { setCurrentTimer } from "../../../state/time/timer";
 
 export function useMacro() {
   const [macroState, setMacroState] = useState<MacroTopic[]>(macroTopicArray);
@@ -164,6 +165,11 @@ export function useMacro() {
     setIsOpenTimeModal(false);
   }
 
+  function handleStart(){
+    setCurrentTimer(timerHook.time)
+    console.log("salvato il time ", timerHook.time)
+  }
+
   const menuHandler: MenuHandler = {
     handleOptions: () => {},
     handleSaveFav: handleSetFav,
@@ -173,6 +179,7 @@ export function useMacro() {
   };
 
   return {
+    handleStart,
     animationTrigger,
     macroState,
     handleAdd,

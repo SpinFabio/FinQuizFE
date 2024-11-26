@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { classNames } from "../../../../utils/tailwind-utils";
 import { useQuizConsumer } from "../useQuiz";
+import AnimatedButton from "../../../wigets/animated-buttons/AnimatedButton";
 
 interface QuizBottomLayoutMBProps {
   /* propName: propType */
@@ -53,18 +54,41 @@ const QuizBottomLayoutMB: React.FC<QuizBottomLayoutMBProps> = (
     </svg>
   );
 
-  const myHook= useQuizConsumer()
+  const listIcon = (
+    <svg
+      width="32"
+      height="32"
+      viewBox="0 0 32 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M10.6667 8H28M10.6667 16H28M10.6667 24H28M4 8H4.01333M4 16H4.01333M4 24H4.01333"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
 
-  const className = "px-3 py-3 bg-gradient-to-b from-primary to-primary-dark ";
+  const myHook = useQuizConsumer();
+
+  const className =
+    "z-50 px-3 py-3 bg-gradient-to-b from-primary to-primary-dark ";
 
   return (
     <>
       <div className="fixed bottom-0 z-50 flex w-full flex-row">
-        <div className={classNames(className, "rounded-tr-[48px] pr-5")} onClick={myHook.handlePrev}>
-          <div>{leftIcon}</div>
+        <div
+          className={classNames(className, "rounded-tr-[48px] pr-[28px]")}
+          onClick={myHook.handlePrev}
+        >
+          <div >
+            {leftIcon}
+          </div>
         </div>
 
-        <div className="flex w-full flex-col-reverse i">
+        <div className="i z-0 flex w-full flex-col-reverse">
           <div className="relative h-[20px] w-full overflow-hidden">
             <div
               id="bridge"
@@ -75,8 +99,23 @@ const QuizBottomLayoutMB: React.FC<QuizBottomLayoutMBProps> = (
           </div>
         </div>
 
-        <div className={classNames(className, "rounded-tl-[48px] pl-5")} onClick={myHook.handleNext}>
-          <div>{rightIcon}</div>
+        <div
+          className={classNames(className, "rounded-tl-[48px] pl-[28px]")}
+          onClick={myHook.handleNext}
+        >
+          <div >
+            {rightIcon}
+          </div>
+        </div>
+
+        <div className="fixed bottom-0 z-40 flex h-[100px] w-full flex-row items-start justify-center">
+          <AnimatedButton>
+            <div className="flex size-[80px] flex-col content-center justify-center rounded-full bg-gradient-to-b from-primary to-primary-dark stroke-primary-contrast p-3 text-primary-contrast">
+              <div className="flex flex-col items-center justify-center" onClick={myHook.handleOpenListModal} >
+                {listIcon}
+              </div>
+            </div>
+          </AnimatedButton>
         </div>
       </div>
       <div className="fixed bottom-0 z-20 h-9 w-full bg-gradient-to-t from-white to-transparent"></div>

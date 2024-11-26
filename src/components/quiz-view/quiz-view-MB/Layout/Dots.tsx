@@ -25,8 +25,8 @@ const Dots: React.FC<DotsProps> = (
 
     let bgColor = "bg-neutral-400"; // colore del not visualized
     let sizeOfDot = "size-2";
-
     let canColor = true;
+    let gotoIndex = null;
 
     if (i === 0 || i === NUMBER_OF_DOTS - 1) {
       sizeOfDot = "size-1";
@@ -35,7 +35,7 @@ const Dots: React.FC<DotsProps> = (
       sizeOfDot = "size-2";
     }
     if (i === middleIndex) {
-      sizeOfDot = "size-4";
+      sizeOfDot = "size-[20px] border-2";
     }
     if (i === middleIndex + 2 || i === middleIndex - 2) {
       sizeOfDot = "size-3";
@@ -59,11 +59,12 @@ const Dots: React.FC<DotsProps> = (
         bgColor = "bg-white";
       }
     }
-    // gestine dell'indice sonda colore: la sonda colore inizia a testare
+    // gestione dell'indice sonda colore: la sonda colore inizia a testare
     if (canColor) {
       //posso alterare il colore del dot e devo scegliere che colore dargli
       const colorIndex: number = currentIndex - middleIndex + i;
       if (colorIndex >= 0 && colorIndex <= maxArrayIndex) {
+        gotoIndex = colorIndex;
         if (myHook.quizArray[colorIndex].isFlagged) {
           bgColor = "bg-my-orange";
         } else if (!(myHook.quizArray[colorIndex].selectedAnswer === "")) {
@@ -79,12 +80,23 @@ const Dots: React.FC<DotsProps> = (
     );
 
     return (
-      <div key={i} className={classNames(sizeOfDot, "rounded-full", bgColor)} />
+      <div
+        key={i}
+        className={classNames(sizeOfDot, "rounded-full", bgColor)}
+        onClick={() =>
+          myHook.setCurrentIndex((prev) => {
+            if (gotoIndex) {
+              return gotoIndex;
+            }
+            return prev;
+          })
+        }
+      />
     );
   });
 
   return (
-    <div className="mt-1 flex w-full flex-row items-center justify-evenly">
+    <div className="mt-1 flex w-full max-w-12 flex-row items-center justify-evenly">
       {renderDots}
     </div>
   );

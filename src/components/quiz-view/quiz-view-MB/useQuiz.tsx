@@ -13,6 +13,7 @@ export function useQuiz() {
   });
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [triggerAnimation, setAnimationTrigger] = useState(0);
+  const [isOpenListModal,setIsOpenListModal]=useState(false)
 
   useEffect(() => {
     console.log("salvataggio in memoria avvenuto");
@@ -56,6 +57,10 @@ export function useQuiz() {
     setCurrentIndex(newIndex);
     setCurrentQuizAsViewed();
     setAnimationTrigger((prev) => prev + 1);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   }
 
   function handlePrev() {
@@ -66,6 +71,10 @@ export function useQuiz() {
     setCurrentIndex(newIndex);
     setCurrentQuizAsViewed();
     setAnimationTrigger((prev) => prev + 1);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   }
 
   function handleAnswerSelection(clickedAnswText: string) {
@@ -81,6 +90,16 @@ export function useQuiz() {
     });
   }
 
+  function handleCloseListModal(){
+    setIsOpenListModal(false)
+  }
+
+  function handleOpenListModal(){
+    setIsOpenListModal(true)
+  }
+
+
+
   return {
     triggerAnimation,
     quizArray,
@@ -91,6 +110,9 @@ export function useQuiz() {
     handleAnswerSelection,
     handleFlagCurrentQuiz,
     setCurrentIndex,
+    handleOpenListModal,
+    handleCloseListModal,
+    isOpenListModal
   };
 }
 

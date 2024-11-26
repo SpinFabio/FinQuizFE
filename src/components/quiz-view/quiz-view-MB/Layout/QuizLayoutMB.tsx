@@ -1,5 +1,4 @@
 import React from "react";
-import QuizHomeIcon from "./icons/QuizHomeIcon";
 import { Outlet } from "react-router-dom";
 import QuizBottomLayoutMB from "./QuizBottomLayoutMB";
 import QuizTopLayout from "./QuizTopLayout";
@@ -20,7 +19,7 @@ const QuizLayoutMB: React.FC<QuizLayoutMBProps> = (
       </div>
 
       <div className="z-0 h-full">
-        <div className="h-[150px]"></div>
+        <div className="h-[153px]"></div>
         <Outlet />
 
         <div className="h-11"></div>

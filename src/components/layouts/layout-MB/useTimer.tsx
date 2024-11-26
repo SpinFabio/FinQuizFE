@@ -12,8 +12,8 @@ export const DEFAULT_TIME: TimeInterface = {
   minutes: "30",
 };
 
-export function useTimer() {
-  const [time, setTime] = useState<TimeInterface>(DEFAULT_TIME);
+export function useTimer(InitialTime?: TimeInterface) {
+  const [time, setTime] = useState<TimeInterface>(InitialTime ?? DEFAULT_TIME);
 
   function hanldeSelectHours(selectedH: string) {
     const selNumH = Number(selectedH);
@@ -65,7 +65,7 @@ export function useTimer() {
     time,
     hanldeSelectHours,
     handleSelectMinutes,
-    setTime
+    setTime,
   };
 }
 

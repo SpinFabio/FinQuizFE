@@ -1,30 +1,24 @@
-import React, { useContext, useState } from "react";
 import { motion } from "framer-motion";
+import React, { useState } from "react";
 
 interface ChildTestProps {
-  /* propName: propType */
+  /* Prop types go here if needed */
 }
 
-const ChildTest: React.FC<ChildTestProps> = (
-  {
-    /* props */
-  },
-) => {
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [slider,setSlider]=useState(50)
+const ChildTest: React.FC<ChildTestProps> = () => {
+  const [animate, setAnimate] = useState(false);
 
   return (
     <motion.div
-      onClick={() => setIsAnimating(!isAnimating)}
-      initial={{x: "100%"}}
-      animate={{
-        x:"0%",
-        opacity: slider/100,
+      className="bg-red-400 p-5"
+      animate={{ scale: animate ? 3 : 1 }}
+      transition={{ duration: 0.1 }}
+      onClick={() => {
+        setAnimate(true);
+        setTimeout(() => setAnimate(false), 100);
       }}
-      className="bg-red-600 p-8"
     >
-      <input type="range" min="10" max="100" value={slider} onChange={e=>setSlider(Number(e.target.value))}></input>
-      {slider}
+      premimi
     </motion.div>
   );
 };

@@ -1,8 +1,8 @@
 import React from "react";
 import MacroListElem from "./MacroListElem";
 import { useMacroConsumer, UseMacroInterface } from "./useMacro";
-import ModalMB from "../../modal/ModalMB";
 import ModalTimeSetter from "./ModalTimeSetter";
+import ModalMB from "../../wigets/modal/ModalMB";
 
 const MacroList: React.FC = () => {
   const macroHook: UseMacroInterface = useMacroConsumer();

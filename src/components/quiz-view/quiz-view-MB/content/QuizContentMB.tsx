@@ -2,6 +2,9 @@ import AnswareContainer from "./AnswareContainer";
 import { useQuizConsumer } from "../useQuiz";
 import { DUMMY_DATA_QUIZ } from "../../dummyQuiz";
 import { setCurrentQuizzes } from "../../../../state/quiz/quiz";
+import ModalMB from "../../../wigets/modal/ModalMB";
+import ModalListElement from "./ModalListElement";
+import ModalList from "./ModalList";
 
 interface QuizContentMBProps {
   /* propName: propType */
@@ -13,8 +16,6 @@ const QuizContentMB: React.FC<QuizContentMBProps> = (
   },
 ) => {
   const myHook = useQuizConsumer();
-  
-
 
   const currentQuiz = myHook.getCurrentQuiz();
   console.log(currentQuiz);
@@ -44,6 +45,7 @@ const QuizContentMB: React.FC<QuizContentMBProps> = (
           ))}
         </div>
       </div>
+      <ModalList/>
     </>
   );
 };

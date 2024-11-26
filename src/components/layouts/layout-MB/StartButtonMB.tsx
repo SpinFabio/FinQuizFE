@@ -1,4 +1,8 @@
 import React from "react";
+import {
+  useMacroConsumer,
+  UseMacroInterface,
+} from "../../macro/macro-MB/useMacro";
 
 interface StartButtonMBProps {
   /* propName: propType */
@@ -9,8 +13,13 @@ const StartButtonMB: React.FC<StartButtonMBProps> = (
     /* props */
   },
 ) => {
+  const currenHook: UseMacroInterface = useMacroConsumer();
+
   return (
-    <div className="flex w-10 animate-appearIn flex-row items-center justify-evenly rounded-full bg-green-500 p-2 shadow-lg shadow-white">
+    <div
+      onClick={currenHook.handleStart}
+      className="flex w-10 animate-appearIn flex-row items-center justify-evenly rounded-full bg-green-500 p-2 shadow-lg shadow-white"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         height="28"
