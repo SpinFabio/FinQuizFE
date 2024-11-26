@@ -85,10 +85,10 @@ const Dots: React.FC<DotsProps> = (
         className={classNames(sizeOfDot, "rounded-full", bgColor)}
         onClick={() =>
           myHook.setCurrentIndex((prev) => {
-            if (gotoIndex) {
-              return gotoIndex;
+            if (gotoIndex === null) {
+              return prev;
             }
-            return prev;
+            return gotoIndex;
           })
         }
       />
