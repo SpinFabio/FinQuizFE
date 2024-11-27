@@ -1,5 +1,5 @@
 import React from "react";
-import { authFetch, unauthFetch } from "../../utils/fetch-utils";
+import { authFetch } from "../../utils/fetch-utils";
 import { BE_DOMAIN } from "../../config/myenv";
 import { toast } from "react-toastify";
 
@@ -15,16 +15,13 @@ const TestBE: React.FC<TestBEProps> = (
   async function myReq() {
     try {
       const data = await authFetch(BE_DOMAIN + "/api/test", "POST");
-      console.log(data)
+      console.log(data);
       toast.warning(JSON.stringify(data));
     } catch (error) {
-      if(error instanceof Error){
+      if (error instanceof Error) {
         toast.error(error.message);
-
-      }
-      else{
+      } else {
         toast.error("errore generico");
-
       }
     }
   }

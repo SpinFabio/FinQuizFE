@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { HOME_PAGE_ROUTE } from "../../config/routes";
 
 interface Page404Props {
   message?: string;
@@ -19,7 +20,7 @@ const Page404: React.FC<Page404Props> = ({ message }) => {
         </div>
       </div>
 
-      <Link to="/home">
+      <Link to={HOME_PAGE_ROUTE}>
         <p className="rounded-full bg-primary px-5 py-4 font-h2-mb text-primary-contrast transition hover:bg-blue-800">
           Torna alla Homepage
         </p>

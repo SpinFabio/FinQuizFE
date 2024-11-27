@@ -11,26 +11,36 @@ import MacroContent from "./components/macro/MacroContent.tsx";
 import QuizLayoutPage from "./components/quiz-view/QuizLayoutPage.tsx";
 import QuizContentPage from "./components/quiz-view/QuizContentPage.tsx";
 import TestBE from "./components/test-BE/TestBE.tsx";
+import {
+  HOME_PAGE_ROUTE,
+  LOGIN_ROUTE,
+  MACRO_PAGE_ROUTE,
+  QUIZ_PAGE_ROUTE,
+  QUIZ_REVIEW_PAGE_ROUTE,
+  REGISTER_ROUTE,
+} from "./config/routes.tsx";
 
 const App: React.FC = () => {
   return (
     <BrowserRouter basename="/">
       <Routes>
-        <Route path="/login" element={<AuthPage typeAuth="login" />} />
-        <Route path="/register" element={<AuthPage typeAuth="register" />} />
-
-        <Route path="/home" element={<HomePage />} />
+        <Route path={LOGIN_ROUTE} element={<AuthPage typeAuth="login" />} />
+        <Route
+          path={REGISTER_ROUTE}
+          element={<AuthPage typeAuth="register" />}
+        />
+        <Route path={HOME_PAGE_ROUTE} element={<HomePage />} />
 
         <Route element={<Layout />}>
-          <Route path="/esercitati" element={<MacroContent />} />
+          <Route path={MACRO_PAGE_ROUTE} element={<MacroContent />} />
         </Route>
 
         <Route element={<QuizLayoutPage />}>
-          <Route path="/quiz" element={<QuizContentPage />} />
+          <Route path={QUIZ_PAGE_ROUTE} element={<QuizContentPage />} />
         </Route>
 
         <Route
-          path={"/quiz-rev"}
+          path={QUIZ_REVIEW_PAGE_ROUTE}
           element={<>pagina quiz Rewiew da implementare</>}
         />
 

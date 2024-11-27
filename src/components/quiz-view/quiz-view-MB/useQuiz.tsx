@@ -7,6 +7,10 @@ import {
 } from "../../../state/quiz/quiz";
 import { useNavigate } from "react-router-dom";
 import { mockQuizData } from "../dummyQuiz";
+import {
+  HOME_PAGE_ROUTE,
+  QUIZ_REVIEW_PAGE_ROUTE,
+} from "../../../config/routes";
 
 export function useQuiz() {
   const navigate = useNavigate();
@@ -16,7 +20,7 @@ export function useQuiz() {
   useEffect(() => {
     if (inMemoryQuizzes === undefined) {
       console.log("navighiamo da //quiz a //home ");
-      navigate("/home");
+      navigate(HOME_PAGE_ROUTE);
     } else {
       setQuizArray(inMemoryQuizzes);
     }
@@ -29,7 +33,7 @@ export function useQuiz() {
   useEffect(() => {
     console.log("salvataggio in memoria avvenuto");
     if (quizArray === mockQuizData) {
-      removeCurrentQuizzes()
+      removeCurrentQuizzes();
     } else {
       setCurrentQuizzes(quizArray);
     }
@@ -115,7 +119,7 @@ export function useQuiz() {
 
   function handleEndQuiz() {
     removeCurrentQuizzes();
-    navigate("/quiz-rev");
+    navigate(QUIZ_REVIEW_PAGE_ROUTE);
   }
 
   return {

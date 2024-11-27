@@ -1,7 +1,12 @@
+export const LANDING_PAGE_ROUTE = "/";
+export const LOGIN_ROUTE = "/login";
+export const REGISTER_ROUTE = "/register";
+export const HOME_PAGE_ROUTE = "/home";
+export const PROFILE_PAGE_ROUTE = "/profile";
 
+export const MACRO_PAGE_ROUTE = "/esercitati";
+export const MICRO_PAGE_ROUTE = "/quiz-per-argomenti";
+export const TRAINING_PAGE_ROUTE = "/ripasso";
 
-export const REGISTER_ROUTE='/login'
-export const LOGIN_ROUTE='/register'
-export const LANDING_PAGE_ROUTE=''
-export const HOME_PAGE_ROUTE='/home'
-export const PROFILE_PAGE_ROUTE='/profile'
+export const QUIZ_PAGE_ROUTE = "/quiz";
+export const QUIZ_REVIEW_PAGE_ROUTE = "/quiz-rev";

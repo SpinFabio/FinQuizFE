@@ -22,6 +22,7 @@ import { getMacroQuiz } from "../../../api/useMacroAPI";
 import { MacroTopicBase } from "../../../common/macro-interfaces";
 import { useNavigate } from "react-router-dom";
 import { removeCurrentQuizzes } from "../../../state/quiz/quiz";
+import { HOME_PAGE_ROUTE, QUIZ_PAGE_ROUTE } from "../../../config/routes";
 
 export function useMacro() {
   const [macroState, setMacroState] = useState<MacroTopic[]>(macroTopicArray);
@@ -184,12 +185,12 @@ export function useMacro() {
       });
       await getMacroQuiz(macroReqArray);
 
-      navigate("/quiz");
+      navigate(QUIZ_PAGE_ROUTE);
     } catch {
       toast.error(
         "qualcosa è andato storto con la richiesta al server (Esercitati)",
       );
-      navigate("/home");
+      navigate(HOME_PAGE_ROUTE);
     }
   }
 

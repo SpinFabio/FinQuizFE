@@ -27,8 +27,6 @@ export function useAuthAPI() {
       password: password_u,
       uuid: deviceId,
     };
-
-    //console.log(userLoginInfo)
     
     try {
       await userLoginRequestSchema.validate(userLoginInfo, {

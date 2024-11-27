@@ -1,11 +1,10 @@
-import { toast } from "react-toastify";
 import {
   AuthBodyReqRes,
   authBodyReqResSchema,
 } from "../common/user-interfaces";
 import { BE_DOMAIN } from "../config/myenv";
+import { LOGIN_ROUTE } from "../config/routes";
 import { setAccessToken, getAccessToken } from "./acces-token-utils";
-import { stringify } from "querystring";
 
 type HttpRequest = "POST" | "GET";
 
@@ -13,14 +12,8 @@ export async function unauthFetch(
   endpoint_u: string,
   method_u: HttpRequest,
   payload_u?: object,
-  message_u?: string,
 ): Promise<void> {
-  const response: Response = await myFetch(
-    endpoint_u,
-    method_u,
-    payload_u,
-    message_u,
-  );
+  const response: Response = await myFetch(endpoint_u, method_u, payload_u);
 
   const responseData = await response.json();
   const data: AuthBodyReqRes =
@@ -32,7 +25,7 @@ export async function unauthFetch(
     );
   }
 
-  console.log(data);
+  //console.log(data);
   setAccessToken(data.accessToken);
 
   return;
@@ -42,24 +35,18 @@ export async function authFetch<T>(
   endpoint_u: string,
   method_u: HttpRequest,
   payload_u?: object,
-  message_u?: string,
 ): Promise<T> {
-  let response: Response = await myFetch(
-    endpoint_u,
-    method_u,
-    payload_u,
-    message_u,
-  );
+  let response: Response = await myFetch(endpoint_u, method_u, payload_u);
 
   if (response.status === 401) {
     try {
       const accessToken = await refreshTokens();
       setAccessToken(accessToken);
     } catch (error) {
-      window.location.href = "/login";
+      window.location.href = LOGIN_ROUTE;
       throw new Error("Refresh faield");
     }
-    response = await myFetch(endpoint_u, method_u, payload_u, message_u);
+    response = await myFetch(endpoint_u, method_u, payload_u);
   }
 
   if (!response.ok) {
@@ -91,7 +78,6 @@ async function myFetch(
   endpoint_u: string,
   method_u: HttpRequest,
   payload_u?: object,
-  message_u?: string,
 ): Promise<Response> {
   const response: Response = await fetch(endpoint_u, {
     method: method_u,
@@ -101,7 +87,6 @@ async function myFetch(
     body: JSON.stringify({
       ...payload_u,
       accessToken: getAccessToken(),
-      message: message_u || "",
     }),
   });
 
