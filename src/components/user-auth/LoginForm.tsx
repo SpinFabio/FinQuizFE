@@ -6,7 +6,6 @@ import Separator from "./Separator";
 import { useAuthPage } from "../../pages/AuthPage/useAuthPage";
 import ErrorMessage from "./ErrorMessage";
 import RedirectAuth from "./RedirectAuth";
-import { classNames } from "../../utils/tailwind-utils";
 
 interface LoginFormProps {
   typeAuth: "login" | "register";
@@ -35,9 +34,9 @@ const LoginForm: React.FC<LoginFormProps> = ({ typeAuth }) => {
     >
       <div
         id="form-container"
-        className="flex w-12 flex-col items-center justify-center"
+        className="flex w-13 flex-col items-center justify-center"
       >
-        <h1 className="typo-h2 mb-4 text-primary">{titleText}</h1>
+        <h1 className="mb-4 text-h1-mb text-primary">{titleText}</h1>
 
         <LoginWithButton titletext={titleText} type="google" />
         <LoginWithButton titletext={titleText} type="facebook" />
@@ -49,6 +48,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ typeAuth }) => {
             <>
               <p className={styleAuthDescriptions}>Nome</p>
               <AuthInput
+                isAutofocus={true}
                 inputError={nameError}
                 name="name"
                 type="username"
@@ -66,6 +66,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ typeAuth }) => {
 
           <p className={styleAuthDescriptions}>Email</p>
           <AuthInput
+            isAutofocus={typeAuth === "register" ? false : true}
             inputError={emailError}
             name="email"
             type="email"
@@ -78,6 +79,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ typeAuth }) => {
           <ErrorMessage errorState={emailError} />
           <p className={styleAuthDescriptions}>Password</p>
           <AuthInput
+            isAutofocus={false}
             inputError={passError}
             name="password"
             type="password"

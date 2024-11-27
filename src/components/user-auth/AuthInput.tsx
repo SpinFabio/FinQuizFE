@@ -5,6 +5,7 @@ import React from "react";
 interface AuthInputProps {
   name: string;
   type: "email" | "password" | "username";
+  isAutofocus?: boolean;
   id: string;
   inputError: ErrorState;
   ariaLabel: string;
@@ -24,6 +25,7 @@ const AuthInput: React.FC<AuthInputProps> = ({
   ariaLabel,
   handleValidate,
   autocomplete,
+  isAutofocus,
 }) => {
   let dinamicStyle = "";
 
@@ -40,6 +42,7 @@ const AuthInput: React.FC<AuthInputProps> = ({
   const ciao = `text-body my-border-1 h-5 w-full px-2 py-4 font-sans text-gray-800 hover:border-primary hover:bg-slate-100 focus:outline-none`;
   return (
     <input
+      autoFocus={isAutofocus === true ? true : false}
       className={classNameTW(ciao, dinamicStyle)}
       aria-label={ariaLabel || name}
       type={type}

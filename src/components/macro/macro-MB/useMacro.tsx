@@ -151,6 +151,7 @@ export function useMacro() {
   function handleSetFav() {
     setFavMacro(macroState);
     setFavTimeMacro(timerHook.time);
+    toast.success("La tua configurazione è stata salvata con successo")
   }
 
   function handleGetFav() {

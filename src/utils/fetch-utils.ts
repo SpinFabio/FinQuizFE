@@ -1,14 +1,18 @@
+import { toast } from "react-toastify";
 import {
   AuthBodyReqRes,
   authBodyReqResSchema,
 } from "../common/user-interfaces";
 import { BE_DOMAIN } from "../config/myenv";
 import { setAccessToken, getAccessToken } from "./acces-token-utils";
+import { stringify } from "querystring";
+
+type HttpRequest = "POST" | "GET";
 
 export async function unauthFetch(
   endpoint_u: string,
-  method_u: string,
-  payload_u: object,
+  method_u: HttpRequest,
+  payload_u?: object,
   message_u?: string,
 ): Promise<void> {
   const response: Response = await myFetch(
@@ -36,8 +40,8 @@ export async function unauthFetch(
 
 export async function authFetch<T>(
   endpoint_u: string,
-  method_u: string,
-  payload_u: object,
+  method_u: HttpRequest,
+  payload_u?: object,
   message_u?: string,
 ): Promise<T> {
   let response: Response = await myFetch(
@@ -81,10 +85,12 @@ async function refreshTokens(): Promise<string> {
   return (await body).accessToken;
 }
 
+//----------------------------------------------------------
+
 async function myFetch(
   endpoint_u: string,
-  method_u: string,
-  payload_u: object,
+  method_u: HttpRequest,
+  payload_u?: object,
   message_u?: string,
 ): Promise<Response> {
   const response: Response = await fetch(endpoint_u, {

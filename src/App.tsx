@@ -10,6 +10,7 @@ import TestPage from "./pages/_TestingPages_/TestPage.tsx";
 import MacroContent from "./components/macro/MacroContent.tsx";
 import QuizLayoutPage from "./components/quiz-view/QuizLayoutPage.tsx";
 import QuizContentPage from "./components/quiz-view/QuizContentPage.tsx";
+import TestBE from "./components/test-BE/TestBE.tsx";
 
 const App: React.FC = () => {
   return (
@@ -34,6 +35,7 @@ const App: React.FC = () => {
         />
 
         <Route path="/test" element={<TestPage />} />
+        <Route path={"/test-be"} element={<TestBE />} />
 
         <Route path="/forbidden" element={<PageForbidden403 />} />
         <Route path="*" element={<Page404 />} />
