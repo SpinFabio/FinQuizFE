@@ -8,16 +8,18 @@ interface PageForbidden403Props {
 const PageForbidden403: React.FC<PageForbidden403Props> = ({ message }) => {
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-evenly bg-white text-white">
-      <div className="border-b-2 border-t-2 border-solid border-orange-500 bg-orange-400 py-6 text-center">
-        <h1 className="text-h1-mb font-h1-mb">Error 403</h1>
-        <h2 className="mt-4 text-h2-mb font-h1-mb">Accesso vietato</h2>
-        <p className="mt-2">
-          {message ||
-            "Non hai i permessi necessari per accedere a questa pagina."}
-        </p>
+      <div className="flex w-full flex-col items-center justify-center bg-orange-400 py-6 text-center">
+        <div className="max-w-15 bg-orange-400 px-4 py-6 text-center">
+          <h1 className="text-h1-mb font-h1-mb">Error 403</h1>
+          <h2 className="mt-4 text-h2-mb font-h1-mb">Accesso vietato</h2>
+          <p className="mt-2">
+            {message ||
+              "Non hai i permessi necessari per accedere a questa pagina."}
+          </p>
+        </div>
       </div>
       <Link to="/home">
-        <p className="rounded-lg bg-blue-600 px-4 py-2 font-h2-mb text-primary-contrast transition hover:bg-blue-700">
+        <p className="rounded-full bg-primary px-5 py-4 font-h2-mb text-primary-contrast transition hover:bg-blue-800">
           Torna alla Homepage
         </p>
       </Link>

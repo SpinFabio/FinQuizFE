@@ -24,5 +24,4 @@ export async function getMacroQuiz(macroReqArray: MacroTopicBase[]) {
   );
 
   setCurrentQuizzes(localQuizSate);
-  //console.log(localQuizSate);
 }

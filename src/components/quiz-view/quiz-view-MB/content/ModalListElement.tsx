@@ -5,9 +5,10 @@ import { useQuizConsumer } from "../useQuiz";
 
 interface ModalListElementProps {
   quiz: QuizLocalState;
+  quizNum:number
 }
 
-const ModalListElement: React.FC<ModalListElementProps> = ({ quiz }) => {
+const ModalListElement: React.FC<ModalListElementProps> = ({ quiz,quizNum }) => {
   const myHook = useQuizConsumer();
 
   let myBorderColor = "border-l-slate-500";
@@ -34,8 +35,9 @@ const ModalListElement: React.FC<ModalListElementProps> = ({ quiz }) => {
     >
       <div className="absolute bottom-0 left-0 h-1/2 w-full bg-gradient-to-b from-transparent to-white" />
       <div className="absolute bottom-0 left-0 h-1/2 w-full bg-gradient-to-b from-transparent to-white" />
-      <div className="absolute bottom-0 left-0 h-1/2 w-full bg-gradient-to-b from-transparent to-white" />
-      {quiz.question}
+      
+      
+      <p className="font-h1-mb inline-block mr-1">{quizNum}.</p>{quiz.question}
     </div>
   );
 };

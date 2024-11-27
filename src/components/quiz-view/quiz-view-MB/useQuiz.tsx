@@ -2,23 +2,38 @@ import { createContext, useContext, useEffect, useState } from "react";
 import {
   getCurrentQuizzes,
   QuizLocalState,
+  removeCurrentQuizzes,
   setCurrentQuizzes,
 } from "../../../state/quiz/quiz";
-import { DUMMY_DATA_QUIZ } from "../dummyQuiz";
+import { useNavigate } from "react-router-dom";
+import { mockQuizData } from "../dummyQuiz";
 
 export function useQuiz() {
-  const [quizArray, setQuizArray] = useState<QuizLocalState[]>(() => {
-    //setCurrentQuizzes(DUMMY_DATA_QUIZ);
-    return getCurrentQuizzes();
-  });
+  const navigate = useNavigate();
+  const [quizArray, setQuizArray] = useState<QuizLocalState[]>(mockQuizData);
+  const inMemoryQuizzes = getCurrentQuizzes();
+
+  useEffect(() => {
+    if (inMemoryQuizzes === undefined) {
+      console.log("navighiamo da //quiz a //home ");
+      navigate("/home");
+    } else {
+      setQuizArray(inMemoryQuizzes);
+    }
+  }, []);
+
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [triggerAnimation, setAnimationTrigger] = useState(0);
   const [isOpenListModal, setIsOpenListModal] = useState(false);
-  /* 
+
   useEffect(() => {
     console.log("salvataggio in memoria avvenuto");
-    setCurrentQuizzes(quizArray);
-  }, [quizArray]); */
+    if (quizArray === mockQuizData) {
+      removeCurrentQuizzes()
+    } else {
+      setCurrentQuizzes(quizArray);
+    }
+  }, [quizArray]);
 
   function getCurrentQuiz(): QuizLocalState {
     return quizArray[currentIndex];
@@ -98,6 +113,11 @@ export function useQuiz() {
     setIsOpenListModal(true);
   }
 
+  function handleEndQuiz() {
+    removeCurrentQuizzes();
+    navigate("/quiz-rev");
+  }
+
   return {
     triggerAnimation,
     quizArray,
@@ -111,6 +131,7 @@ export function useQuiz() {
     handleOpenListModal,
     handleCloseListModal,
     isOpenListModal,
+    handleEndQuiz,
   };
 }
 

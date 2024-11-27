@@ -3,6 +3,11 @@ import { Modes, ResumeButtonInterface } from "./useHomePage";
 import CardMode from "./CardMode";
 import ResumeButton from "./ResumeButton";
 import ProfileIconMB from "../../layouts/layout-MB/icons/ProfileIconMB";
+import AnimatedButton from "../../wigets/animated-buttons/AnimatedButton";
+import {
+  checkCurrentQuizzes,
+  removeCurrentQuizzes,
+} from "../../../state/quiz/quiz";
 
 interface HomePageMBProps {
   userName: string;
@@ -15,6 +20,7 @@ const HomePageMB: React.FC<HomePageMBProps> = ({
   modeArray,
   resumeButton,
 }) => {
+  const isQuizzesArrayPresent = checkCurrentQuizzes();
   return (
     <>
       <div className="flex h-screen flex-col">
@@ -40,11 +46,19 @@ const HomePageMB: React.FC<HomePageMBProps> = ({
             );
           })}
         </div>
-        <div className="my-5 flex h-full flex-grow items-center justify-center">
-          <ResumeButton
-            buttonText={resumeButton.buttonText}
-            linkTo={resumeButton.linkTo}
-          />
+        <div className="py-5 flex h-full flex-grow items-center justify-center">
+          {isQuizzesArrayPresent ? (
+            <AnimatedButton>
+              <ResumeButton
+                buttonText={resumeButton.buttonText}
+                linkTo={resumeButton.linkTo}
+              />
+            </AnimatedButton>
+          ) : (
+            <div className="rounded-full border-2 border-my-green p-4 text-body-mb text-my-green">
+              Nessuna prova in memoria
+            </div>
+          )}
         </div>
       </div>
     </>

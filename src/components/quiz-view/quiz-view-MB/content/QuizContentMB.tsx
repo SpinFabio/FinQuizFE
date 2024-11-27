@@ -1,9 +1,5 @@
 import AnswareContainer from "./AnswareContainer";
 import { useQuizConsumer } from "../useQuiz";
-import { DUMMY_DATA_QUIZ } from "../../dummyQuiz";
-import { setCurrentQuizzes } from "../../../../state/quiz/quiz";
-import ModalMB from "../../../wigets/modal/ModalMB";
-import ModalListElement from "./ModalListElement";
 import ModalList from "./ModalList";
 
 interface QuizContentMBProps {
@@ -26,16 +22,16 @@ const QuizContentMB: React.FC<QuizContentMBProps> = (
         key={myHook.triggerAnimation}
         className="flex h-full w-full animate-appearIn flex-col items-center justify-center px-4"
       >
-        <div id="question">
-          <div className="mb-5 rounded-lg border border-info p-2">
-            <div className="flex flex-row justify-between py-1 text-info-mb font-h1-mb">
-              <div>{currentQuiz.macro}</div>
-              <div>{currentQuiz.score}</div>
+        <div id="question" className="w-full">
+          <div className="mb-5  rounded-lg border border-info p-2">
+            <div className="flex flex-row justify-between py-1 text-info-mb font-h2-mb">
+              <div><p className="inline-block font-h1-mb">{myHook.currentIndex+1}.</p>{currentQuiz.macro}</div>
+              <div>pt.{currentQuiz.score}</div>
             </div>
             <div className="text-quiz-mb">{currentQuiz.question}</div>
           </div>
         </div>
-        <div id="answares">
+        <div id="answares" className="w-full">
           {currentQuiz.allAnswers.map((opt, i) => (
             <AnswareContainer
               key={i}

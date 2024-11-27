@@ -1,19 +1,16 @@
-import { TimeInterface } from "../../components/layouts/layout-MB/useTimer";
-
 export interface QuizLocalState {
   macro: string;
   micro: string;
   question: string;
   correctAnswer: string;
-  selectedAnswer:string;
+  selectedAnswer: string;
   allAnswers: string[];
   score: 1 | 2;
   isViewed: boolean;
-  isFlagged:boolean;
+  isFlagged: boolean;
 }
 
 const LOCAL_STORAGE_CURRENT_QUIZ_KEY: string = "currentQuizSession";
-const LOCAL_STORAGE_CURRENT_TIME_KEY: string = "currentTimeRemaining";
 
 export function setCurrentQuizzes(quizArray: QuizLocalState[]) {
   localStorage.setItem(
@@ -22,10 +19,20 @@ export function setCurrentQuizzes(quizArray: QuizLocalState[]) {
   );
 }
 
-export function getCurrentQuizzes(): QuizLocalState[] {
+export function removeCurrentQuizzes() {
+  localStorage.removeItem(LOCAL_STORAGE_CURRENT_QUIZ_KEY);
+}
+
+export function checkCurrentQuizzes(): boolean {
+  const res = localStorage.getItem(LOCAL_STORAGE_CURRENT_QUIZ_KEY);
+  if (res) return true;
+  return false;
+}
+
+export function getCurrentQuizzes(): QuizLocalState[] | undefined {
   const quizzes = localStorage.getItem(LOCAL_STORAGE_CURRENT_QUIZ_KEY);
   if (!quizzes) {
-    throw new Error("No QuizLocalState[]  was found in local storage");
+    return undefined;
   } else {
     const properQuizzes: QuizLocalState[] = JSON.parse(quizzes);
     properQuizzes.forEach((quiz) => {
@@ -35,11 +42,9 @@ export function getCurrentQuizzes(): QuizLocalState[] {
   }
 }
 
-
-
 function shuffleArray(array: string[]): string[] {
   return array
-    .map((value) => ({ value, sort: Math.random() })) // Aggiunge un valore casuale
-    .sort((a, b) => a.sort - b.sort) // Ordina in base al valore casuale
-    .map(({ value }) => value); // Rimuove i valori casuali, lasciando solo gli elementi originali
+    .map((value) => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value);
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import IconMenu from "./icons/IconMenu";
+import AnimatedButton from "../../wigets/animated-buttons/AnimatedButton";
 
 interface MenuContentProps {
   menuHandler: MenuHandler;
@@ -51,12 +52,14 @@ const MenuContent: React.FC<MenuContentProps> = ({ menuHandler }) => {
   return (
     <div className="flex h-auto w-full flex-row items-start justify-evenly rounded-t-[3rem] bg-gradient-to-b from-primary to-primary-dark">
       {menuButtons.map((mb, i) => (
-        <IconMenu
-          key={i}
-          draw={mb.draw}
-          description={mb.description}
-          onAction={mb.onActions}
-        />
+        <AnimatedButton key={i}>
+          <IconMenu
+            key={i}
+            draw={mb.draw}
+            description={mb.description}
+            onAction={mb.onActions}
+          />
+        </AnimatedButton>
       ))}
     </div>
   );

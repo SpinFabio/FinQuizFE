@@ -1,5 +1,26 @@
 import { QuizLocalState } from "../../state/quiz/quiz";
 
+
+export const mockQuizData: QuizLocalState[] = [ // NON CANCELLARLO CHE SERVE PER INIZIALIZZARE LA PAGINA QUIZ
+  {
+    macro: "Mock Macro",
+    micro: "Mock Micro",
+    question: "Questo è un mock quiz, usa dati reali.",
+    correctAnswer: "Risposta corretta mock",
+    allAnswers: [
+      "Risposta mock 1",
+      "Risposta mock 2",
+      "Risposta mock 3",
+      "Risposta mock 4",
+    ],
+    score: 1,
+    selectedAnswer: "",
+    isViewed: false,
+    isFlagged: false,
+  },
+];
+
+
 export const DUMMY_DATA_QUIZ: QuizLocalState[] = [
   {
     macro: "Abusi di mercato",

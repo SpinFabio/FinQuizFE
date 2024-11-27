@@ -21,6 +21,7 @@ import { setCurrentTimer } from "../../../state/time/timer";
 import { getMacroQuiz } from "../../../api/useMacroAPI";
 import { MacroTopicBase } from "../../../common/macro-interfaces";
 import { useNavigate } from "react-router-dom";
+import { removeCurrentQuizzes } from "../../../state/quiz/quiz";
 
 export function useMacro() {
   const [macroState, setMacroState] = useState<MacroTopic[]>(macroTopicArray);
@@ -57,7 +58,7 @@ export function useMacro() {
   }
 
   function handleChangeSelected(id: number, currentValue: number) {
-    console.log(id, currentValue, sum);
+    //console.log(id, currentValue, sum);
     const prevValue = macroState.find((f) => f.id === id)?.selectedNumber;
 
     if (prevValue === undefined) {
@@ -169,9 +170,8 @@ export function useMacro() {
     setIsOpenTimeModal(false);
   }
 
-  function handleStart() {
+  async function handleStart() {
     setCurrentTimer(timerHook.time);
-    //console.log("salvato il time ", timerHook.time);
 
     try {
       const macroReqArray: MacroTopicBase[] = macroState.map((macro) => {
@@ -181,13 +181,15 @@ export function useMacro() {
         };
         return tmp;
       });
-      getMacroQuiz(macroReqArray);
+      await getMacroQuiz(macroReqArray);
+
+      navigate("/quiz");
     } catch {
-      console.log(
-        "qualcosa è andato storto con la richiesta al server Macro Topic",
+      toast.error(
+        "qualcosa è andato storto con la richiesta al server (Esercitati)",
       );
+      navigate("/home");
     }
-    navigate("/quiz");
   }
 
   const menuHandler: MenuHandler = {

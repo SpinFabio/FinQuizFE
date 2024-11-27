@@ -45,7 +45,7 @@ const AnswareContainer: React.FC<AnswareContainerProps> = ({
   const myHook = useQuizConsumer();
   return (
     <div
-      className={classNames("text-quiz-mb my-2 flex flex-row items-center rounded-lg border border-info p-2 font-roboto font-body-mb shadow-lg",isSelected?"scale-[101%]":"scale-100")}
+      className={classNames("text-quiz-mb my-2 flex flex-row  items-center rounded-lg border border-info p-2 font-roboto font-body-mb shadow-lg",isSelected?"scale-[101%]":"scale-100")}
       onClick={(_)=>myHook.handleAnswerSelection(question)}
     >
       <div id="radioControl">{isSelected ? radioFullIcon : radioEmptyIcon}</div>

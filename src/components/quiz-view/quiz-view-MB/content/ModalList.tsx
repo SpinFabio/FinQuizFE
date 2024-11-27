@@ -13,6 +13,9 @@ const ModalList: React.FC<ModalListProps> = (
   },
 ) => {
   const myHook = useQuizConsumer();
+
+  const showMarked = myHook.quizArray.find((quiz) => quiz.isFlagged);
+
   return (
     <ModalMB
       isOpen={myHook.isOpenListModal}
@@ -21,16 +24,19 @@ const ModalList: React.FC<ModalListProps> = (
     >
       <div className="h-[150px] w-full" onClick={myHook.handleCloseListModal} />
 
-      <p>domande marcate: </p>
+      <p className={showMarked ? "" : "hidden"}>domande marcate: </p>
       {myHook.quizArray
+        .map((quiz,index) => {
+          return { ...quiz, originalIndex: index };
+        })
         .filter((quiz) => quiz.isFlagged)
         .map((quiz, i) => {
-          return <ModalListElement key={i} quiz={quiz} />;
+          return <ModalListElement key={i} quizNum={quiz.originalIndex+1} quiz={quiz} />;
         })}
 
       <p className="mt-5">lista completa delle domande: </p>
       {myHook.quizArray.map((quiz, i) => {
-        return <ModalListElement key={i} quiz={quiz} />;
+        return <ModalListElement key={i} quizNum={i + 1} quiz={quiz} />;
       })}
 
       <div className="h-[400px] w-full" onClick={myHook.handleCloseListModal} />

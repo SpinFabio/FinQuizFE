@@ -112,7 +112,7 @@ const QuizTopLayout: React.FC<QuizTopLayoutProps> = (
         id="quizList+caroselDots+Flag"
         className="fixed z-10 mt-[90px] flex w-full flex-row items-center justify-between bg-white"
       >
-        <div className={classNames(myStyle)}>
+        <div className={classNames(myStyle)} onClick={myHook.handleEndQuiz} >
           <div className="flex w-4 flex-col content-center items-center">
             <p className="texy-info text-info-mb font-info-mb">termina</p>
           </div>

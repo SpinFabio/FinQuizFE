@@ -13,7 +13,6 @@ import QuizContentPage from "./components/quiz-view/QuizContentPage.tsx";
 
 const App: React.FC = () => {
   return (
-
     <BrowserRouter basename="/">
       <Routes>
         <Route path="/login" element={<AuthPage typeAuth="login" />} />
@@ -28,6 +27,11 @@ const App: React.FC = () => {
         <Route element={<QuizLayoutPage />}>
           <Route path="/quiz" element={<QuizContentPage />} />
         </Route>
+
+        <Route
+          path={"/quiz-rev"}
+          element={<>pagina quiz Rewiew da implementare</>}
+        />
 
         <Route path="/test" element={<TestPage />} />
 
