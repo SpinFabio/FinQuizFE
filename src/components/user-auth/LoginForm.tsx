@@ -3,7 +3,7 @@ import AuthInput from "./AuthInput";
 import LoginWithButton from "./LoginWithButton";
 import AuthButton from "./AuthButton";
 import Separator from "./Separator";
-import { useAuthPage } from "../../pages/AuthPage/useAuthPage";
+import { useAuthPage } from "./AuthPage/useAuthPage";
 import ErrorMessage from "./ErrorMessage";
 import RedirectAuth from "./RedirectAuth";
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import * as Yup from "yup";
-import { useAuthAPI } from "../../api/useAuthAPI";
+import { useAuthAPI } from "../../../api/useAuthAPI";
 
 export type ErrorState = "empty" | "valid" | { error: string };
 

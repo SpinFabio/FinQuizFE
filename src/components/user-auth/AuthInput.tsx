@@ -1,5 +1,5 @@
 import { classNameTW } from "../../utils/tailwind-utils";
-import { ErrorState } from "../../pages/AuthPage/useAuthPage";
+import { ErrorState } from "./AuthPage/useAuthPage";
 import React from "react";
 
 interface AuthInputProps {

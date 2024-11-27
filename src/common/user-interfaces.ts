@@ -1,4 +1,9 @@
 import * as Yup from "yup";
+
+export interface AuthBodyReqRes {
+  message?: string;
+  accessToken: string;
+}
 export interface UserFE {
   // è il contenuto dell' access token che viene riconvertito in informazioni JSON
   id: number;
@@ -37,11 +42,6 @@ export const userRegisterRequestSchema = Yup.object({
     .max(16, "Il nome è troppo lungo")
     .required("Il nome è obbligatorio"),
 });
-
-export interface AuthBodyReqRes {
-  message?: string;
-  accessToken: string;
-}
 
 export const authBodyReqResSchema = Yup.object({
   message: Yup.string(),

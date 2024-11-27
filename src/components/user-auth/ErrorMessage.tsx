@@ -1,5 +1,5 @@
 import React from "react";
-import { ErrorState } from "../../pages/AuthPage/useAuthPage";
+import { ErrorState } from "./AuthPage/useAuthPage";
 
 interface ErrorMessageProps {
   errorState: ErrorState;

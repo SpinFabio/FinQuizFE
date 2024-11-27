@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
 import "./index.css";
-import AuthPage from "./pages/AuthPage/AuthPage.tsx";
-import Page404 from "./pages/ErrorPages/Page404.tsx";
+import AuthPage from "./components/user-auth/AuthPage/AuthPage.tsx";
+import Page404 from "./components/ErrorPages/Page404.tsx";
 import HomePage from "./components/home/HomePage.tsx";
-import PageForbidden403 from "./pages/ErrorPages/PageForbidden403.tsx";
+import PageForbidden403 from "./components/ErrorPages/PageForbidden403.tsx";
 import Layout from "./components/layouts/Layout.tsx";
-import TestPage from "./pages/_TestingPages_/TestPage.tsx";
+import TestPage from "./components/_TestingPages_/TestPage.tsx";
 import MacroContent from "./components/macro/MacroContent.tsx";
 import QuizLayoutPage from "./components/quiz-view/QuizLayoutPage.tsx";
 import QuizContentPage from "./components/quiz-view/QuizContentPage.tsx";

@@ -1,6 +1,6 @@
 import React from "react";
-import LogoBlue from "../../components/user-auth/LogoBlue";
-import LoginForm from "../../components/user-auth/LoginForm";
+import LogoBlue from "../LogoBlue";
+import LoginForm from "../LoginForm";
 
 interface AuthPageProps {
   typeAuth: "login" | "register";
