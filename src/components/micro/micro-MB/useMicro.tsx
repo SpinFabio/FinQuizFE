@@ -1,6 +1,10 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { MenuHandler } from "../../layouts/layout-MB/MenuContent";
-import { DEFAULT_TIME, useTimer, UseTimerInterface } from "../../layouts/layout-MB/useTimer";
+import {
+  DEFAULT_TIME,
+  useTimer,
+  UseTimerInterface,
+} from "../../layouts/layout-MB/useTimer";
 import {
   getFavMicro,
   MacroMicroData,
@@ -9,7 +13,11 @@ import {
   setFavMicro,
 } from "../../../state/micro/microTopicList";
 import { MAX_MICRO_QUIZZES } from "../../../config/myenv";
-import { getFavTimeMicro, setFavTimeMicro } from "../../../state/micro/microTime";
+import {
+  getFavTimeMicro,
+  setFavTimeMicro,
+} from "../../../state/micro/microTime";
+import { toast } from "react-toastify";
 
 export function useMicro() {
   const [macroMicroState, setMacroMicroState] =
@@ -26,6 +34,60 @@ export function useMicro() {
     );
     setTotSum(sum);
   }, [macroMicroState]);
+
+  function handleChangeSelected(
+    macroId: number,
+    microId: number,
+    newValue: string,
+  ) {
+    const newNumericValue = Number(newValue);
+    let canUpdateFlag = false;
+    if (Number.isNaN(newNumericValue)) {
+      return;
+    }
+
+    setMacroMicroState((prevState) => {
+      const newState = prevState.map((macroMicro) => {
+        if (macroMicro.idMacro === macroId) {
+          let prevMicroSelectedNumber = 0;
+          const newMicroArray = macroMicro.microArray.map((micro) => {
+            if (micro.idMicro === microId) {
+              prevMicroSelectedNumber = micro.selectedNumber;
+
+              if (
+                newNumericValue + totSum - prevMicroSelectedNumber >
+                MAX_MICRO_QUIZZES
+              ) {
+                toast.warning(
+                  `non puoi inserire più del massimo consentito di quiz! (${MAX_MICRO_QUIZZES})`,
+                );
+                return micro;
+              }
+              console.log("continuo ad eseguire");
+              canUpdateFlag = true;
+              return {
+                ...micro,
+                selectedNumber: newNumericValue,
+              };
+            }
+            return micro;
+          });
+
+          return {
+            ...macroMicro,
+            sumOfSelected: canUpdateFlag
+              ? macroMicro.sumOfSelected +
+                newNumericValue -
+                prevMicroSelectedNumber
+              : macroMicro.sumOfSelected,
+            microArray: newMicroArray,
+          };
+        }
+        return macroMicro;
+      });
+      return newState;
+    });
+  }
 
   function handleAdd(macroId: number, microId: number) {
     if (totSum + 1 >= MAX_MICRO_QUIZZES) {
@@ -149,15 +211,15 @@ export function useMicro() {
   }
 
   function handleSaveFav() {
-    setFavTimeMicro(timerHook.time)
+    setFavTimeMicro(timerHook.time);
     setAnimationTrigger((p) => p + 1);
     setFavMicro(macroMicroState);
   }
 
   function handleLoadFav() {
     const newMacroMicro = getFavMicro();
-    const newTime=getFavTimeMicro()
-    timerHook.setTime(newTime)
+    const newTime = getFavTimeMicro();
+    timerHook.setTime(newTime);
     setAnimationTrigger((p) => p + 1);
     setMacroMicroState(newMacroMicro);
   }
@@ -176,7 +238,7 @@ export function useMicro() {
       });
       return newState;
     });
-    
+
     timerHook.setTime(DEFAULT_TIME);
     setAnimationTrigger((p) => p + 1);
   }
@@ -184,6 +246,7 @@ export function useMicro() {
   function handleOpenTimeModal() {
     setIsOpenTimeModal(true);
   }
+
   function handleCloseTimeModal() {
     setIsOpenTimeModal(false);
   }
@@ -200,6 +263,7 @@ export function useMicro() {
     timerHook: timerHook,
   };
   return {
+    handleChangeSelected,
     totSum,
     handleCheckUncheck,
     handleAdd,

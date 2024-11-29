@@ -4,3 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none; /* Rimuove le freccette su WebKit */
+    margin: 0; /* Per evitare spazi extra */
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield; /* Rimuove le freccette su Firefox */
+    -webkit-appearance: none; /* Safari e Chrome */
+    appearance: none; /* Standard */
+  }
+}

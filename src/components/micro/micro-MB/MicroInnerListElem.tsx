@@ -10,6 +10,7 @@ import {
 } from "../../macro/macro-MB/icons/checked-icons";
 import PlusMinusIcons from "../../macro/macro-MB/PlusMinusIcons";
 import { useMicroConsumer } from "./useMicro";
+import MyNumInput from "../../layouts/layout-MB/MyNumInput";
 
 interface MicroInnerListElemProps {
   microTopic: MicroTopic;
@@ -41,12 +42,7 @@ const MicroInnerListElem: React.FC<MicroInnerListElemProps> = ({
             }
             style={{ userSelect: "none" }}
           >
-            <div
-              className="flex items-center justify-center pl-2 pr-1"
-              onClick={() =>
-                myHook.handleCheckUncheck(macroId, microTopic.idMicro)
-              }
-            >
+            <div className="flex items-center justify-center pl-2 pr-1">
               {microTopic.selectedNumber > 0
                 ? FULL_CHECK_ICON
                 : EMPTY_CHECK_ICON}
@@ -63,23 +59,25 @@ const MicroInnerListElem: React.FC<MicroInnerListElemProps> = ({
             )}
           >
             <div className="flex h-full w-full flex-col justify-center rounded-b-xl py-2 text-center">
-              <div className="item flex h-6 w-full flex-row justify-evenly">
+              <div className="item flex h-6 w-full flex-row items-center justify-evenly">
                 <PlusMinusIcons
                   type="minus"
                   style={isSelected}
                   onAction={() => myHook.handleSub(macroId, microTopic.idMicro)}
                 />
-                <input
-                  type="text"
+
+                <MyNumInput
                   value={microTopic.selectedNumber}
-                  className={classNames(
-                    "flex w-auto bg-transparent",
-                    isSelected ? "text-white" : "text-primary",
-                  )}
-                  style={{
-                    width: `${microTopic.selectedNumber.toString().length}ch`,
+                  handleChange={(num: number) => {
+                    myHook.handleChangeSelected(
+                      macroId,
+                      microTopic.idMicro,
+                      num.toString(),
+                    );
                   }}
+                  style={microTopic.selectedNumber > 0}
                 />
+
                 <PlusMinusIcons
                   type="plus"
                   style={isSelected}

@@ -4,18 +4,16 @@ import PlusMinusIcons from "./PlusMinusIcons";
 import { useMacroConsumer, UseMacroInterface } from "./useMacro";
 import { classNames } from "../../../utils/tailwind-utils";
 import { EMPTY_CHECK_ICON, FULL_CHECK_ICON } from "./icons/checked-icons";
+import MyNumInput from "../../layouts/layout-MB/MyNumInput";
 
 interface MacroListElemProps {
   macro: MacroTopic;
 }
 
 const MacroListElem: React.FC<MacroListElemProps> = ({ macro }) => {
-  const macroHook: UseMacroInterface = useMacroConsumer();
+  const myHook: UseMacroInterface = useMacroConsumer();
 
-  const myGradient =
-    macro.selectedNumber > 0
-      ? "bg-primary "
-      : "bg-white";
+  const myGradient = macro.selectedNumber > 0 ? "bg-primary " : "bg-white";
   const myTextColor =
     macro.selectedNumber > 0 ? "text-primary-contrast" : "text-primary";
 
@@ -23,15 +21,12 @@ const MacroListElem: React.FC<MacroListElemProps> = ({ macro }) => {
     <div className="flex w-full flex-col px-4 py-2">
       <div
         id="top-part"
-        onClick={() => macroHook.handleCheckUncheck(macro.id)}
+        onClick={() => myHook.handleCheckUncheck(macro.id)}
         className="flex h-7 flex-row items-center justify-start rounded-t-lg border border-info px-3"
       >
         <div className="flex flex-row text-body-mb font-h2-mb">
-          <div
-            className="pr-2"
-            
-          >
-            {macro.isChecked ? FULL_CHECK_ICON : EMPTY_CHECK_ICON}
+          <div className="pr-2">
+            {macro.selectedNumber > 0 ? FULL_CHECK_ICON : EMPTY_CHECK_ICON}
           </div>
           <h2 style={{ userSelect: "none" }}>{macro.name}</h2>
         </div>
@@ -76,32 +71,23 @@ const MacroListElem: React.FC<MacroListElemProps> = ({ macro }) => {
           >
             <PlusMinusIcons
               type="minus"
-              onAction={() => macroHook.handleSub(macro.id)}
+              onAction={() => myHook.handleSub(macro.id)}
               style={macro.selectedNumber > 0}
             />
-            <input
-              type="text"
-              value={" " + macroHook.macroState[macro.id - 1].selectedNumber}
-              onChange={(e) =>
-                macroHook.handleChangeSelected(macro.id, Number(e.target.value))
-              }
-              className="flex w-auto bg-transparent"
-              style={{
-                width: `${macro.selectedNumber.toString().length + 1}ch`,
-              }}
-              onFocus={(e) => {
-                e.target.select();
-                setTimeout(() => {
-                  e.target.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center", // Centra l'elemento
-                  });
-                }, 300);
-              }}
-            />
+
+            <div>
+              <MyNumInput
+                value={macro.selectedNumber}
+                handleChange={(num: number) =>
+                  myHook.handleChangeSelected(macro.id, num)
+                }
+                style={macro.selectedNumber > 0}
+              />
+            </div>
+
             <PlusMinusIcons
               type="plus"
-              onAction={() => macroHook.handleAdd(macro.id)}
+              onAction={() => myHook.handleAdd(macro.id)}
               style={macro.selectedNumber > 0}
             />
           </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import { classNames } from "../../../utils/tailwind-utils";
 import { UseTimerInterface } from "./useTimer";
+import MyNumInput from "./MyNumInput";
 
 interface TimerMBProps {
   timerHook: UseTimerInterface;
@@ -8,13 +9,13 @@ interface TimerMBProps {
 }
 
 const TimerMB: React.FC<TimerMBProps> = ({ timerHook, isInteractable }) => {
-  let myIntStyle = "";
+  let interactableStyle = "";
   let myGraphStyle = "";
   if (isInteractable) {
-    myIntStyle = "block";
+    interactableStyle = "block";
     myGraphStyle = "hidden";
   } else {
-    myIntStyle = "hidden";
+    interactableStyle = "hidden";
     myGraphStyle = "block";
   }
 
@@ -25,37 +26,26 @@ const TimerMB: React.FC<TimerMBProps> = ({ timerHook, isInteractable }) => {
     >
       <p className="pt-2 text-info">Tempo della Prova</p>
       <div className="flex h-full flex-row items-center justify-center py-1 text-h2-mb text-info">
-        <input
-          type="text"
-          style={{
-            width: `2ch`,
+        <MyNumInput
+          value={Number(timerHook.time.hours)}
+          handleChange={(num: number) => {
+            timerHook.hanldeSelectHours(num.toString());
           }}
-          className={classNames(myIntStyle, "flex w-1 bg-transparent")}
-          value={timerHook.time.hours}
-          onChange={(e) => timerHook.hanldeSelectHours(e.target.value)}
-          onFocus={(e) => {
-            e.target.select();
-            setTimeout(() => {
-              e.target.scrollIntoView({
-                behavior: "smooth",
-                block: "center", // Centra l'elemento
-              });
-            }, 300);
-          }}
+          extraStyle={classNames(interactableStyle, " bg-transparent ")}
         />
+
         <p className={myGraphStyle}>{timerHook.time.hours}</p>
         <p className="font-info-mb">h</p>
         <p className="px-1">:</p>
-        <input
-          type="text"
-          style={{
-            width: `2ch`,
+
+        <MyNumInput
+          value={Number(timerHook.time.minutes)}
+          handleChange={(num: number) => {
+            timerHook.handleSelectMinutes(num.toString());
           }}
-          onFocus={(e) => e.target.select()} // Seleziona tutto il contenuto
-          className={classNames(myIntStyle, "flex w-1 bg-transparent")}
-          value={timerHook.time.minutes}
-          onChange={(e) => timerHook.handleSelectMinutes(e.target.value)}
+          extraStyle={classNames(interactableStyle, " bg-transparent ")}
         />
+
         <p className={myGraphStyle}>{timerHook.time.minutes}</p>
         <p className="font-info-mb">m</p>
       </div>
