@@ -12,7 +12,7 @@ export interface MacroTopic {
   completedPercentage: number;
 }
 
-export const macroTopicArray: MacroTopic[] = [
+export const MACRO_TOPIC_ARRAY: MacroTopic[] = [
   {
     id: 1,
     name: getMacroFromID(1),
@@ -83,7 +83,7 @@ export function setFavMacro(macroTopicArray: MacroTopic[]): void {
     return fav;
   });
 
-  console.log(favArray);
+  //console.log(favArray);
 
   localStorage.setItem(USER_MACRO_FAV_KEY_NAME, JSON.stringify(favArray));
 }

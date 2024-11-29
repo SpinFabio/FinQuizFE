@@ -22,9 +22,9 @@ const MacroListMB: React.FC = () => {
       ))}
       <ModalMB
         isOpen={macroHook.isOpenTimeModal}
-        onClose={macroHook.hanldeCloseTimeModal}
+        onClose={macroHook.menuHandler.handleCloseTimeModal}
       >
-        <ModalTimeSetter currenHook={macroHook} />
+        <ModalTimeSetter currenHook={macroHook.menuHandler} />
       </ModalMB>
     </div>
   );

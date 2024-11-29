@@ -19,8 +19,11 @@ const TimerMB: React.FC<TimerMBProps> = ({ timerHook, isInteractable }) => {
   }
 
   return (
-    <div className="flex w-11 flex-col rounded-2xl border border-info bg-white px-4 text-center">
-      <p className="pt-2 text-info" style={{userSelect:"none"}}>Tempo della Prova</p>
+    <div
+      style={{ userSelect: "none" }}
+      className="flex w-11 flex-col rounded-2xl border border-info bg-white px-4 text-center"
+    >
+      <p className="pt-2 text-info">Tempo della Prova</p>
       <div className="flex h-full flex-row items-center justify-center py-1 text-h2-mb text-info">
         <input
           type="text"
@@ -38,7 +41,7 @@ const TimerMB: React.FC<TimerMBProps> = ({ timerHook, isInteractable }) => {
                 block: "center", // Centra l'elemento
               });
             }, 300);
-          }} 
+          }}
         />
         <p className={myGraphStyle}>{timerHook.time.hours}</p>
         <p className="font-info-mb">h</p>

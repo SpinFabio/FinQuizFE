@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import {
   getFavMacro,
   MacroTopic,
-  macroTopicArray,
+  MACRO_TOPIC_ARRAY,
   setFavMacro,
 } from "../../../state/macro/macroTopicList";
 import { MAX_MACRO_QUIZZES, MIN_MACRO_QUIZZES } from "../../../config/myenv";
@@ -24,9 +24,9 @@ import { useNavigate } from "react-router-dom";
 import { HOME_PAGE_ROUTE, QUIZ_PAGE_ROUTE } from "../../../config/routes";
 
 export function useMacro() {
-  const [macroState, setMacroState] = useState<MacroTopic[]>(macroTopicArray);
+  const [macroState, setMacroState] = useState<MacroTopic[]>(MACRO_TOPIC_ARRAY);
   const [totalSum, setTotalSum] = useState<number>(
-    macroTopicArray.reduce((acc, curr) => {
+    MACRO_TOPIC_ARRAY.reduce((acc, curr) => {
       return acc + curr.defaultNumber;
     }, 0),
   );
@@ -124,7 +124,7 @@ export function useMacro() {
   }
 
   function handleSub(id: number) {
-    let newSum = totalSum; 
+    let newSum = totalSum;
 
     setMacroState((prevState) => {
       const newState = prevState.map((macro) => {
@@ -162,8 +162,8 @@ export function useMacro() {
   function handleGetFav() {
     const newMacro = getFavMacro(macroState);
     const newTime = getFavTimeMacro();
+    
     setMacroState(newMacro);
-
     setAnimationTrigger((prev) => prev + 1);
     timerHook.setTime(newTime);
   }
@@ -244,9 +244,11 @@ export function useMacro() {
     handleSaveFav: handleSetFav,
     handleLoadFav: handleGetFav,
     handleReset: handleReset,
-    handleTime: handleOpenTimeModal,
+    handleOpenTimeModal: handleOpenTimeModal,
+    handleCloseTimeModal: hanldeCloseTimeModal,
     handleStart: handleStart,
     getSelectedSum: () => getSelectedSum(),
+    timerHook: timerHook,
   };
 
   return {
@@ -258,8 +260,6 @@ export function useMacro() {
     handleSub,
     handleChangeSelected,
     isOpenTimeModal,
-    hanldeCloseTimeModal,
-    timerHook,
     menuHandler,
   };
 }

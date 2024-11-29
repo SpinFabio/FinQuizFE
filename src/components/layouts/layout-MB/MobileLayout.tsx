@@ -15,17 +15,14 @@ interface MobileLayoutProps {
 const MobileLayout: React.FC<MobileLayoutProps> = () => {
   const { pathname } = useLocation();
   let currentMenuHandler: MenuHandler | undefined = undefined;
-  let currentTimeHook: UseTimerInterface | undefined = undefined;
 
   if (pathname === MACRO_PAGE_ROUTE) {
     currentMenuHandler = useMacroConsumer().menuHandler;
-    currentTimeHook = useMacroConsumer().timerHook;
   } else if (pathname === MICRO_PAGE_ROUTE) {
     currentMenuHandler = useMicroConsumer().menuHandler;
-    currentTimeHook = useMicroConsumer().timerHook;
   }
 
-  if (!currentMenuHandler || !currentTimeHook) {
+  if (!currentMenuHandler) {
     throw new Error(
       "Il layout non viene pilotato correttamente dagli hook useMicro o useMacro",
     );
@@ -33,7 +30,7 @@ const MobileLayout: React.FC<MobileLayoutProps> = () => {
 
   return (
     <div id="layout" className="h-screen w-screen overflow-x-hidden">
-      <LayoutTop timerHook={currentTimeHook} />
+      <LayoutTop timerHook={currentMenuHandler.timerHook} />
 
       <div id="padding-for-content">
         <div className="h-40" />

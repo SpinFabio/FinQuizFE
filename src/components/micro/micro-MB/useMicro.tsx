@@ -1,33 +1,38 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { MenuHandler } from "../../layouts/layout-MB/MenuContent";
-import { useTimer, UseTimerInterface } from "../../layouts/layout-MB/useTimer";
+import { DEFAULT_TIME, useTimer, UseTimerInterface } from "../../layouts/layout-MB/useTimer";
 import {
+  getFavMicro,
   MacroMicroData,
-  microDataArray,
+  MICRO_DATA_ARRAY,
+  MicroTopic,
+  setFavMicro,
 } from "../../../state/micro/microTopicList";
 import { MAX_MICRO_QUIZZES } from "../../../config/myenv";
+import { getFavTimeMicro, setFavTimeMicro } from "../../../state/micro/microTime";
 
 export function useMicro() {
-  const timerHook: UseTimerInterface = useTimer();
-  const [microMacroState, setMicroMacroState] =
-    useState<MacroMicroData[]>(microDataArray);
+  const [macroMicroState, setMacroMicroState] =
+    useState<MacroMicroData[]>(MICRO_DATA_ARRAY);
   const [totSum, setTotSum] = useState(0);
-  const [animationTrigger, setAnimationTrigger]=useState(0)
+  const [animationTrigger, setAnimationTrigger] = useState(0);
+  const timerHook: UseTimerInterface = useTimer();
+  const [isOpenTimeModal, setIsOpenTimeModal] = useState(false);
 
   useEffect(() => {
-    const sum = microMacroState.reduce(
+    const sum = macroMicroState.reduce(
       (prev, curr) => prev + curr.sumOfSelected,
       0,
     );
     setTotSum(sum);
-  }, [microMacroState]);
+  }, [macroMicroState]);
 
   function handleAdd(macroId: number, microId: number) {
     if (totSum + 1 >= MAX_MICRO_QUIZZES) {
       return;
     }
 
-    setMicroMacroState((prevState) => {
+    setMacroMicroState((prevState) => {
       const newState = prevState.map((macroMicro) => {
         if (macroMicro.idMacro === macroId) {
           const newMicroArray = macroMicro.microArray.map((micro) => {
@@ -63,7 +68,7 @@ export function useMicro() {
   function handleSub(macroId: number, microId: number) {
     let canUpdateflag = false;
 
-    setMicroMacroState((prevState) => {
+    setMacroMicroState((prevState) => {
       const newState = prevState.map((macroMicro) => {
         if (macroMicro.idMacro === macroId) {
           const newMicroArray = macroMicro.microArray.map((micro) => {
@@ -74,6 +79,7 @@ export function useMicro() {
                 return micro;
               }
               canUpdateflag = true;
+
               return {
                 ...micro,
                 selectedNumber: newSelectedvalue,
@@ -104,27 +110,104 @@ export function useMicro() {
     });
   }
 
-  function handleCheckUncheck(macroId: number, microId: number){
+  function handleCheckUncheck(macroId: number, microId: number) {
+    setMacroMicroState((prevState) => {
+      const newState = prevState.map((macroMicro) => {
+        if (macroMicro.idMacro === macroId) {
+          let newSum = macroMicro.sumOfSelected;
+          const newMicroArray = macroMicro.microArray.map((micro) => {
+            if (micro.idMicro === microId) {
+              const newMicro: MicroTopic = { ...micro };
 
+              if (newMicro.selectedNumber > 0) {
+                // unchecking
+                newMicro.prevNumber = newMicro.selectedNumber;
+                newSum = newSum - newMicro.selectedNumber;
+                newMicro.selectedNumber = 0;
+              } else {
+                // checking
+                newMicro.selectedNumber = newMicro.prevNumber;
+                newSum = newSum + newMicro.prevNumber;
+                newMicro.prevNumber = 0;
+              }
+              return newMicro;
+            }
+            return micro;
+          });
+
+          return {
+            ...macroMicro,
+            sumOfSelected: newSum,
+            microArray: newMicroArray,
+          };
+        }
+
+        return macroMicro;
+      });
+      return newState;
+    });
+  }
+
+  function handleSaveFav() {
+    setFavTimeMicro(timerHook.time)
+    setAnimationTrigger((p) => p + 1);
+    setFavMicro(macroMicroState);
+  }
+
+  function handleLoadFav() {
+    const newMacroMicro = getFavMicro();
+    const newTime=getFavTimeMicro()
+    timerHook.setTime(newTime)
+    setAnimationTrigger((p) => p + 1);
+    setMacroMicroState(newMacroMicro);
+  }
+
+  function handleReset() {
+    setMacroMicroState((prevState) => {
+      const newState = prevState.map((microMacro) => {
+        const newMicroArray = microMacro.microArray.map((micro) => {
+          return {
+            ...micro,
+            selectedNumber: 0,
+          };
+        });
+
+        return { ...microMacro, microArray: newMicroArray, sumOfSelected: 0 };
+      });
+      return newState;
+    });
+    
+    timerHook.setTime(DEFAULT_TIME);
+    setAnimationTrigger((p) => p + 1);
+  }
+
+  function handleOpenTimeModal() {
+    setIsOpenTimeModal(true);
+  }
+  function handleCloseTimeModal() {
+    setIsOpenTimeModal(false);
   }
 
   const menuHandler: MenuHandler = {
     handleOptions: () => {},
-    handleSaveFav: () => {},
-    handleLoadFav: () => {},
-    handleReset: () => {},
-    handleTime: () => {},
+    handleSaveFav: handleSaveFav,
+    handleLoadFav: handleLoadFav,
+    handleReset: handleReset,
+    handleOpenTimeModal: handleOpenTimeModal,
+    handleCloseTimeModal: handleCloseTimeModal,
     handleStart: () => {},
     getSelectedSum: () => 1,
+    timerHook: timerHook,
   };
   return {
+    totSum,
+    handleCheckUncheck,
     handleAdd,
     animationTrigger,
     handleSub,
-    totSum,
-    microState: microMacroState,
+    isOpenTimeModal,
+    macroMicroState,
     menuHandler,
-    timerHook,
   };
 }
 

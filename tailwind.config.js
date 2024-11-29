@@ -94,7 +94,7 @@ export default {
       innerMicroElementIn: {
         "0%": {
           opacity: 0,
-          transform: "translateY(-70px) scale(0.6)",
+          transform: "translateY(-70px) scale(0.9)",
         },
         "80%": { transform: "translateY(15px) scale(1.05)" },
         "100%": {

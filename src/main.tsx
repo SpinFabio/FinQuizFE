@@ -11,8 +11,10 @@ import "react-toastify/dist/ReactToastify.css";
 createRoot(document.getElementById("root")!).render(
   <AuthContextProvider>
     <StrictMode>
-      <App />
-      <ToastContainer />
+      <div style={{userSelect:"none"}}>
+        <App />
+        <ToastContainer />
+      </div>
     </StrictMode>
   </AuthContextProvider>,
 );

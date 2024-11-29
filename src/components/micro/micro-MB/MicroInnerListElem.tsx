@@ -34,9 +34,22 @@ const MicroInnerListElem: React.FC<MicroInnerListElemProps> = ({
         )}
       >
         <div className="flex flex-row justify-between">
-          <div className={classNames("flex flex-grow py-2")}>
-            <div className="flex items-center justify-center pl-2 pr-1">
-              {isSelected ? FULL_CHECK_ICON : EMPTY_CHECK_ICON}
+          <div
+            className={classNames("flex flex-grow py-2")}
+            onClick={() =>
+              myHook.handleCheckUncheck(macroId, microTopic.idMicro)
+            }
+            style={{ userSelect: "none" }}
+          >
+            <div
+              className="flex items-center justify-center pl-2 pr-1"
+              onClick={() =>
+                myHook.handleCheckUncheck(macroId, microTopic.idMicro)
+              }
+            >
+              {microTopic.selectedNumber > 0
+                ? FULL_CHECK_ICON
+                : EMPTY_CHECK_ICON}
             </div>
             <div className="flex items-center justify-center">
               {microTopic.nameMicro}

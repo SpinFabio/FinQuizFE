@@ -41,13 +41,21 @@ const MicroListElem: React.FC<MicroListElemProps> = ({ macroMicroData }) => {
           className={classNames(
             "z-50 flex flex-row items-center justify-start border border-info stroke-black p-2",
             isOpen ? "rounded-t-lg" : "rounded-lg",
+            macroMicroData.sumOfSelected > 0
+              ? "bg-primary stroke-white text-primary-contrast"
+              : "",
           )}
           onClick={handleOpenClose}
         >
           <motion.div animate={{ rotate: isOpen ? 90 : 0 }} className="p-2">
             {arrowIcon}
           </motion.div>
-          <div style={{userSelect:"none"}}>{macroMicroData.nameMacro}</div>
+          <div style={{ userSelect: "none" }}>{macroMicroData.nameMacro}</div>
+          <div className="flex flex-grow flex-row-reverse pr-2">
+            {macroMicroData.sumOfSelected > 0
+              ? macroMicroData.sumOfSelected
+              : ""}
+          </div>
         </div>
         {isOpen ? (
           <>
