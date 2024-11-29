@@ -47,13 +47,13 @@ const MicroListElem: React.FC<MicroListElemProps> = ({ macroMicroData }) => {
           <motion.div animate={{ rotate: isOpen ? 90 : 0 }} className="p-2">
             {arrowIcon}
           </motion.div>
-          <div>{macroMicroData.nameMacro}</div>
+          <div style={{userSelect:"none"}}>{macroMicroData.nameMacro}</div>
         </div>
         {isOpen ? (
           <>
             <div className="z-40 flex animate-appearIn flex-row justify-between bg-info py-2 pl-4 text-primary-contrast">
               <div className="text-info-mb">
-                quiz selezionati in questa sezione:
+                Quiz selezionati in questa sezione:
               </div>
               <div className="flex w-10 justify-center border-l-2 text-center">
                 {" "}
@@ -83,7 +83,7 @@ const MicroListElem: React.FC<MicroListElemProps> = ({ macroMicroData }) => {
               >
                 <div
                   onClick={handleOpenClose}
-                  className="-rotate-90 rounded-l-lg bg-gradient-to-b from-primary to-primary-dark stroke-white p-4"
+                  className="-rotate-90 rounded-l-lg bg-gradient-to-l from-primary to-primary-dark stroke-white p-4"
                 >
                   <AnimatedButton>{arrowIcon}</AnimatedButton>
                 </div>

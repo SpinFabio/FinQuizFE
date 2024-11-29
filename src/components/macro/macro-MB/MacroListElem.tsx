@@ -14,7 +14,7 @@ const MacroListElem: React.FC<MacroListElemProps> = ({ macro }) => {
 
   const myGradient =
     macro.selectedNumber > 0
-      ? "bg-gradient-to-b from-primary to-primary-dark"
+      ? "bg-primary "
       : "bg-white";
   const myTextColor =
     macro.selectedNumber > 0 ? "text-primary-contrast" : "text-primary";

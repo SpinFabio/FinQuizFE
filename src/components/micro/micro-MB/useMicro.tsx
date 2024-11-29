@@ -103,6 +103,11 @@ export function useMicro() {
       return newState;
     });
   }
+
+  function handleCheckUncheck(macroId: number, microId: number){
+
+  }
+
   const menuHandler: MenuHandler = {
     handleOptions: () => {},
     handleSaveFav: () => {},
