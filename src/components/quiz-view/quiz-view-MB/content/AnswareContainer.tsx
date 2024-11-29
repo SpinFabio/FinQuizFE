@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuizConsumer } from "../useQuiz";
 import { classNames } from "../../../../utils/tailwind-utils";
+import AnimatedButton from "../../../wigets/animated-buttons/AnimatedButton";
+import { motion } from "framer-motion";
 
 interface AnswareContainerProps {
   question: string;
@@ -43,14 +45,30 @@ const AnswareContainer: React.FC<AnswareContainerProps> = ({
   isSelected,
 }) => {
   const myHook = useQuizConsumer();
+
+  const [click, setClick] = useState(false);
   return (
-    <div
-      className={classNames("text-quiz-mb my-2 flex flex-row  items-center rounded-lg border border-info p-2 font-roboto font-body-mb shadow-lg",isSelected?"scale-[101%]":"scale-100")}
-      onClick={(_)=>myHook.handleAnswerSelection(question)}
-    >
-      <div id="radioControl">{isSelected ? radioFullIcon : radioEmptyIcon}</div>
-      <div className="pl-2">{question}</div>
-    </div>
+    <>
+      <motion.div
+        initial={{ scale: 1 }}
+        animate={{ scale: click ? (isSelected ? 1.05 : 0.95) : 1 }}
+        transition={{ duration: 0.1 }}
+        className={classNames(
+          "my-2 flex flex-row items-center rounded-lg border border-info p-2 font-roboto text-quiz-mb font-body-mb shadow-lg",
+          isSelected ? "scale-[105%]" : "scale-100",
+        )}
+        onClick={(_) => {
+          myHook.handleAnswerSelection(question);
+          setClick((prev) => !prev);
+          setTimeout(() => setClick(false), 100);
+        }}
+      >
+        <div id="radioControl">
+          {isSelected ? radioFullIcon : radioEmptyIcon}
+        </div>
+        <div className="pl-2">{question}</div>
+      </motion.div>
+    </>
   );
 };
 

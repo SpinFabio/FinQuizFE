@@ -1,4 +1,5 @@
 import { toast } from "react-toastify";
+import { getMacroFromID } from "../../utils/macro-micro";
 
 export interface MacroTopic {
   id: number;
@@ -6,48 +7,60 @@ export interface MacroTopic {
   quizTot: number;
   defaultNumber: number;
   selectedNumber: number;
+  prevNumber: number;
+  isChecked: boolean;
   completedPercentage: number;
 }
 
 export const macroTopicArray: MacroTopic[] = [
   {
     id: 1,
-    name: "Diritto di mercato e degli intermediari",
+    name: getMacroFromID(1),
     quizTot: 2000,
     defaultNumber: 5,
     selectedNumber: 5,
+    prevNumber: 0,
+    isChecked: true,
     completedPercentage: 0,
   },
   {
     id: 2,
-    name: "Diritto previdenziale e assicurativo",
+    name: getMacroFromID(2),
     quizTot: 500,
     defaultNumber: 6,
     selectedNumber: 6,
+    prevNumber: 0,
+    isChecked: true,
     completedPercentage: 0,
   },
   {
     id: 3,
-    name: "Diritto privato e commerciale",
+    name: getMacroFromID(3),
     quizTot: 400,
     defaultNumber: 6,
     selectedNumber: 6,
+    prevNumber: 0,
+    isChecked: true,
     completedPercentage: 0,
   },
   {
     id: 4,
-    name: "Diritto tributario del mercato finanziario",
+    name: getMacroFromID(4),
     quizTot: 500,
     defaultNumber: 19,
     selectedNumber: 19,
+    prevNumber: 0,
+    isChecked: true,
     completedPercentage: 0,
   },
   {
     id: 5,
-    name: "Matematica e economia del mercato",
+    name: getMacroFromID(5),
     quizTot: 1600,
     defaultNumber: 24,
     selectedNumber: 24,
+    prevNumber: 0,
+    isChecked: true,
     completedPercentage: 0,
   },
 ];

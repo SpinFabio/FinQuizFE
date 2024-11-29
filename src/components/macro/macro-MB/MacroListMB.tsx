@@ -4,16 +4,18 @@ import { useMacroConsumer, UseMacroInterface } from "./useMacro";
 import ModalTimeSetter from "./ModalTimeSetter";
 import ModalMB from "../../wigets/modal/ModalMB";
 
-const MacroList: React.FC = () => {
+const MacroListMB: React.FC = () => {
   const macroHook: UseMacroInterface = useMacroConsumer();
 
   return (
     <div key={macroHook.animationTrigger}>
+      <p className="px-4"> Quiz selezionati: {macroHook.totalSum}</p>
+
       {macroHook.macroState.map((macroT, i) => (
         <div
           key={macroT.name}
-          className="animate-slideFromDX opacity-0"
-          style={{ animationDelay: `${i * 50}ms` }}
+          className="animate-appearIn opacity-0"
+          style={{ animationDelay: `${i * 100}ms` }}
         >
           <MacroListElem key={i} macro={macroT} />
         </div>
@@ -28,4 +30,4 @@ const MacroList: React.FC = () => {
   );
 };
 
-export default MacroList;
+export default MacroListMB;

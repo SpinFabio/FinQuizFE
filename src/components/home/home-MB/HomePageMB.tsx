@@ -4,10 +4,7 @@ import CardMode from "./CardMode";
 import ResumeButton from "./ResumeButton";
 import ProfileIconMB from "../../layouts/layout-MB/icons/ProfileIconMB";
 import AnimatedButton from "../../wigets/animated-buttons/AnimatedButton";
-import {
-  checkCurrentQuizzes,
-  removeCurrentQuizzes,
-} from "../../../state/quiz/quiz";
+import { checkCurrentQuizzes } from "../../../state/quiz/quiz";
 
 interface HomePageMBProps {
   userName: string;
@@ -46,7 +43,7 @@ const HomePageMB: React.FC<HomePageMBProps> = ({
             );
           })}
         </div>
-        <div className="py-5 flex h-full flex-grow items-center justify-center">
+        <div className="flex h-full flex-grow items-center justify-center py-5">
           {isQuizzesArrayPresent ? (
             <AnimatedButton>
               <ResumeButton

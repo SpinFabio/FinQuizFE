@@ -2,6 +2,7 @@ import React from "react";
 import DesktopLayout from "./layout-DT/DesktopLayout";
 import MobileLayout from "./layout-MB/MobileLayout";
 import { MacroContextProvider } from "../macro/macro-MB/useMacro";
+import { MicroContextProvider } from "../micro/micro-MB/useMicro";
 
 interface LayoutProps {
   /* propName: propType */
@@ -16,7 +17,9 @@ const Layout: React.FC<LayoutProps> = (
     <>
       <div className="block sm:hidden">
         <MacroContextProvider>
-          <MobileLayout />
+          <MicroContextProvider>
+            <MobileLayout />
+          </MicroContextProvider>
         </MacroContextProvider>
       </div>
       <div className="hidden sm:block">

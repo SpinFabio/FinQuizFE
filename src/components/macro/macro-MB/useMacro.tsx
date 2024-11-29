@@ -5,7 +5,7 @@ import {
   macroTopicArray,
   setFavMacro,
 } from "../../../state/macro/macroTopicList";
-import { MAX_MACRO_QUIZZES } from "../../../config/myenv";
+import { MAX_MACRO_QUIZZES, MIN_MACRO_QUIZZES } from "../../../config/myenv";
 import { toast } from "react-toastify";
 import {
   DEFAULT_TIME,
@@ -21,12 +21,11 @@ import { setCurrentTimer } from "../../../state/time/timer";
 import { getMacroQuiz } from "../../../api/useMacroAPI";
 import { MacroTopicBase } from "../../../common/macro-interfaces";
 import { useNavigate } from "react-router-dom";
-import { removeCurrentQuizzes } from "../../../state/quiz/quiz";
 import { HOME_PAGE_ROUTE, QUIZ_PAGE_ROUTE } from "../../../config/routes";
 
 export function useMacro() {
   const [macroState, setMacroState] = useState<MacroTopic[]>(macroTopicArray);
-  const [sum, setSum] = useState<number>(
+  const [totalSum, setTotalSum] = useState<number>(
     macroTopicArray.reduce((acc, curr) => {
       return acc + curr.defaultNumber;
     }, 0),
@@ -37,7 +36,6 @@ export function useMacro() {
   const navigate = useNavigate();
 
   /*   useEffect(() => {
-
     console.log(macroState);
   }, [macroState]);
 
@@ -46,6 +44,14 @@ export function useMacro() {
   }, [sum]);
  */
 
+  useEffect(() => {
+    setTotalSum(
+      macroState.reduce((prev, curr) => {
+        return prev + curr.selectedNumber;
+      }, 0),
+    );
+  }, [macroState]);
+
   function handleReset() {
     const newState = macroState.map((elem) => ({
       ...elem,
@@ -53,19 +59,16 @@ export function useMacro() {
     }));
     setMacroState(newState);
     timerHook.setTime(DEFAULT_TIME);
-    const newSum = newState.reduce((acc, curr) => acc + curr.selectedNumber, 0);
-    setSum(newSum);
     setAnimationTrigger((prev) => prev + 1);
   }
 
   function handleChangeSelected(id: number, currentValue: number) {
-    //console.log(id, currentValue, sum);
     const prevValue = macroState.find((f) => f.id === id)?.selectedNumber;
 
     if (prevValue === undefined) {
       throw new Error("invaklid Macro id in handleChangeSelected");
     }
-    const nextSum = sum + currentValue - prevValue;
+    const nextSum = totalSum + currentValue - prevValue;
 
     if (Number.isNaN(currentValue)) {
       return;
@@ -77,8 +80,6 @@ export function useMacro() {
       );
       return;
     }
-
-    setSum(nextSum);
 
     setMacroState((prev) => {
       const newState = prev.map((macroT) => {
@@ -94,17 +95,16 @@ export function useMacro() {
 
       return newState;
     });
-
-    console.log(id, currentValue, sum);
   }
 
   function handleAdd(id: number) {
-    let newSum = sum;
+    let newSum = totalSum;
 
     setMacroState((prevState) => {
       const newState = prevState.map((macro) => {
         if (macro.id === id) {
-          newSum = sum + 1;
+          macro.isChecked = true;
+          newSum = totalSum + 1;
           if (newSum > MAX_MACRO_QUIZZES) {
             toast.warning(
               `non puoi inserire più del massimo consentito di quiz! (${MAX_MACRO_QUIZZES})`,
@@ -119,22 +119,27 @@ export function useMacro() {
         return macro;
       });
 
-      setSum(newSum);
       return newState;
     });
   }
 
   function handleSub(id: number) {
-    let newSum = sum;
+    let newSum = totalSum; 
 
     setMacroState((prevState) => {
       const newState = prevState.map((macro) => {
         if (macro.id === id) {
-          newSum = sum - 1;
+          newSum = totalSum - 1;
+
+          if (macro.selectedNumber === 1) {
+            macro.isChecked = false;
+          }
 
           if (macro.selectedNumber <= 0 || newSum < 0) {
+            macro.isChecked = false;
             return macro;
           }
+
           return {
             ...macro,
             selectedNumber: macro.selectedNumber - 1,
@@ -144,7 +149,6 @@ export function useMacro() {
         }
       });
 
-      setSum(newSum);
       return newState;
     });
   }
@@ -152,7 +156,7 @@ export function useMacro() {
   function handleSetFav() {
     setFavMacro(macroState);
     setFavTimeMacro(timerHook.time);
-    toast.success("La tua configurazione è stata salvata con successo")
+    toast.success("La tua configurazione è stata salvata con successo");
   }
 
   function handleGetFav() {
@@ -173,6 +177,11 @@ export function useMacro() {
   }
 
   async function handleStart() {
+    if (totalSum < MIN_MACRO_QUIZZES) {
+      toast.warning("Bisogna selezionare almeno 12 quiz per partire");
+      return;
+    }
+
     setCurrentTimer(timerHook.time);
 
     try {
@@ -194,16 +203,55 @@ export function useMacro() {
     }
   }
 
+  function getSelectedSum(): number {
+    return macroState.reduce((prev, curr) => {
+      return prev + curr.selectedNumber;
+    }, 0);
+  }
+
+  function handleCheckUncheck(id: number) {
+    setMacroState((prev) => {
+      const newState = prev.map((macro) => {
+        if (macro.id === id) {
+          const current = macro.selectedNumber;
+          const previous = macro.prevNumber;
+
+          if (macro.isChecked) {
+            return {
+              ...macro,
+              selectedNumber: 0,
+              prevNumber: current,
+              isChecked: false,
+            };
+          } else {
+            return {
+              ...macro,
+              selectedNumber: previous,
+              prevNumber: 0,
+              isChecked: true,
+            };
+          }
+        } else {
+          return macro;
+        }
+      });
+      return newState;
+    });
+  }
+
   const menuHandler: MenuHandler = {
     handleOptions: () => {},
     handleSaveFav: handleSetFav,
     handleLoadFav: handleGetFav,
     handleReset: handleReset,
     handleTime: handleOpenTimeModal,
+    handleStart: handleStart,
+    getSelectedSum: () => getSelectedSum(),
   };
 
   return {
-    handleStart,
+    totalSum,
+    handleCheckUncheck,
     animationTrigger,
     macroState,
     handleAdd,

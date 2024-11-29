@@ -1,20 +1,23 @@
+import { QuizBaseBE } from "../common/quiz-interfaces";
+import { QuizLocalState } from "../state/quiz/quiz";
+
 interface MacroTopic {
   id: number;
   name: string;
 }
 
 const macroTopics: MacroTopic[] = [
-  { id: 1, name: "Diritto del mercato finanziario e degli intermediari" },
+  { id: 1, name: "Diritto del mercato e degli intermediari" },
   {
     id: 2,
-    name: "Nozioni di matematica finanza e di economia del mercato finanziario",
+    name: "Matematica e economia del mercato  ",
   },
   {
     id: 3,
-    name: "Nozioni di diritto tributario riguardanti il mercato finanziario",
+    name: "Diritto tributario del mercato ",
   },
-  { id: 4, name: "Nozioni di diritto previdenziale e assicurativo" },
-  { id: 5, name: "Nozioni di diritto privato e di diritto commerciale" },
+  { id: 4, name: " Diritto previdenziale e assicurativo" },
+  { id: 5, name: " Diritto privato e di diritto commerciale" },
 ];
 
 interface MicroTopic {
@@ -174,4 +177,18 @@ export function getMacroFromID(macroTopicId: number): string {
     throw new Error(`Macro topic con ID ${macroTopicId} non trovato.`);
   }
   return macro.name;
+}
+
+export function fromQuizBEtoQuizFE(quiz: QuizBaseBE): QuizLocalState {
+  return {
+    macro: getMacroFromID(quiz.macroTopicID),
+    micro: getMicroFromID(quiz.microTopicID),
+    question: quiz.question,
+    correctAnswer: quiz.correctAnswer,
+    selectedAnswer: "", // Inizialmente vuoto
+    allAnswers: quiz.allAnswers,
+    score: 1, // Imposta il punteggio iniziale a 1
+    isViewed: false, // Inizialmente non visto
+    isFlagged: false, // Inizialmente non marcato
+  };
 }

@@ -28,11 +28,11 @@ const LayoutTop: React.FC<LayoutTopProps> = ({ timerHook }) => {
       </div>
       <div
         id="timer-and-fade"
-        className="flex h-7 items-center justify-center bg-gradient-to-b from-white to-transparent align-middle"
+        className="flex h-5 items-center justify-center bg-gradient-to-b from-white to-transparent align-middle"
       >
         <div
           id="timer-container"
-          className="bg z-50 -mt-7 rounded-2xl bg-red-500"
+          className="bg z-50 -mt-4 rounded-2xl bg-red-500"
         >
           <TimerMB isInteractable={false} timerHook={timerHook} />
         </div>

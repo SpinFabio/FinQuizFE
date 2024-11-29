@@ -6,7 +6,7 @@ import {
 import { BE_DOMAIN } from "../config/myenv";
 import { QuizLocalState, setCurrentQuizzes } from "../state/quiz/quiz";
 import { authFetch } from "../utils/fetch-utils";
-import { fromQuizBEtoQuizFE } from "../utils/fromQuizBEtoQuizFE";
+import { fromQuizBEtoQuizFE } from "../utils/macro-micro";
 
 export async function getMacroQuiz(macroReqArray: MacroTopicBase[]) {
   const payload: MacroTopicRequest = {

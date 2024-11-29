@@ -44,9 +44,9 @@ const ModalMB: React.FC<ModalMBProps> = ({
             className={classNames(
               "h-full w-full flex-col items-center justify-center"
             )}
-            initial={{ scale: 0.9, opacity: 0, y: 1000 }}
+            initial={{ scale: 0.9, opacity: 0, y: 100 }}
             animate={{ scale: 1, opacity: 1, y: 1 }}
-            exit={{ scale: 0, opacity: 0, y: 1000 }}
+            exit={{ scale: 0, opacity: 0, y: 500 }}
             onClick={(e) => e.stopPropagation()}
           >
             {children}

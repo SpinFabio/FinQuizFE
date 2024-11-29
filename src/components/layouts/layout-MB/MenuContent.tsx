@@ -18,6 +18,8 @@ export interface MenuHandler {
   handleLoadFav: () => void;
   handleReset: () => void;
   handleTime: () => void;
+  handleStart: () => void;
+  getSelectedSum: () => number;
 }
 
 const MenuContent: React.FC<MenuContentProps> = ({ menuHandler }) => {
@@ -50,7 +52,7 @@ const MenuContent: React.FC<MenuContentProps> = ({ menuHandler }) => {
   ];
 
   return (
-    <div className="flex h-auto w-full flex-row items-start justify-evenly rounded-t-[3rem] bg-gradient-to-b from-primary to-primary-dark">
+    <div className="flex h-auto w-full flex-row items-start justify-evenly rounded-t-[3rem] bg-gradient-to-b from-primary to-primary-dark outline outline-2 outline-white">
       {menuButtons.map((mb, i) => (
         <AnimatedButton key={i}>
           <IconMenu

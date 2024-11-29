@@ -15,10 +15,12 @@ import {
   HOME_PAGE_ROUTE,
   LOGIN_ROUTE,
   MACRO_PAGE_ROUTE,
+  MICRO_PAGE_ROUTE,
   QUIZ_PAGE_ROUTE,
   QUIZ_REVIEW_PAGE_ROUTE,
   REGISTER_ROUTE,
 } from "./config/routes.tsx";
+import MicroContent from "./components/micro/MicroContent.tsx";
 
 const App: React.FC = () => {
   return (
@@ -33,6 +35,7 @@ const App: React.FC = () => {
 
         <Route element={<Layout />}>
           <Route path={MACRO_PAGE_ROUTE} element={<MacroContent />} />
+          <Route path={MICRO_PAGE_ROUTE} element={<MicroContent/>} />
         </Route>
 
         <Route element={<QuizLayoutPage />}>

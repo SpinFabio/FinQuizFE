@@ -26,12 +26,18 @@ const ModalList: React.FC<ModalListProps> = (
 
       <p className={showMarked ? "" : "hidden"}>domande marcate: </p>
       {myHook.quizArray
-        .map((quiz,index) => {
+        .map((quiz, index) => {
           return { ...quiz, originalIndex: index };
         })
         .filter((quiz) => quiz.isFlagged)
         .map((quiz, i) => {
-          return <ModalListElement key={i} quizNum={quiz.originalIndex+1} quiz={quiz} />;
+          return (
+            <ModalListElement
+              key={i}
+              quizNum={quiz.originalIndex + 1}
+              quiz={quiz}
+            />
+          );
         })}
 
       <p className="mt-5">lista completa delle domande: </p>

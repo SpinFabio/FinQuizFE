@@ -5,11 +5,15 @@ import { useQuizConsumer } from "../useQuiz";
 
 interface ModalListElementProps {
   quiz: QuizLocalState;
-  quizNum:number
+  quizNum: number;
 }
 
-const ModalListElement: React.FC<ModalListElementProps> = ({ quiz,quizNum }) => {
+const ModalListElement: React.FC<ModalListElementProps> = ({
+  quiz,
+  quizNum,
+}) => {
   const myHook = useQuizConsumer();
+  const quizIndex = quizNum - 1;
 
   let myBorderColor = "border-l-slate-500";
   if (quiz.isFlagged) {
@@ -28,16 +32,14 @@ const ModalListElement: React.FC<ModalListElementProps> = ({ quiz,quizNum }) => 
       )}
       onClick={() => {
         myHook.handleCloseListModal();
-        myHook.setCurrentIndex(
-          myHook.quizArray.findIndex((item) => item === quiz),
-        );
+        myHook.setCurrentIndex(quizIndex);
       }}
     >
       <div className="absolute bottom-0 left-0 h-1/2 w-full bg-gradient-to-b from-transparent to-white" />
       <div className="absolute bottom-0 left-0 h-1/2 w-full bg-gradient-to-b from-transparent to-white" />
-      
-      
-      <p className="font-h1-mb inline-block mr-1">{quizNum}.</p>{quiz.question}
+
+      <p className="mr-1 inline-block font-h1-mb">{quizNum}.</p>
+      {quiz.question}
     </div>
   );
 };

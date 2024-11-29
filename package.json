@@ -13,6 +13,8 @@
     "@heroicons/react": "^2.1.5",
     "@hookform/resolvers": "^3.9.1",
     "@types/yup": "^0.32.0",
+    "chroma-js": "^3.1.2",
+    "chroma.ts": "^1.0.10",
     "framer-motion": "^11.11.17",
     "motion": "^11.11.17",
     "react": "^18.3.1",
@@ -27,6 +29,7 @@
     "yup": "^1.4.0"
   },
   "devDependencies": {
+    "@types/chroma-js": "^2.4.4",
     "@types/node": "^22.7.4",
     "@types/react": "^18.3.3",
     "@types/react-bootstrap": "^0.32.37",
