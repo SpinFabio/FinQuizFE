@@ -18,6 +18,7 @@ import {
   setFavTimeMicro,
 } from "../../../state/micro/microTime";
 import { toast } from "react-toastify";
+import { showUniqueToastWarning } from "../../../utils/toast-utils";
 
 export function useMicro() {
   const [macroMicroState, setMacroMicroState] =
@@ -58,8 +59,9 @@ export function useMicro() {
                 newNumericValue + totSum - prevMicroSelectedNumber >
                 MAX_MICRO_QUIZZES
               ) {
-                toast.warning(
+                showUniqueToastWarning(
                   `non puoi inserire più del massimo consentito di quiz! (${MAX_MICRO_QUIZZES})`,
+                  "microMaxWarning",
                 );
                 return micro;
               }

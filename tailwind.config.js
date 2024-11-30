@@ -102,6 +102,18 @@ export default {
           transform: "scale(1) translateY(0px)",
         },
       },
+      innerMicroElementOut: {
+        "0%": {
+          opacity: 1,
+          transform: "scale(1) translateY(0px)",
+        },
+        "20%": { transform: "translateY(15px) scale(1.05)" },
+        "100%": {
+          opacity: 0,
+          transform: "translateY(-70px) scale(0.9)",
+        },
+      },
+      
 
       slideFromDX: {
         "0%": { opacity: 0, transform: "translateX(100%)" },
@@ -114,6 +126,7 @@ export default {
     },
     animation: {
       innerMicroElementIn: "innerMicroElementIn 0.3s ease forwards",
+      innerMicroElementout: "innerMicroElementout 0.1s ease forwards",
       popIn: "popIn 0.5s ease forwards ",
       appearIn: "appearIn 0.4s ease forwards ",
       slideFromDX: "slideFromDX 0.4s ease forwards",

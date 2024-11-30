@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { HOME_PAGE_ROUTE } from "../../config/routes";
 
-interface BaseHomeIconProps {
+interface BaseHomeIconProps { 
   /* propName: propType */
 }
 

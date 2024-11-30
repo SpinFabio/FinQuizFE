@@ -22,6 +22,7 @@ import { getMacroQuiz } from "../../../api/useMacroAPI";
 import { MacroTopicBase } from "../../../common/macro-interfaces";
 import { useNavigate } from "react-router-dom";
 import { HOME_PAGE_ROUTE, QUIZ_PAGE_ROUTE } from "../../../config/routes";
+import { showUniqueToastWarning } from "../../../utils/toast-utils";
 
 export function useMacro() {
   const [macroState, setMacroState] = useState<MacroTopic[]>(MACRO_TOPIC_ARRAY);
@@ -75,8 +76,9 @@ export function useMacro() {
     }
 
     if (nextSum > MAX_MACRO_QUIZZES) {
-      toast.warning(
+      showUniqueToastWarning(
         `non puoi inserire più del massimo consentito di quiz! (${MAX_MACRO_QUIZZES})`,
+        "macroMaxWarning",
       );
       return;
     }
@@ -162,7 +164,7 @@ export function useMacro() {
   function handleGetFav() {
     const newMacro = getFavMacro(macroState);
     const newTime = getFavTimeMacro();
-    
+
     setMacroState(newMacro);
     setAnimationTrigger((prev) => prev + 1);
     timerHook.setTime(newTime);

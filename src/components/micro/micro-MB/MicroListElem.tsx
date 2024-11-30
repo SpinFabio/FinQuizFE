@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MacroMicroData } from "../../../state/micro/microTopicList";
 import { motion } from "framer-motion";
 import MicroInnerListElem from "./MicroInnerListElem";
@@ -28,11 +28,24 @@ const MicroListElem: React.FC<MicroListElemProps> = ({ macroMicroData }) => {
   );
 
   const [isOpen, setIsOpen] = useState(false);
+  
+  const [animationClass, setAnimationClass] = useState('');
+
+  useEffect(() => {
+    if (isOpen) {
+      setAnimationClass('animate-innerMicroElementIn');
+    } else {
+      setAnimationClass('animate-innerMicroElementout');
+    }
+  }, [isOpen]);
+
   const lenght = macroMicroData.microArray.length;
   const delayMs = 50;
   const handleOpenClose = () => {
     setIsOpen(!isOpen);
   };
+
+  
 
   return (
     <>
@@ -73,7 +86,7 @@ const MicroListElem: React.FC<MicroListElemProps> = ({ macroMicroData }) => {
                 <div
                   key={i}
                   style={{ animationDelay: `${delayMs * i}ms` }}
-                  className="animate-innerMicroElementIn opacity-0"
+                  className={classNames("opacity-0",animationClass)}
                 >
                   <MicroInnerListElem
                     key={i}
