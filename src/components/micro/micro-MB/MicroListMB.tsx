@@ -1,8 +1,8 @@
 import React from "react";
 import { useMicroConsumer, UseMicroInterface } from "./useMicro";
 import MicroListElem from "./MicroListElem";
-import ModalMB from "../../wigets/modal/ModalMB";
 import ModalTimeSetter from "../../macro/macro-MB/ModalTimeSetter";
+import ModalPopInMB from "../../wigets/modal/ModalPopInMB";
 
 interface MicroListMBProps {
   /* propName: propType */
@@ -28,12 +28,12 @@ const MicroListMB: React.FC<MicroListMBProps> = (
         </div>
       ))}
 
-      <ModalMB
+      <ModalPopInMB
         isOpen={myHook.isOpenTimeModal}
         onClose={myHook.menuHandler.handleCloseTimeModal}
       >
         <ModalTimeSetter currenHook={myHook.menuHandler} />
-      </ModalMB>
+      </ModalPopInMB>
     </div>
   );
 };

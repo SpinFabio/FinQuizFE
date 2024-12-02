@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 import MyNumInput from "../layouts/layout-MB/MyNumInput";
+import SimplePortal from "../wigets/SimplePortal";
 
 interface ChildTestProps {
   /* Prop types go here if needed */
 }
 
 const ChildTest: React.FC<ChildTestProps> = () => {
-  const [animate, setAnimate] = useState(false);
   const [value, setValue] = useState(0);
 
   return (
@@ -22,6 +22,7 @@ const ChildTest: React.FC<ChildTestProps> = () => {
         }}
         style={true}
       />
+
     </motion.div>
   );
 };
