@@ -1,7 +1,7 @@
 import React from "react";
-import ModalPopInMB from "../../../wigets/modal/ModalPopInMB";
 import { useQuizConsumer } from "../useQuiz";
 import ModalListElement from "./ModalListElement";
+import ModalMB from "../../../wigets/modal/ModalMB";
 
 interface ModalListProps {
   /* propName: propType */
@@ -17,7 +17,8 @@ const ModalList: React.FC<ModalListProps> = (
   const showMarked = myHook.quizArray.find((quiz) => quiz.isFlagged);
 
   return (
-    <ModalPopInMB
+    <ModalMB
+      type={"popIn"}
       isOpen={myHook.isOpenListModal}
       setOverflow="overflow-y-auto"
       onClose={myHook.handleCloseListModal}
@@ -54,7 +55,7 @@ const ModalList: React.FC<ModalListProps> = (
           onClick={myHook.handleCloseListModal}
         />
       </div>
-    </ModalPopInMB>
+    </ModalMB>
   );
 };
 

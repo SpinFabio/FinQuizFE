@@ -2,7 +2,7 @@ import React from "react";
 import MacroListElem from "./MacroListElem";
 import { useMacroConsumer, UseMacroInterface } from "./useMacro";
 import ModalTimeSetter from "./ModalTimeSetter";
-import ModalPopInMB from "../../wigets/modal/ModalPopInMB";
+import ModalMB from "../../wigets/modal/ModalMB";
 
 const MacroListMB: React.FC = () => {
   const macroHook: UseMacroInterface = useMacroConsumer();
@@ -20,12 +20,13 @@ const MacroListMB: React.FC = () => {
           <MacroListElem key={i} macro={macroT} />
         </div>
       ))}
-      <ModalPopInMB
+      <ModalMB
         isOpen={macroHook.isOpenTimeModal}
+        type={"popIn"}
         onClose={macroHook.menuHandler.handleCloseTimeModal}
       >
         <ModalTimeSetter currenHook={macroHook.menuHandler} />
-      </ModalPopInMB>
+      </ModalMB>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 import MyNumInput from "../layouts/layout-MB/MyNumInput";
-import SimplePortal from "../wigets/SimplePortal";
+import SimplePortal from "../wigets/portals/SimplePortal";
 
 interface ChildTestProps {
   /* Prop types go here if needed */
@@ -15,14 +15,13 @@ const ChildTest: React.FC<ChildTestProps> = () => {
       <MyNumInput
         value={value}
         handleChange={(num: number) => {
-          if(num%3==0&&num!=0){
-            return
+          if (num % 3 == 0 && num != 0) {
+            return;
           }
           setValue(num);
         }}
         style={true}
       />
-
     </motion.div>
   );
 };
