@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ProfileWidget from "../../../Profile/ProfileMB/ProfileWidget";
+import ProfileWidgetMB from "../../../Profile/ProfileMB/ProfileWidgetMB";
 import ReusableProfileIcon from "./ReusableProfileIcon";
 import ModalMB from "../../../wigets/modal/ModalMB";
 
@@ -17,7 +17,7 @@ const ProfileIconMB: React.FC<ProfileIconPropsMB> = () => {
         onClose={() => setModalState(false)}
         type={"appearIn"}
       >
-        <ProfileWidget onClose={() => setModalState(false)} />
+        <ProfileWidgetMB onClose={() => setModalState(false)} />
       </ModalMB>
     </div>
   );

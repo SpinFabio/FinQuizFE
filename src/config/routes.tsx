@@ -1,6 +1,6 @@
 export const LANDING_PAGE_ROUTE = "/";
-export const LOGIN_ROUTE = "/login";
-export const REGISTER_ROUTE = "/register";
+export const LOGIN_PAGE_ROUTE = "/login";
+export const REGISTER_PAGE_ROUTE = "/register";
 export const HOME_PAGE_ROUTE = "/home";
 export const PROFILE_PAGE_ROUTE = "/profile";
 

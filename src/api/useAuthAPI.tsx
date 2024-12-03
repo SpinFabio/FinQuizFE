@@ -6,7 +6,7 @@ import {
 } from "../common/user-interfaces";
 import { BE_DOMAIN } from "../config/myenv";
 import { ValidationError } from "yup";
-import { unauthFetch } from "../utils/fetch-utils";
+import { unauthFetch } from "./fetch-utils";
 
 const DEVICE_ID_KEY_NAME = "deviceId";
 
@@ -27,12 +27,13 @@ export function useAuthAPI() {
       password: password_u,
       uuid: deviceId,
     };
-    
+
     try {
       await userLoginRequestSchema.validate(userLoginInfo, {
         abortEarly: false,
       });
       await unauthFetch(BE_DOMAIN + "/api/user/login", "POST", userLoginInfo);
+      
     } catch (error) {
       if (error instanceof ValidationError) {
         console.error("Errore di validazione", error.errors);

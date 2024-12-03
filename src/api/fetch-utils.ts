@@ -3,8 +3,11 @@ import {
   authBodyReqResSchema,
 } from "../common/user-interfaces";
 import { BE_DOMAIN } from "../config/myenv";
-import { LOGIN_ROUTE } from "../config/routes";
-import { setAccessToken, getAccessToken } from "./acces-token-utils";
+import { LOGIN_PAGE_ROUTE } from "../config/routes";
+import {
+  setAccessToken,
+  getAccessTokenPayload,
+} from "../utils/acces-token-utils";
 
 type HttpRequest = "POST" | "GET";
 
@@ -43,7 +46,7 @@ export async function authFetch<T>(
       const accessToken = await refreshTokens();
       setAccessToken(accessToken);
     } catch (error) {
-      window.location.href = LOGIN_ROUTE;
+      window.location.href = LOGIN_PAGE_ROUTE;
       throw new Error("Refresh faield");
     }
     response = await myFetch(endpoint_u, method_u, payload_u);
@@ -86,7 +89,6 @@ async function myFetch(
     },
     body: JSON.stringify({
       ...payload_u,
-      accessToken: getAccessToken(),
     }),
   });
 

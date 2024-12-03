@@ -1,5 +1,5 @@
 import React from "react";
-import { authFetch } from "../../utils/fetch-utils";
+import { authFetch } from "../../api/fetch-utils";
 import { BE_DOMAIN } from "../../config/myenv";
 import { toast } from "react-toastify";
 

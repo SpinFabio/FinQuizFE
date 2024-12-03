@@ -13,29 +13,35 @@ import QuizContentPage from "./components/quiz-view/QuizContentPage.tsx";
 import TestBE from "./components/test-BE/TestBE.tsx";
 import {
   HOME_PAGE_ROUTE,
-  LOGIN_ROUTE,
+  LOGIN_PAGE_ROUTE,
   MACRO_PAGE_ROUTE,
   MICRO_PAGE_ROUTE,
+  PROFILE_PAGE_ROUTE,
   QUIZ_PAGE_ROUTE,
   QUIZ_REVIEW_PAGE_ROUTE,
-  REGISTER_ROUTE,
+  REGISTER_PAGE_ROUTE,
 } from "./config/routes.tsx";
 import MicroContent from "./components/micro/MicroContent.tsx";
+import ProfilePage from "./components/Profile/ProfilePage.tsx";
 
 const App: React.FC = () => {
   return (
     <BrowserRouter basename="/">
       <Routes>
-        <Route path={LOGIN_ROUTE} element={<AuthPage typeAuth="login" />} />
         <Route
-          path={REGISTER_ROUTE}
+          path={LOGIN_PAGE_ROUTE}
+          element={<AuthPage typeAuth="login" />}
+        />
+        <Route
+          path={REGISTER_PAGE_ROUTE}
           element={<AuthPage typeAuth="register" />}
         />
         <Route path={HOME_PAGE_ROUTE} element={<HomePage />} />
+        <Route path={PROFILE_PAGE_ROUTE} element={<ProfilePage />} />
 
         <Route element={<Layout />}>
           <Route path={MACRO_PAGE_ROUTE} element={<MacroContent />} />
-          <Route path={MICRO_PAGE_ROUTE} element={<MicroContent/>} />
+          <Route path={MICRO_PAGE_ROUTE} element={<MicroContent />} />
         </Route>
 
         <Route element={<QuizLayoutPage />}>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { LOGIN_ROUTE, REGISTER_ROUTE } from "../../config/routes";
+import { LOGIN_PAGE_ROUTE, REGISTER_PAGE_ROUTE } from "../../config/routes";
 
 interface RedirectAuthProps {
   typeAuth: "login" | "register";
@@ -11,10 +11,10 @@ const RedirectAuth: React.FC<RedirectAuthProps> = ({ typeAuth }) => {
   let linkTo = "";
   if (typeAuth === "login") {
     text = "Non hai un account?";
-    linkTo = REGISTER_ROUTE;
+    linkTo = REGISTER_PAGE_ROUTE;
   } else {
     text = "Hai già un account? ";
-    linkTo = LOGIN_ROUTE;
+    linkTo = LOGIN_PAGE_ROUTE;
   }
 
   return (

@@ -1,6 +1,9 @@
 import { useState } from "react";
 import * as Yup from "yup";
 import { useAuthAPI } from "../../../api/useAuthAPI";
+import { useNavigate  } from 'react-router-dom';
+import { HOME_PAGE_ROUTE } from "../../../config/routes";
+
 
 export type ErrorState = "empty" | "valid" | { error: string };
 
@@ -8,6 +11,8 @@ export const useAuthPage = (typeAuth: "login" | "register") => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  let navigate = useNavigate();
+
 
   const [emailError, setEmailError] = useState<ErrorState>("empty");
   const [passError, setPassError] = useState<ErrorState>("empty");
@@ -82,6 +87,7 @@ export const useAuthPage = (typeAuth: "login" | "register") => {
       console.log("login form valido");
 
       await loginUser(email, password);
+      navigate(HOME_PAGE_ROUTE)
     } else if (
       typeAuth === "register" &&
       nameError === "valid" &&
