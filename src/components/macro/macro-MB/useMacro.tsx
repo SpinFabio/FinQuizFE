@@ -19,7 +19,6 @@ import {
 } from "../../../state/macro/macroTime";
 import { setCurrentTimer } from "../../../state/time/timer";
 import { getMacroQuiz } from "../../../api/useMacroAPI";
-import { MacroTopicBase } from "../../../common/macro-interfaces";
 import { useNavigate } from "react-router-dom";
 import { HOME_PAGE_ROUTE, QUIZ_PAGE_ROUTE } from "../../../config/routes";
 import { showUniqueToastWarning } from "../../../utils/toast-utils";
@@ -35,15 +34,6 @@ export function useMacro() {
   const timerHook: UseTimerInterface = useTimer();
   const [animationTrigger, setAnimationTrigger] = useState(0);
   const navigate = useNavigate();
-
-  /*   useEffect(() => {
-    console.log(macroState);
-  }, [macroState]);
-
-  useEffect(() => {
-    console.log(sum);
-  }, [sum]);
- */
 
   useEffect(() => {
     setTotalSum(
@@ -105,7 +95,6 @@ export function useMacro() {
     setMacroState((prevState) => {
       const newState = prevState.map((macro) => {
         if (macro.id === id) {
-          macro.isChecked = true;
           newSum = totalSum + 1;
           if (newSum > MAX_MACRO_QUIZZES) {
             toast.warning(
@@ -133,12 +122,8 @@ export function useMacro() {
         if (macro.id === id) {
           newSum = totalSum - 1;
 
-          if (macro.selectedNumber === 1) {
-            macro.isChecked = false;
-          }
 
           if (macro.selectedNumber <= 0 || newSum < 0) {
-            macro.isChecked = false;
             return macro;
           }
 
@@ -187,15 +172,7 @@ export function useMacro() {
     setCurrentTimer(timerHook.time);
 
     try {
-      const macroReqArray: MacroTopicBase[] = macroState.map((macro) => {
-        const tmp: MacroTopicBase = {
-          quantitySelected: macro.selectedNumber,
-          macroID: macro.id,
-        };
-        return tmp;
-      });
-      await getMacroQuiz(macroReqArray);
-
+      await getMacroQuiz(macroState);
       navigate(QUIZ_PAGE_ROUTE);
     } catch {
       toast.error(
@@ -205,12 +182,6 @@ export function useMacro() {
     }
   }
 
-  function getSelectedSum(): number {
-    return macroState.reduce((prev, curr) => {
-      return prev + curr.selectedNumber;
-    }, 0);
-  }
-
   function handleCheckUncheck(id: number) {
     setMacroState((prev) => {
       const newState = prev.map((macro) => {
@@ -218,19 +189,17 @@ export function useMacro() {
           const current = macro.selectedNumber;
           const previous = macro.prevNumber;
 
-          if (macro.isChecked) {
+          if (macro.selectedNumber>0) {
             return {
               ...macro,
               selectedNumber: 0,
               prevNumber: current,
-              isChecked: false,
             };
           } else {
             return {
               ...macro,
               selectedNumber: previous,
               prevNumber: 0,
-              isChecked: true,
             };
           }
         } else {
@@ -249,7 +218,6 @@ export function useMacro() {
     handleOpenTimeModal: handleOpenTimeModal,
     handleCloseTimeModal: hanldeCloseTimeModal,
     handleStart: handleStart,
-    getSelectedSum: () => getSelectedSum(),
     timerHook: timerHook,
   };
 

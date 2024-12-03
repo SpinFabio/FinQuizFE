@@ -5,6 +5,8 @@ import {
   useTimer,
   UseTimerInterface,
 } from "../../layouts/layout-MB/useTimer";
+import { useNavigate } from "react-router-dom";
+
 import {
   getFavMicro,
   MacroMicroData,
@@ -12,13 +14,16 @@ import {
   MicroTopic,
   setFavMicro,
 } from "../../../state/micro/microTopicList";
-import { MAX_MICRO_QUIZZES } from "../../../config/myenv";
+import { MAX_MICRO_QUIZZES, MIN_MICRO_QUIZZES } from "../../../config/myenv";
 import {
   getFavTimeMicro,
   setFavTimeMicro,
 } from "../../../state/micro/microTime";
-import { toast } from "react-toastify";
 import { showUniqueToastWarning } from "../../../utils/toast-utils";
+import { getMicroQuiz } from "../../../api/useMicroAPI";
+import { toast } from "react-toastify";
+import { setCurrentTimer } from "../../../state/time/timer";
+import { HOME_PAGE_ROUTE, QUIZ_PAGE_ROUTE } from "../../../config/routes";
 
 export function useMicro() {
   const [macroMicroState, setMacroMicroState] =
@@ -27,6 +32,7 @@ export function useMicro() {
   const [animationTrigger, setAnimationTrigger] = useState(0);
   const timerHook: UseTimerInterface = useTimer();
   const [isOpenTimeModal, setIsOpenTimeModal] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const sum = macroMicroState.reduce(
@@ -65,7 +71,7 @@ export function useMicro() {
                 );
                 return micro;
               }
-              console.log("continuo ad eseguire");
+              //console.log("continuo ad eseguire");
               canUpdateFlag = true;
               return {
                 ...micro,
@@ -253,6 +259,24 @@ export function useMicro() {
     setIsOpenTimeModal(false);
   }
 
+  async function handleStart() {
+    if (totSum < MIN_MICRO_QUIZZES) {
+      toast.warning("Bisogna selezionare almeno 12 quiz per partire");
+      return;
+    }
+    setCurrentTimer(timerHook.time);
+
+    try {
+      await getMicroQuiz(macroMicroState);
+      navigate(QUIZ_PAGE_ROUTE);
+    } catch (error) {
+      toast.error(
+        "qualcosa è andato storto con la richiesta al server (Esercitati)",
+      );
+      navigate(HOME_PAGE_ROUTE);
+    }
+  }
+
   const menuHandler: MenuHandler = {
     handleOptions: () => {},
     handleSaveFav: handleSaveFav,
@@ -260,8 +284,7 @@ export function useMicro() {
     handleReset: handleReset,
     handleOpenTimeModal: handleOpenTimeModal,
     handleCloseTimeModal: handleCloseTimeModal,
-    handleStart: () => {},
-    getSelectedSum: () => 1,
+    handleStart: handleStart,
     timerHook: timerHook,
   };
   return {

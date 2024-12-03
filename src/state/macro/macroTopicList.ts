@@ -9,7 +9,6 @@ export interface MacroTopic {
   defaultNumber: number;
   selectedNumber: number;
   prevNumber: number;
-  isChecked: boolean;
   completedPercentage: number;
 }
 
@@ -21,7 +20,6 @@ export const MACRO_TOPIC_ARRAY: MacroTopic[] = [
     defaultNumber: 5,
     selectedNumber: 5,
     prevNumber: 0,
-    isChecked: true,
     completedPercentage: 0,
   },
   {
@@ -31,7 +29,6 @@ export const MACRO_TOPIC_ARRAY: MacroTopic[] = [
     defaultNumber: 6,
     selectedNumber: 6,
     prevNumber: 0,
-    isChecked: true,
     completedPercentage: 0,
   },
   {
@@ -41,7 +38,6 @@ export const MACRO_TOPIC_ARRAY: MacroTopic[] = [
     defaultNumber: 6,
     selectedNumber: 6,
     prevNumber: 0,
-    isChecked: true,
     completedPercentage: 0,
   },
   {
@@ -51,7 +47,6 @@ export const MACRO_TOPIC_ARRAY: MacroTopic[] = [
     defaultNumber: 19,
     selectedNumber: 19,
     prevNumber: 0,
-    isChecked: true,
     completedPercentage: 0,
   },
   {
@@ -61,7 +56,6 @@ export const MACRO_TOPIC_ARRAY: MacroTopic[] = [
     defaultNumber: 24,
     selectedNumber: 24,
     prevNumber: 0,
-    isChecked: true,
     completedPercentage: 0,
   },
 ];

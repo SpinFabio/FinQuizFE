@@ -1,7 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import {
   getCurrentQuizzes,
-  QuizLocalState,
   removeCurrentQuizzes,
   setCurrentQuizzes,
 } from "../../../state/quiz/quiz";
@@ -11,10 +10,11 @@ import {
   HOME_PAGE_ROUTE,
   QUIZ_REVIEW_PAGE_ROUTE,
 } from "../../../config/routes";
+import { QuizFE } from "../../../common/quiz-interfaces";
 
 export function useQuiz() {
   const navigate = useNavigate();
-  const [quizArray, setQuizArray] = useState<QuizLocalState[]>(mockQuizData);
+  const [quizArray, setQuizArray] = useState<QuizFE[]>(mockQuizData);
   const inMemoryQuizzes = getCurrentQuizzes();
 
   useEffect(() => {
@@ -31,15 +31,15 @@ export function useQuiz() {
   const [isOpenListModal, setIsOpenListModal] = useState(false);
 
   useEffect(() => {
-    console.log("salvataggio in memoria avvenuto");
     if (quizArray === mockQuizData) {
       removeCurrentQuizzes();
     } else {
       setCurrentQuizzes(quizArray);
+      console.log("salvataggio in memoria avvenuto");
     }
   }, [quizArray]);
 
-  function getCurrentQuiz(): QuizLocalState {
+  function getCurrentQuiz(): QuizFE {
     return quizArray[currentIndex];
   }
 

@@ -4,11 +4,22 @@ import {
   MacroTopicResponse,
 } from "../common/macro-interfaces";
 import { BE_DOMAIN } from "../config/myenv";
-import { QuizLocalState, setCurrentQuizzes } from "../state/quiz/quiz";
+import { setCurrentQuizzes } from "../state/quiz/quiz";
 import { authFetch } from "./fetch-utils";
 import { fromQuizBEtoQuizFE } from "../utils/macro-micro";
+import { QuizFE } from "../common/quiz-interfaces";
+import { MacroTopic } from "../state/macro/macroTopicList";
 
-export async function getMacroQuiz(macroReqArray: MacroTopicBase[]) {
+export async function getMacroQuiz(macroState: MacroTopic[]) {
+
+  const macroReqArray: MacroTopicBase[] = macroState.map((macro) => {
+    const tmp: MacroTopicBase = {
+      quantitySelected: macro.selectedNumber,
+      macroID: macro.id,
+    };
+    return tmp;
+  });
+
   const payload: MacroTopicRequest = {
     arrayMacrotopic: macroReqArray,
   };
@@ -19,7 +30,7 @@ export async function getMacroQuiz(macroReqArray: MacroTopicBase[]) {
     payload,
   );
 
-  const localQuizSate: QuizLocalState[] = res.quizesArray.map((QuizBE) =>
+  const localQuizSate: QuizFE[] = res.quizesArray.map((QuizBE) =>
     fromQuizBEtoQuizFE(QuizBE),
   );
 

@@ -21,7 +21,6 @@ export interface MenuHandler {
   handleOpenTimeModal: () => void;
   handleCloseTimeModal: () => void;
   handleStart: () => void;
-  getSelectedSum: () => number;
   timerHook: UseTimerInterface;
 }
 

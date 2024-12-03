@@ -4,7 +4,6 @@ import StartButtonMB from "./StartButtonMB";
 import { useMacroConsumer } from "../../macro/macro-MB/useMacro";
 import MenuContent, { MenuHandler } from "./MenuContent";
 import LayoutTop from "./LayoutTop";
-import { UseTimerInterface } from "./useTimer";
 import { MACRO_PAGE_ROUTE, MICRO_PAGE_ROUTE } from "../../../config/routes";
 import { useMicroConsumer } from "../../micro/micro-MB/useMicro";
 

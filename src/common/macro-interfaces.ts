@@ -1,4 +1,4 @@
-import { QuizBaseBE } from "./quiz-interfaces";
+import { QuizBE } from "./quiz-interfaces";
 
 export interface MacroTopicBase {
   quantitySelected: number;
@@ -10,5 +10,5 @@ export interface MacroTopicRequest {
 }
 
 export interface MacroTopicResponse {
-  quizesArray: QuizBaseBE[];
+  quizesArray: QuizBE[];
 }

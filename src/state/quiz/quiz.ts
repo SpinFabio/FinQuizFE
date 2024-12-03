@@ -1,20 +1,9 @@
+import { QuizFE } from "../../common/quiz-interfaces";
 import { getAccessTokenPayload } from "../../utils/acces-token-utils";
-
-export interface QuizLocalState {
-  macro: string;
-  micro: string;
-  question: string;
-  correctAnswer: string;
-  selectedAnswer: string;
-  allAnswers: string[];
-  score: 1 | 2;
-  isViewed: boolean;
-  isFlagged: boolean;
-}
 
 const LOCAL_STORAGE_CURRENT_QUIZ_KEY: string = `${getAccessTokenPayload().id}currentQuizSession`;
 
-export function setCurrentQuizzes(quizArray: QuizLocalState[]) {
+export function setCurrentQuizzes(quizArray: QuizFE[]) {
   localStorage.setItem(
     LOCAL_STORAGE_CURRENT_QUIZ_KEY,
     JSON.stringify(quizArray),
@@ -31,12 +20,12 @@ export function checkCurrentQuizzes(): boolean {
   return false;
 }
 
-export function getCurrentQuizzes(): QuizLocalState[] | undefined {
+export function getCurrentQuizzes(): QuizFE[] | undefined {
   const quizzes = localStorage.getItem(LOCAL_STORAGE_CURRENT_QUIZ_KEY);
   if (!quizzes) {
     return undefined;
   } else {
-    const properQuizzes: QuizLocalState[] = JSON.parse(quizzes);
+    const properQuizzes: QuizFE[] = JSON.parse(quizzes);
     properQuizzes.forEach((quiz) => {
       quiz.allAnswers = shuffleArray(quiz.allAnswers);
     });

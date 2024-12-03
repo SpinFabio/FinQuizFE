@@ -1,10 +1,10 @@
 import React from "react";
-import { QuizLocalState } from "../../../../state/quiz/quiz";
+import { QuizFE } from "../../../../state/quiz/quiz";
 import { classNames } from "../../../../utils/tailwind-utils";
 import { useQuizConsumer } from "../useQuiz";
 
 interface ModalListElementProps {
-  quiz: QuizLocalState;
+  quiz: QuizFE;
   quizNum: number;
 }
 

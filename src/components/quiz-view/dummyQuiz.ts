@@ -1,7 +1,7 @@
-import { QuizLocalState } from "../../state/quiz/quiz";
+import { QuizFE } from "../../state/quiz/quiz";
 
-
-export const mockQuizData: QuizLocalState[] = [ // NON CANCELLARLO CHE SERVE PER INIZIALIZZARE LA PAGINA QUIZ
+export const mockQuizData: QuizFE[] = [
+  // NON CANCELLARLO CHE SERVE PER INIZIALIZZARE LA PAGINA QUIZ
   {
     macro: "Mock Macro",
     micro: "Mock Micro",
@@ -20,8 +20,7 @@ export const mockQuizData: QuizLocalState[] = [ // NON CANCELLARLO CHE SERVE PER
   },
 ];
 
-
-export const DUMMY_DATA_QUIZ: QuizLocalState[] = [
+export const DUMMY_DATA_QUIZ: QuizFE[] = [
   {
     macro: "Abusi di mercato",
     micro: "Ambito di applicazione",
@@ -36,9 +35,9 @@ export const DUMMY_DATA_QUIZ: QuizLocalState[] = [
       "un regolamento dell'Unione europea, anche se attengono a strumenti finanziari negoziati su un sistema organizzato di negoziazione italiano",
     ],
     score: 1,
-    selectedAnswer:"",
-    isViewed:false,
-    isFlagged:false
+    selectedAnswer: "",
+    isViewed: false,
+    isFlagged: false,
   },
   {
     macro: "Abusi di mercato",
@@ -55,8 +54,8 @@ export const DUMMY_DATA_QUIZ: QuizLocalState[] = [
     ],
     score: 2,
     isViewed: false,
-    selectedAnswer:"",
-    isFlagged:false
+    selectedAnswer: "",
+    isFlagged: false,
   },
   {
     macro: "Abusi di mercato",
@@ -73,8 +72,8 @@ export const DUMMY_DATA_QUIZ: QuizLocalState[] = [
     ],
     score: 2,
     isViewed: false,
-    selectedAnswer:"",
-    isFlagged:false
+    selectedAnswer: "",
+    isFlagged: false,
   },
   {
     macro: "Abusi di mercato",
@@ -91,8 +90,8 @@ export const DUMMY_DATA_QUIZ: QuizLocalState[] = [
     ],
     score: 1,
     isViewed: false,
-    selectedAnswer:"",
-    isFlagged:false
+    selectedAnswer: "",
+    isFlagged: false,
   },
   {
     macro: "Abusi di mercato",
@@ -109,8 +108,8 @@ export const DUMMY_DATA_QUIZ: QuizLocalState[] = [
     ],
     score: 1,
     isViewed: false,
-    selectedAnswer:"",
-    isFlagged:false
+    selectedAnswer: "",
+    isFlagged: false,
   },
   {
     macro: "Abusi di mercato",
@@ -127,8 +126,8 @@ export const DUMMY_DATA_QUIZ: QuizLocalState[] = [
     ],
     score: 2,
     isViewed: false,
-    selectedAnswer:"",
-    isFlagged:false
+    selectedAnswer: "",
+    isFlagged: false,
   },
   {
     macro: "Abusi di mercato",
@@ -145,8 +144,8 @@ export const DUMMY_DATA_QUIZ: QuizLocalState[] = [
     ],
     score: 2,
     isViewed: false,
-    selectedAnswer:"",
-    isFlagged:false
+    selectedAnswer: "",
+    isFlagged: false,
   },
   {
     macro: "Abusi di mercato",
@@ -163,8 +162,8 @@ export const DUMMY_DATA_QUIZ: QuizLocalState[] = [
     ],
     score: 1,
     isViewed: false,
-    selectedAnswer:"",
-    isFlagged:false
+    selectedAnswer: "",
+    isFlagged: false,
   },
   {
     macro: "Abusi di mercato",
@@ -181,8 +180,8 @@ export const DUMMY_DATA_QUIZ: QuizLocalState[] = [
     ],
     score: 2,
     isViewed: false,
-    selectedAnswer:"",
-    isFlagged:false
+    selectedAnswer: "",
+    isFlagged: false,
   },
   {
     macro: "Abusi di mercato",
@@ -199,8 +198,8 @@ export const DUMMY_DATA_QUIZ: QuizLocalState[] = [
     ],
     score: 2,
     isViewed: false,
-    selectedAnswer:"",
-    isFlagged:false
+    selectedAnswer: "",
+    isFlagged: false,
   },
   {
     macro: "Abusi di mercato",
@@ -217,8 +216,8 @@ export const DUMMY_DATA_QUIZ: QuizLocalState[] = [
     ],
     score: 1,
     isViewed: false,
-    selectedAnswer:"",
-    isFlagged:false
+    selectedAnswer: "",
+    isFlagged: false,
   },
   {
     macro: "Abusi di mercato",
@@ -235,7 +234,7 @@ export const DUMMY_DATA_QUIZ: QuizLocalState[] = [
     ],
     score: 1,
     isViewed: false,
-    selectedAnswer:"",
-    isFlagged:false
+    selectedAnswer: "",
+    isFlagged: false,
   },
 ];

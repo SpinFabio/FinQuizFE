@@ -7,7 +7,6 @@ export interface MicroTopic {
   nameMicro: string;
   quizTot: number;
   prevNumber: number;
-  isChecked: boolean;
   selectedNumber: number;
   completedPercetage: number;
 }
@@ -29,7 +28,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
     microArray: [
       {
         idMicro: 101,
-        isChecked: false,
         nameMicro: getMicroFromID(101),
         quizTot: 0,
         prevNumber: 0,
@@ -38,7 +36,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 102,
-        isChecked: false,
         nameMicro: getMicroFromID(102),
         quizTot: 0,
         prevNumber: 0,
@@ -47,7 +44,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 103,
-        isChecked: false,
         nameMicro: getMicroFromID(103),
         quizTot: 0,
         prevNumber: 0,
@@ -56,7 +52,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 104,
-        isChecked: false,
         nameMicro: getMicroFromID(104),
         quizTot: 0,
         prevNumber: 0,
@@ -65,7 +60,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 105,
-        isChecked: false,
         nameMicro: getMicroFromID(105),
         quizTot: 0,
         prevNumber: 0,
@@ -74,7 +68,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 106,
-        isChecked: false,
         nameMicro: getMicroFromID(106),
         quizTot: 0,
         prevNumber: 0,
@@ -83,7 +76,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 107,
-        isChecked: false,
         nameMicro: getMicroFromID(107),
         quizTot: 0,
         prevNumber: 0,
@@ -92,7 +84,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 108,
-        isChecked: false,
         nameMicro: getMicroFromID(108),
         quizTot: 0,
         prevNumber: 0,
@@ -101,7 +92,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 109,
-        isChecked: false,
         nameMicro: getMicroFromID(109),
         quizTot: 0,
         prevNumber: 0,
@@ -110,7 +100,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 110,
-        isChecked: false,
         nameMicro: getMicroFromID(110),
         quizTot: 0,
         prevNumber: 0,
@@ -119,7 +108,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 111,
-        isChecked: false,
         nameMicro: getMicroFromID(111),
         quizTot: 0,
         prevNumber: 0,
@@ -128,7 +116,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 112,
-        isChecked: false,
         nameMicro: getMicroFromID(112),
         quizTot: 0,
         prevNumber: 0,
@@ -137,7 +124,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 113,
-        isChecked: false,
         nameMicro: getMicroFromID(113),
         quizTot: 0,
         prevNumber: 0,
@@ -146,7 +132,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 114,
-        isChecked: false,
         nameMicro: getMicroFromID(114),
         quizTot: 0,
         prevNumber: 0,
@@ -155,7 +140,7 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 115,
-        isChecked: false,
+
         nameMicro: getMicroFromID(115),
         quizTot: 0,
         prevNumber: 0,
@@ -172,7 +157,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
     microArray: [
       {
         idMicro: 201,
-        isChecked: false,
         nameMicro: getMicroFromID(201),
         quizTot: 0,
         prevNumber: 0,
@@ -181,7 +165,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 202,
-        isChecked: false,
         nameMicro: getMicroFromID(202),
         quizTot: 0,
         prevNumber: 0,
@@ -190,7 +173,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 203,
-        isChecked: false,
         nameMicro: getMicroFromID(203),
         quizTot: 0,
         prevNumber: 0,
@@ -199,7 +181,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 204,
-        isChecked: false,
         nameMicro: getMicroFromID(204),
         quizTot: 0,
         prevNumber: 0,
@@ -208,7 +189,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 205,
-        isChecked: false,
         nameMicro: getMicroFromID(205),
         quizTot: 0,
         prevNumber: 0,
@@ -217,7 +197,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 206,
-        isChecked: false,
         nameMicro: getMicroFromID(206),
         quizTot: 0,
         prevNumber: 0,
@@ -226,7 +205,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 207,
-        isChecked: false,
         nameMicro: getMicroFromID(207),
         quizTot: 0,
         prevNumber: 0,
@@ -235,7 +213,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 208,
-        isChecked: false,
         nameMicro: getMicroFromID(208),
         quizTot: 0,
         prevNumber: 0,
@@ -244,7 +221,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 209,
-        isChecked: false,
         nameMicro: getMicroFromID(209),
         quizTot: 0,
         prevNumber: 0,
@@ -253,7 +229,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 210,
-        isChecked: false,
         nameMicro: getMicroFromID(210),
         quizTot: 0,
         prevNumber: 0,
@@ -262,7 +237,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 211,
-        isChecked: false,
         nameMicro: getMicroFromID(211),
         quizTot: 0,
         prevNumber: 0,
@@ -271,7 +245,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 212,
-        isChecked: false,
         nameMicro: getMicroFromID(212),
         quizTot: 0,
         prevNumber: 0,
@@ -280,7 +253,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 213,
-        isChecked: false,
         nameMicro: getMicroFromID(213),
         quizTot: 0,
         prevNumber: 0,
@@ -289,7 +261,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 214,
-        isChecked: false,
         nameMicro: getMicroFromID(214),
         quizTot: 0,
         prevNumber: 0,
@@ -298,7 +269,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 215,
-        isChecked: false,
         nameMicro: getMicroFromID(215),
         quizTot: 0,
         prevNumber: 0,
@@ -315,7 +285,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
     microArray: [
       {
         idMicro: 301,
-        isChecked: false,
         nameMicro: getMicroFromID(301),
         quizTot: 0,
         prevNumber: 0,
@@ -324,7 +293,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 302,
-        isChecked: false,
         nameMicro: getMicroFromID(302),
         quizTot: 0,
         prevNumber: 0,
@@ -333,7 +301,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 303,
-        isChecked: false,
         nameMicro: getMicroFromID(303),
         quizTot: 0,
         prevNumber: 0,
@@ -342,7 +309,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 304,
-        isChecked: false,
         nameMicro: getMicroFromID(304),
         quizTot: 0,
         prevNumber: 0,
@@ -359,7 +325,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
     microArray: [
       {
         idMicro: 401,
-        isChecked: false,
         nameMicro: getMicroFromID(401),
         quizTot: 0,
         prevNumber: 0,
@@ -368,7 +333,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 402,
-        isChecked: false,
         nameMicro: getMicroFromID(402),
         quizTot: 0,
         prevNumber: 0,
@@ -377,7 +341,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 403,
-        isChecked: false,
         nameMicro: getMicroFromID(403),
         quizTot: 0,
         prevNumber: 0,
@@ -386,7 +349,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 404,
-        isChecked: false,
         nameMicro: getMicroFromID(404),
         quizTot: 0,
         prevNumber: 0,
@@ -395,7 +357,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 405,
-        isChecked: false,
         nameMicro: getMicroFromID(405),
         quizTot: 0,
         prevNumber: 0,
@@ -404,7 +365,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 406,
-        isChecked: false,
         nameMicro: getMicroFromID(406),
         quizTot: 0,
         prevNumber: 0,
@@ -413,7 +373,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 407,
-        isChecked: false,
         nameMicro: getMicroFromID(407),
         quizTot: 0,
         prevNumber: 0,
@@ -422,7 +381,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 408,
-        isChecked: false,
         nameMicro: getMicroFromID(408),
         quizTot: 0,
         prevNumber: 0,
@@ -431,7 +389,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 409,
-        isChecked: false,
         nameMicro: getMicroFromID(409),
         quizTot: 0,
         prevNumber: 0,
@@ -440,7 +397,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 410,
-        isChecked: false,
         nameMicro: getMicroFromID(410),
         quizTot: 0,
         prevNumber: 0,
@@ -449,7 +405,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 411,
-        isChecked: false,
         nameMicro: getMicroFromID(411),
         quizTot: 0,
         prevNumber: 0,
@@ -466,7 +421,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
     microArray: [
       {
         idMicro: 501,
-        isChecked: false,
         nameMicro: getMicroFromID(501),
         quizTot: 0,
         prevNumber: 0,
@@ -475,7 +429,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 502,
-        isChecked: false,
         nameMicro: getMicroFromID(502),
         quizTot: 0,
         prevNumber: 0,
@@ -484,7 +437,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 503,
-        isChecked: false,
         nameMicro: getMicroFromID(503),
         quizTot: 0,
         prevNumber: 0,
@@ -493,7 +445,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 504,
-        isChecked: false,
         nameMicro: getMicroFromID(504),
         quizTot: 0,
         prevNumber: 0,
@@ -502,7 +453,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 505,
-        isChecked: false,
         nameMicro: getMicroFromID(505),
         quizTot: 0,
         prevNumber: 0,
@@ -511,7 +461,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 506,
-        isChecked: false,
         nameMicro: getMicroFromID(506),
         quizTot: 0,
         prevNumber: 0,
@@ -520,7 +469,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 507,
-        isChecked: false,
         nameMicro: getMicroFromID(507),
         quizTot: 0,
         prevNumber: 0,
@@ -529,7 +477,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 508,
-        isChecked: false,
         nameMicro: getMicroFromID(508),
         quizTot: 0,
         prevNumber: 0,
@@ -538,7 +485,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 509,
-        isChecked: false,
         nameMicro: getMicroFromID(509),
         quizTot: 0,
         prevNumber: 0,
@@ -547,7 +493,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 510,
-        isChecked: false,
         nameMicro: getMicroFromID(510),
         quizTot: 0,
         prevNumber: 0,
@@ -556,7 +501,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 511,
-        isChecked: false,
         nameMicro: getMicroFromID(511),
         quizTot: 0,
         prevNumber: 0,
@@ -565,7 +509,6 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
       },
       {
         idMicro: 512,
-        isChecked: false,
         nameMicro: getMicroFromID(512),
         quizTot: 0,
         prevNumber: 0,
@@ -595,5 +538,5 @@ export function getFavMicro(): MacroMicroData[] {
     );
     return MICRO_DATA_ARRAY;
   }
-  return JSON.parse(favData)
+  return JSON.parse(favData);
 }
