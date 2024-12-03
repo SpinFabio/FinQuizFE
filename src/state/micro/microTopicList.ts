@@ -1,5 +1,6 @@
 import { toast } from "react-toastify";
 import { getMacroFromID, getMicroFromID } from "../../utils/macro-micro";
+import { getAccessTokenPayload } from "../../utils/acces-token-utils";
 
 export interface MicroTopic {
   idMicro: number;
@@ -577,7 +578,7 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
 
 //---------------------------------------- gestione del preferito -----------------------------------------------------------------------------------------------
 
-const USER_MICRO_FAV_KEY_NAME = "microTopicFavArray";
+const USER_MICRO_FAV_KEY_NAME = `${getAccessTokenPayload().id}microTopicFavArray`;
 
 export function setFavMicro(MacroMicroArray: MacroMicroData[]): void {
   localStorage.setItem(

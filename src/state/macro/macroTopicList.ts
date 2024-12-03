@@ -1,5 +1,6 @@
 import { toast } from "react-toastify";
 import { getMacroFromID } from "../../utils/macro-micro";
+import { getAccessTokenPayload } from "../../utils/acces-token-utils";
 
 export interface MacroTopic {
   id: number;
@@ -72,7 +73,7 @@ export interface UserMacroFav {
 
 //---------------------------------------- gestione del preferito -----------------------------------------------------------------------------------------------
 
-const USER_MACRO_FAV_KEY_NAME = "macroTopicFavArray";
+const USER_MACRO_FAV_KEY_NAME = `${getAccessTokenPayload().id}macroTopicFavArray`;
 
 export function setFavMacro(macroTopicArray: MacroTopic[]): void {
   const favArray: UserMacroFav[] = macroTopicArray.map((macro) => {

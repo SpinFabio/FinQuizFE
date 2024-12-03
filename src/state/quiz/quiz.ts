@@ -1,3 +1,5 @@
+import { getAccessTokenPayload } from "../../utils/acces-token-utils";
+
 export interface QuizLocalState {
   macro: string;
   micro: string;
@@ -10,7 +12,7 @@ export interface QuizLocalState {
   isFlagged: boolean;
 }
 
-const LOCAL_STORAGE_CURRENT_QUIZ_KEY: string = "currentQuizSession";
+const LOCAL_STORAGE_CURRENT_QUIZ_KEY: string = `${getAccessTokenPayload().id}currentQuizSession`;
 
 export function setCurrentQuizzes(quizArray: QuizLocalState[]) {
   localStorage.setItem(

@@ -2,8 +2,9 @@ import {
   DEFAULT_TIME,
   TimeInterface,
 } from "../../components/layouts/layout-MB/useTimer";
+import { getAccessTokenPayload } from "../../utils/acces-token-utils";
 
-const USER_MACRO_FAV_TIME_KEY = "macroTimeFav";
+const USER_MACRO_FAV_TIME_KEY = `${getAccessTokenPayload().id}macroTimeFav`;
 
 export function setFavTimeMacro(time: TimeInterface): void {
   localStorage.setItem(USER_MACRO_FAV_TIME_KEY, JSON.stringify(time));

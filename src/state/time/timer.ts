@@ -1,6 +1,7 @@
 import { TimeInterface } from "../../components/layouts/layout-MB/useTimer";
+import { getAccessTokenPayload } from "../../utils/acces-token-utils";
 
-const LOCAL_STORAGE_CURRENT_TIME_KEY="currenTimeForTimer"
+const LOCAL_STORAGE_CURRENT_TIME_KEY=`${getAccessTokenPayload().id}currenTimeForTimer`
 
 
 export function setCurrentTimer(time: TimeInterface): void {

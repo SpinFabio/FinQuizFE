@@ -8,7 +8,7 @@ import { BE_DOMAIN } from "../config/myenv";
 import { ValidationError } from "yup";
 import { unauthFetch } from "./fetch-utils";
 
-const DEVICE_ID_KEY_NAME = "deviceId";
+const DEVICE_ID_KEY_NAME = `deviceId`;
 
 export function getOrCreateDeviceID(): string {
   let deviceId: string | null = localStorage.getItem(DEVICE_ID_KEY_NAME);
