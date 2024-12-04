@@ -3,7 +3,7 @@ import AuthInput from "./AuthInput";
 import LoginWithButton from "./LoginWithButton";
 import AuthButton from "./AuthButton";
 import Separator from "./Separator";
-import { useAuthPage } from "./AuthPage/useAuthPage";
+import { useAuthPage, UseAuthPageInterface } from "./AuthPage/useAuthPage";
 import ErrorMessage from "./ErrorMessage";
 import RedirectAuth from "./RedirectAuth";
 
@@ -12,18 +12,7 @@ interface LoginFormProps {
 }
 const LoginForm: React.FC<LoginFormProps> = ({ typeAuth }) => {
   const titleText = typeAuth === "login" ? "Accedi" : "Registrati";
-  const {
-    setName,
-    nameError,
-    handleNameValidation,
-    setEmail,
-    emailError,
-    handleEmailValidation,
-    setPassword,
-    passError,
-    handlePasswordValidation,
-    handleSubmit,
-  } = useAuthPage(typeAuth);
+  const myHook:UseAuthPageInterface= useAuthPage(typeAuth);
 
   const styleAuthDescriptions = "typo-body text-info mt-2 self-start text-info";
 
@@ -43,22 +32,22 @@ const LoginForm: React.FC<LoginFormProps> = ({ typeAuth }) => {
 
         <Separator type={typeAuth} />
 
-        <form onSubmit={handleSubmit} className="w-full">
+        <form onSubmit={myHook.handleSubmit} className="w-full">
           {typeAuth === "register" ? (
             <>
               <p className={styleAuthDescriptions}>Nome</p>
               <AuthInput
                 isAutofocus={true}
-                inputError={nameError}
+                inputError={myHook.nameError}
                 name="name"
                 type="username"
                 id="name"
-                handleValidate={handleNameValidation}
+                handleValidate={myHook.handleNameValidation}
                 ariaLabel="name"
                 autocomplete="username"
-                setValue={setName}
+                setValue={myHook.setName}
               />
-              <ErrorMessage errorState={nameError} />
+              <ErrorMessage errorState={myHook.nameError} />
             </>
           ) : (
             <></>
@@ -67,30 +56,30 @@ const LoginForm: React.FC<LoginFormProps> = ({ typeAuth }) => {
           <p className={styleAuthDescriptions}>Email</p>
           <AuthInput
             isAutofocus={typeAuth === "register" ? false : true}
-            inputError={emailError}
+            inputError={myHook.emailError}
             name="email"
             type="email"
             id="email"
-            handleValidate={handleEmailValidation}
+            handleValidate={myHook.handleEmailValidation}
             ariaLabel="email"
             autocomplete="email"
-            setValue={setEmail}
+            setValue={myHook.setEmail}
           />
-          <ErrorMessage errorState={emailError} />
+          <ErrorMessage errorState={myHook.emailError} />
           <p className={styleAuthDescriptions}>Password</p>
           <AuthInput
             isAutofocus={false}
-            inputError={passError}
+            inputError={myHook.passError}
             name="password"
             type="password"
             id="password"
-            handleValidate={handlePasswordValidation}
+            handleValidate={myHook.handlePasswordValidation}
             ariaLabel="password"
             autocomplete="new-password"
-            setValue={setPassword}
+            setValue={myHook.setPassword}
           />
-          <ErrorMessage errorState={passError} />
-          <AuthButton type={typeAuth} />
+          <ErrorMessage errorState={myHook.passError} />
+          <AuthButton type={typeAuth} myHook={myHook} />
         </form>
         <RedirectAuth typeAuth={typeAuth} />
       </div>

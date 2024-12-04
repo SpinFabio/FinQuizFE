@@ -1,9 +1,8 @@
 import { useState } from "react";
 import * as Yup from "yup";
 import { useAuthAPI } from "../../../api/useAuthAPI";
-import { useNavigate  } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { HOME_PAGE_ROUTE } from "../../../config/routes";
-
 
 export type ErrorState = "empty" | "valid" | { error: string };
 
@@ -13,27 +12,20 @@ export const useAuthPage = (typeAuth: "login" | "register") => {
   const [password, setPassword] = useState("");
   let navigate = useNavigate();
 
-
   const [emailError, setEmailError] = useState<ErrorState>("empty");
   const [passError, setPassError] = useState<ErrorState>("empty");
   const [nameError, setNameError] = useState<ErrorState>("empty");
 
   const { loginUser, registerUser } = useAuthAPI();
 
-  const handleNameValidation = (
-    e: React.ChangeEvent<HTMLInputElement> | React.FocusEvent<HTMLInputElement>,
-  ) => {
+  const handleNameValidation = () => {
     validateField("name", name);
   };
 
-  const handleEmailValidation = (
-    e: React.ChangeEvent<HTMLInputElement> | React.FocusEvent<HTMLInputElement>,
-  ) => {
+  const handleEmailValidation = () => {
     validateField("email", email);
   };
-  const handlePasswordValidation = (
-    e: React.ChangeEvent<HTMLInputElement> | React.FocusEvent<HTMLInputElement>,
-  ) => {
+  const handlePasswordValidation = () => {
     validateField("password", password);
   };
 
@@ -66,6 +58,13 @@ export const useAuthPage = (typeAuth: "login" | "register") => {
     return;
   }
 
+  async function validateAll() {
+    //console.log("sono stato chiamto")
+    validateField("name", name);
+    validateField("email", email);
+    validateField("password", password);
+  }
+
   async function handleSubmit(
     e: React.FormEvent<HTMLFormElement>,
   ): Promise<void> {
@@ -77,7 +76,7 @@ export const useAuthPage = (typeAuth: "login" | "register") => {
     await validateField("email", email);
     await validateField("password", password);
 
-    console.log(password);
+    console.log("richiamato il handleSubmit");
 
     if (
       typeAuth === "login" &&
@@ -87,7 +86,7 @@ export const useAuthPage = (typeAuth: "login" | "register") => {
       console.log("login form valido");
 
       await loginUser(email, password);
-      navigate(HOME_PAGE_ROUTE)
+      navigate(HOME_PAGE_ROUTE);
     } else if (
       typeAuth === "register" &&
       nameError === "valid" &&
@@ -102,6 +101,7 @@ export const useAuthPage = (typeAuth: "login" | "register") => {
   }
 
   return {
+    validateAll,
     name,
     nameError,
     setName,
@@ -117,6 +117,8 @@ export const useAuthPage = (typeAuth: "login" | "register") => {
     handleSubmit,
   };
 };
+
+export type UseAuthPageInterface = ReturnType<typeof useAuthPage>;
 
 let schemaLogin = Yup.object().shape({
   email: Yup.string().email("Email non valida").required("Manca l'email"),

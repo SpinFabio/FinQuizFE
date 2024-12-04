@@ -33,7 +33,7 @@ const AuthInput: React.FC<AuthInputProps> = ({
     dinamicStyle =
       "border-info  bg-transparent focus:border-primary focus:bg-slate-100";
   } else if (inputError === "valid") {
-    dinamicStyle = "border-my-green ";
+    dinamicStyle = "border-green-800 ";
   } else {
     dinamicStyle =
       "border-red-800  bg-red-200 hover:border-red-800 hover:bg-red-200  focus:border-red-800 focus:bg-red-200";
