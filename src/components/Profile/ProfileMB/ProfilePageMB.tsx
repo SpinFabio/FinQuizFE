@@ -1,6 +1,6 @@
 import React from "react";
 import HomeIconMB from "../../layouts/layout-MB/icons/HomeIconMB";
-import { getAccessTokenPayload } from "../../../utils/acces-token-utils";
+import { getAccessTokenPayload } from "../../../state/access-token/acces-token";
 import ProfileBottonContainer from "./ProfileBottonContainer";
 import AnimatedButton from "../../wigets/animated-buttons/AnimatedButton";
 import { LOGIN_PAGE_ROUTE } from "../../../config/routes";
@@ -10,7 +10,6 @@ import LogoutModalMB from "../../wigets/modal/LogoutModalMB";
 interface ProfilePageMBProps {
   /* propName: propType */
 }
-
 
 const ProfilePageMB: React.FC<ProfilePageMBProps> = (
   {
@@ -50,7 +49,7 @@ const ProfilePageMB: React.FC<ProfilePageMBProps> = (
         id="logout-container"
         className="flex w-full grow flex-col items-center justify-center"
       >
-        <LogoutModalMB/>
+        <LogoutModalMB />
       </div>
     </div>
   );

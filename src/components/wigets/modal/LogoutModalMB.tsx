@@ -4,6 +4,7 @@ import { LOGIN_PAGE_ROUTE } from "../../../config/routes";
 import { Link } from "react-router-dom";
 import { classNames } from "../../../utils/tailwind-utils";
 import ModalMB from "./ModalMB";
+import { removeAccessToken } from "../../../state/access-token/acces-token";
 
 interface LogoutModalMBProps {
   /* propName: propType */
@@ -74,6 +75,7 @@ const LogoutModalMB: React.FC<LogoutModalMBProps> = (
               </div>
               <Link to={LOGIN_PAGE_ROUTE}>
                 <div
+                onClick={removeAccessToken}
                   className={classNames(
                     buttonClass,
                     "bg-my-red text-icons",

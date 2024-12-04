@@ -23,22 +23,19 @@
   --primary-hover: 0, 90, 168;
   --primary-dark: 0, 77, 144;
   --primary-contrast: 255, 255, 255;
-  --info: 75, 85, 99;
+  --info: 75, 85, 99; /* vorrei rimuoverlo del tutto */
   --my-green: 52, 199, 89;
   --my-orange: 251, 146, 60;
   --my-red:248 113 113;
   --my-background: 255, 255, 255;
-  --my-secondary-bg: 75, 85, 99;
-  --my-bgcontrast: 75, 85, 99;
+  --my-bgcontrast: 75, 85, 99; 
+  --my-secondary-bg: 75, 85, 99; 
   --my-border-color: 75, 85, 99;
   --my-text-1: 75, 85, 99;
   --my-text-2: 255, 255, 255;
   --my-shadow-on-bg: 148, 163, 184;
   --icons: 255, 255, 255;
 }
-
-
-
 
 .dark {
   --primary: 0, 116, 217;
@@ -51,15 +48,13 @@
   --my-orange: 251, 146, 60;
   --my-red:248 113 113;
   --my-background: 20, 20, 20;
-  
-  --my-secondary-bg: 75, 85, 99;
   --my-bgcontrast: 230, 230, 230;
+  --my-secondary-bg: 75, 85, 99;
   --my-border-color:255, 255, 255;
   --my-text-1: 230, 230, 230;
   --my-text-2: 230, 230, 230;
   --my-shadow-on-bg: 1, 1, 1;
   --icons: 255, 255, 255;
-
 }
 
 body{

@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Modes, ResumeButtonInterface } from "./useHomePage";
 import CardMode from "./CardMode";
 import ResumeButton from "./ResumeButton";
 import ProfileIconMB from "../../layouts/layout-MB/icons/ProfileIconMB";
 import AnimatedButton from "../../wigets/animated-buttons/AnimatedButton";
 import { checkCurrentQuizzes } from "../../../state/quiz/quiz";
+import { verifyAccessTokenPresence } from "../../../state/access-token/acces-token";
+import { useNavigate } from "react-router";
+import { LOGIN_PAGE_ROUTE } from "../../../config/routes";
 
 interface HomePageMBProps {
   userName: string;
@@ -17,12 +20,17 @@ const HomePageMB: React.FC<HomePageMBProps> = ({
   modeArray,
   resumeButton,
 }) => {
+
+  
   const isQuizzesArrayPresent = checkCurrentQuizzes();
   return (
     <>
       <div className="flex h-screen flex-col">
         <ProfileIconMB />
-        <div id="Text-Box" className="item-start mx-5 flex flex-col text-my-text-1">
+        <div
+          id="Text-Box"
+          className="item-start text-my-text-1 mx-5 flex flex-col"
+        >
           <h1 className="font-robot fonto-body mt-8 text-h1-mb leading-tight">
             Benvenuto {userName}
           </h1>

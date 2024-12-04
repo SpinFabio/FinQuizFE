@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { MacroMicroData } from "../../../state/micro/microTopicList";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import MicroInnerListElem from "./MicroInnerListElem";
 import { classNames } from "../../../utils/tailwind-utils";
 import AnimatedButton from "../../wigets/animated-buttons/AnimatedButton";
@@ -54,7 +54,7 @@ const MicroListElem: React.FC<MicroListElemProps> = ({ macroMicroData }) => {
             "border-my-border-color z-50 flex flex-row items-center justify-start border stroke-black p-2",
             isOpen ? "rounded-t-lg" : "rounded-lg",
             macroMicroData.sumOfSelected > 0
-              ? "bg-primary stroke-icons text-primary-contrast"
+              ? "stroke-icons bg-primary text-primary-contrast"
               : "",
           )}
           onClick={handleOpenClose}
@@ -69,49 +69,57 @@ const MicroListElem: React.FC<MicroListElemProps> = ({ macroMicroData }) => {
               : ""}
           </div>
         </div>
-        {isOpen ? (
-          <>
-            <div className="bg-my-secondary-bg border-my-border-color z-40 flex animate-appearIn flex-row justify-between border py-2 pl-4 text-primary-contrast">
-              <div className="text-info-mb">
-                Quiz selezionati in questa sezione:
+        <AnimatePresence>
+          {isOpen ? (
+            <motion.div
+              style={{ transformOrigin: "top" }}
+              key={"accordion"}
+              animate={{ scaleY: 1 }}
+              transition={{duration:0.1}}
+              exit={{ scaleY: 0 }}
+            >
+              <div className="bg-my-secondary-bg border-my-border-color z-40 flex animate-appearIn flex-row justify-between border py-2 pl-4 text-primary-contrast">
+                <div className="text-info-mb">
+                  Quiz selezionati in questa sezione:
+                </div>
+                <div className="flex w-10 justify-center border-l-2 text-center">
+                  {macroMicroData.sumOfSelected}
+                </div>
               </div>
-              <div className="flex w-10 justify-center border-l-2 text-center">
-                {macroMicroData.sumOfSelected}
-              </div>
-            </div>
-            <div>
-              {macroMicroData.microArray.map((microTp, i) => (
-                <div
-                  key={i}
-                  style={{ animationDelay: `${delayMs * i}ms` }}
-                  className={classNames("opacity-0", animationClass)}
-                >
-                  <MicroInnerListElem
+              <div>
+                {macroMicroData.microArray.map((microTp, i) => (
+                  <div
                     key={i}
-                    microTopic={microTp}
-                    isLast={lenght - 1 === i}
-                    macroId={macroMicroData.idMacro}
-                  />
-                </div>
-              ))}
-              <div
-                className="flex w-full items-center justify-center"
-                style={{
-                  animationDelay: `${macroMicroData.microArray.length * delayMs}ms`,
-                }}
-              >
+                    style={{ animationDelay: `${delayMs * i}ms` }}
+                    className={classNames("opacity-0", animationClass)}
+                  >
+                    <MicroInnerListElem
+                      key={i}
+                      microTopic={microTp}
+                      isLast={lenght - 1 === i}
+                      macroId={macroMicroData.idMacro}
+                    />
+                  </div>
+                ))}
                 <div
-                  onClick={handleOpenClose}
-                  className="stroke-icons -rotate-90 rounded-l-lg bg-gradient-to-l from-primary to-primary-dark p-4"
+                  className="flex w-full items-center justify-center"
+                  style={{
+                    animationDelay: `${macroMicroData.microArray.length * delayMs}ms`,
+                  }}
                 >
-                  <AnimatedButton>{arrowIcon}</AnimatedButton>
+                  <div
+                    onClick={handleOpenClose}
+                    className="stroke-icons -rotate-90 rounded-l-lg bg-gradient-to-l from-primary to-primary-dark p-4"
+                  >
+                    <AnimatedButton>{arrowIcon}</AnimatedButton>
+                  </div>
                 </div>
               </div>
-            </div>
-          </>
-        ) : (
-          <></>
-        )}
+            </motion.div>
+          ) : (
+            <></>
+          )}
+        </AnimatePresence>
       </div>
     </>
   );

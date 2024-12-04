@@ -9,18 +9,18 @@ export default {
         "primary-hover": "rgba(var(--primary-hover))",
         "primary-dark": "rgba(var(--primary-dark))",
         "primary-contrast": "rgba(var(--primary-contrast))",
-        info: "rgba(var(--info))",
+        info: "rgba(var(--info))", /* da usare il eno possibile  */
         "my-green": "rgba(var(--my-green))",
         "my-orange": "rgba(var(--my-orange))",
         "my-red": "rgba(var(--my-red))",
-        "my-background": "rgba(var(--my-background))",
-        "my-secondary-bg": "rgba(var(--my-secondary-bg))",
-        "my-bgContrast": "rgba(var(--my-bgcontrast))",
+        "my-background": "rgba(var(--my-background))", 
+        "my-secondary-bg": "rgba(var(--my-secondary-bg))",   /* elementi che contengono info secondarie */
+        "my-bgContrast": "rgba(var(--my-bgcontrast))",      /* elementi a contatto con il bg primario usato anche per icone */
         "my-border-color": "rgba(var(--my-border-color))",
-        "my-text-1": "rgba(var(--my-text-1))",
-        "my-text-2": "rgba(var(--my-text-2))",
-        "my-shadow-on-bg": "rgba(var(--my-shadow-on-bg))",
-        icons: "rgba(var(--icons))",
+        "my-text-1": "rgba(var(--my-text-1))", /* testo primario, generalmente si trova a contatto del BG  */
+        "my-text-2": "rgba(var(--my-text-2))", /* elmenti di testo di secondaria importanza znce essi a contatto con il BG*/
+        "my-shadow-on-bg": "rgba(var(--my-shadow-on-bg))",  
+        icons: "rgba(var(--icons))", /* icone primarie, generalemnte a contatto con il primary color */
       },
       borderColor: {
         primary: "#0074D9",

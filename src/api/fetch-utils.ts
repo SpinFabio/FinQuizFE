@@ -4,10 +4,7 @@ import {
 } from "../common/user-interfaces";
 import { BE_DOMAIN } from "../config/myenv";
 import { LOGIN_PAGE_ROUTE } from "../config/routes";
-import {
-  setAccessToken,
-  getAccessTokenPayload,
-} from "../utils/acces-token-utils";
+import { setAccessToken } from "../state/access-token/acces-token";
 
 type HttpRequest = "POST" | "GET";
 

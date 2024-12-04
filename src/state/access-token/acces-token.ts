@@ -1,5 +1,5 @@
 import { jwtDecode } from "jwt-decode";
-import { AccessTokenPayload } from "../common/tokens-interfaces";
+import { AccessTokenPayload } from "../../common/tokens-interfaces";
 
 const ACCESS_TOKEN_KEY_NAME = "accessToken";
 const ACCESS_TOKEN_PAYLOAD_KEY_NAME = "accessTokenPayload";
@@ -18,11 +18,11 @@ export function setAccessToken(rawAccessToken: string) {
   }
 }
 
-export function getAccessTokenPayload(): AccessTokenPayload {
+export function getAccessTokenPayload(): AccessTokenPayload|null {
   // da usare solo per cose che non richiedono scurezza tipo nome utente e password
   const data = localStorage.getItem(ACCESS_TOKEN_PAYLOAD_KEY_NAME);
   if (!data) {
-    throw new Error("non è presente nessun Access Token Payload in memoria");
+    return  null
   }
   return JSON.parse(data) as AccessTokenPayload;
 }
@@ -34,4 +34,17 @@ export function getRawAccessToken(): string {
     throw new Error("Non è presente nessun Access Token in memoria");
   }
   return rawAccessToken;
+}
+
+export function removeAccessToken() {
+  localStorage.removeItem(ACCESS_TOKEN_PAYLOAD_KEY_NAME);
+  sessionStorage.removeItem(ACCESS_TOKEN_KEY_NAME);
+}
+
+export function verifyAccessTokenPresence(): boolean {
+  const rawAccessToken = sessionStorage.getItem(ACCESS_TOKEN_KEY_NAME);
+  if (!rawAccessToken) {
+    return false;
+  }
+  return true;
 }

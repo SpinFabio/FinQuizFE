@@ -1,7 +1,7 @@
 import { QuizFE } from "../../common/quiz-interfaces";
-import { getAccessTokenPayload } from "../../utils/acces-token-utils";
+import { getAccessTokenPayload } from "../access-token/acces-token";
 
-const LOCAL_STORAGE_CURRENT_QUIZ_KEY: string = `${getAccessTokenPayload().id}currentQuizSession`;
+const LOCAL_STORAGE_CURRENT_QUIZ_KEY: string = `${getAccessTokenPayload()?.id??"temp"}currentQuizSession`;
 
 export function setCurrentQuizzes(quizArray: QuizFE[]) {
   localStorage.setItem(
