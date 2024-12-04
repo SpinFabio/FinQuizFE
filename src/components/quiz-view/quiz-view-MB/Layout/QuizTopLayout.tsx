@@ -93,7 +93,9 @@ const QuizTopLayout: React.FC<QuizTopLayoutProps> = (
         <QuizHomeIcon />
         <div className="flex flex-col items-center justify-center px-5">
           <div className="flex w-4 flex-col content-center items-center">
-            <p className="text-info-mb font-info-mb text-my-bgContrast">opzioni</p>
+            <p className="text-info-mb font-info-mb text-my-bgContrast">
+              opzioni
+            </p>
           </div>
           <AnimatedButton>{settingIcon}</AnimatedButton>
         </div>
@@ -103,31 +105,38 @@ const QuizTopLayout: React.FC<QuizTopLayoutProps> = (
         <CountDownTimer />
       </div>
 
-      <div
-        id="quizList+caroselDots+Flag"
-        className="fixed z-10 mt-[90px] flex w-full flex-row items-center justify-between bg-my-background"
-      >
-        <div className={classNames(myStyle)} onClick={myHook.handleEndQuiz}>
-          <div className="flex w-4 flex-col content-center items-center">
-            <p className="text-info-mb font-info-mb text-my-bgContrast">termina</p>
-          </div>
-          <AnimatedButton>{LogOutIcon}</AnimatedButton>
-        </div>
-        <Dots />
+      <div className="fixed z-10 mt-[90px] w-full ">
         <div
-          className={classNames(
-            myStyle,
-            myHook.getCurrentQuiz().isFlagged ? "text-my-orange" : "text-my-bgContrast",
-          )}
-          onClick={myHook.handleFlagCurrentQuiz}
+          id="quizList+caroselDots+Flag"
+          className="flex w-full flex-row items-center justify-between bg-my-background"
         >
-          <div className="flex w-4 flex-col content-center items-center">
-            <p className="texy-info text-info-mb font-info-mb">
-              {myHook.getCurrentQuiz().isFlagged ? "smarca" : " marca"}
-            </p>
+          <div className={classNames(myStyle)} onClick={myHook.handleEndQuiz}>
+            <div className="flex w-4 flex-col content-center items-center">
+              <p className="text-info-mb font-info-mb text-my-bgContrast">
+                termina
+              </p>
+            </div>
+            <AnimatedButton>{LogOutIcon}</AnimatedButton>
           </div>
-          <AnimatedButton>{flagIcon}</AnimatedButton>
+          <Dots />
+          <div
+            className={classNames(
+              myStyle,
+              myHook.getCurrentQuiz().isFlagged
+                ? "text-my-orange"
+                : "text-my-bgContrast",
+            )}
+            onClick={myHook.handleFlagCurrentQuiz}
+          >
+            <div className="flex w-4 flex-col content-center items-center">
+              <p className="texy-info text-info-mb font-info-mb">
+                {myHook.getCurrentQuiz().isFlagged ? "smarca" : " marca"}
+              </p>
+            </div>
+            <AnimatedButton>{flagIcon}</AnimatedButton>
+          </div>
         </div>
+        <div className="z-[99] h-1 border-b border-my-border-color bg-my-background mx-3"></div>
       </div>
     </div>
   );

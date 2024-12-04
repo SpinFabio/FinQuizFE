@@ -16,6 +16,9 @@ export function useQuiz() {
   const navigate = useNavigate();
   const [quizArray, setQuizArray] = useState<QuizFE[]>(mockQuizData);
   const inMemoryQuizzes = getCurrentQuizzes();
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [triggerAnimation, setAnimationTrigger] = useState(0);
+  const [isOpenListModal, setIsOpenListModal] = useState(false);
 
   useEffect(() => {
     if (inMemoryQuizzes === undefined) {
@@ -25,10 +28,6 @@ export function useQuiz() {
       setQuizArray(inMemoryQuizzes);
     }
   }, []);
-
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [triggerAnimation, setAnimationTrigger] = useState(0);
-  const [isOpenListModal, setIsOpenListModal] = useState(false);
 
   useEffect(() => {
     if (quizArray === mockQuizData) {

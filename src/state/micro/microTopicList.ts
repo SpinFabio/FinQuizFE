@@ -521,17 +521,19 @@ export const MICRO_DATA_ARRAY: MacroMicroData[] = [
 
 //---------------------------------------- gestione del preferito -----------------------------------------------------------------------------------------------
 
-const USER_MICRO_FAV_KEY_NAME = `${getAccessTokenPayload()?.id??"temp"}microTopicFavArray`;
+function getUserMicroFavKeyName(): string {
+  return `${getAccessTokenPayload()?.id ?? "temp"}microTopicFavArray`;
+}
 
 export function setFavMicro(MacroMicroArray: MacroMicroData[]): void {
   localStorage.setItem(
-    USER_MICRO_FAV_KEY_NAME,
+    getUserMicroFavKeyName(),
     JSON.stringify(MacroMicroArray),
   );
 }
 
 export function getFavMicro(): MacroMicroData[] {
-  const favData = localStorage.getItem(USER_MICRO_FAV_KEY_NAME);
+  const favData = localStorage.getItem(getUserMicroFavKeyName());
   if (!favData) {
     toast.warning(
       "Non esiste alcun preferito per questa categoria su questo dispositivo",

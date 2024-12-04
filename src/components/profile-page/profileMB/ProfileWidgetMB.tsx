@@ -5,7 +5,7 @@ import AnimatedButton from "../../wigets/animated-buttons/AnimatedButton";
 import { Link } from "react-router-dom";
 import { LOGIN_PAGE_ROUTE, PROFILE_PAGE_ROUTE } from "../../../config/routes";
 import LogoutModalMB from "../../wigets/modal/LogoutModalMB";
-import ThemeToggle from "../../wigets/ThemeToggle/ThemeToggle";
+import ThemeToggle from "../../wigets/theme-toggler/ThemeToggle";
 
 interface ProfileWidgetMBProps {
   onClose: () => void;

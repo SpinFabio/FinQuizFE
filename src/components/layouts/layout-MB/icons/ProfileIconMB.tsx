@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ProfileWidgetMB from "../../../Profile/ProfileMB/ProfileWidgetMB";
+import ProfileWidgetMB from "../../../profile-page/profileMB/ProfileWidgetMB";
 import ReusableProfileIcon from "./ReusableProfileIcon";
 import ModalMB from "../../../wigets/modal/ModalMB";
 

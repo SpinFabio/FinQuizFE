@@ -3,7 +3,9 @@ import { getTheme, setTheme, ThemeType } from "../../../state/theme/theme";
 import AnimatedButton from "../animated-buttons/AnimatedButton";
 import { classNames } from "../../../utils/tailwind-utils";
 
-interface ThemeToggleProps {}
+interface ThemeToggleProps {
+  type?: "iconButton" | "whideButton";
+}
 
 const darkModeIcon = (
   <svg
@@ -27,12 +29,7 @@ const lightModeIcon = (
     xmlns="http://www.w3.org/2000/svg"
     className="fill-my-background stroke-none"
   >
-    <mask
-      x="0"
-      y="0"
-      width="24"
-      height="24"
-    >
+    <mask x="0" y="0" width="24" height="24">
       <path d="M0 0H24V24H0V0Z" />
     </mask>
     <g mask="url(#mask0_363_566)">
@@ -41,7 +38,7 @@ const lightModeIcon = (
   </svg>
 );
 
-const ThemeToggle: React.FC<ThemeToggleProps> = () => {
+const ThemeToggle: React.FC<ThemeToggleProps> = ({ type }) => {
   const [currentTheme, setCurrentTheme] = useState<ThemeType>(getTheme());
 
   const handleChangeTheme = () => {
@@ -63,23 +60,32 @@ const ThemeToggle: React.FC<ThemeToggleProps> = () => {
     "flex flex-row p-4 rounded-full m-1 items-center-center text-my-background fill-my-background stroke-my-background";
   const iconClassName = "pr-3";
   const maxScale = 1.05;
+
   return (
     <div onClick={handleChangeTheme}>
-      <AnimatedButton maxScale={maxScale}>
-        <div
-          className={classNames(
-            className,
-            "border-2 border-my-border-color bg-my-border-color stroke-primary-contrast text-my-background",
-          )}
-        >
-          <div className={iconClassName}>
-            {currentTheme === "light" ? darkModeIcon : lightModeIcon}
+      {type === "iconButton" ? (
+        <AnimatedButton maxScale={maxScale}>
+          <div className="m-2 flex size-8 items-center justify-center rounded-full bg-my-bgContrast">
+            <div>{currentTheme === "light" ? darkModeIcon : lightModeIcon}</div>
           </div>
-          <p>
-            {currentTheme === "light" ? "Modalità Scura" : "Modalità chiara"}
-          </p>
-        </div>
-      </AnimatedButton>
+        </AnimatedButton>
+      ) : (
+        <AnimatedButton maxScale={maxScale}>
+          <div
+            className={classNames(
+              className,
+              "border-my-border-color border-2 bg-my-bgContrast stroke-primary-contrast text-my-background",
+            )}
+          >
+            <div className={iconClassName}>
+              {currentTheme === "light" ? darkModeIcon : lightModeIcon}
+            </div>
+            <p>
+              {currentTheme === "light" ? "Modalità Scura" : "Modalità chiara"}
+            </p>
+          </div>
+        </AnimatedButton>
+      )}
     </div>
   );
 };

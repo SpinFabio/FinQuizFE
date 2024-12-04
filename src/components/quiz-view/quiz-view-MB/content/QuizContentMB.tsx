@@ -23,9 +23,14 @@ const QuizContentMB: React.FC<QuizContentMBProps> = (
         className="flex h-full w-full animate-appearIn flex-col items-center justify-center px-4"
       >
         <div id="question" className="w-full">
-          <div className="mb-5  rounded-lg border border-info p-2">
+          <div className="border-my-border-color mb-5 rounded-lg border p-2">
             <div className="flex flex-row justify-between py-1 text-info-mb font-h2-mb">
-              <div><p className="inline-block font-h1-mb">{myHook.currentIndex+1}.</p>{currentQuiz.macro}</div>
+              <div>
+                <p className="inline-block font-h1-mb">
+                  {myHook.currentIndex + 1}.
+                </p>
+                {currentQuiz.macro}
+              </div>
               <div>pt.{currentQuiz.score}</div>
             </div>
             <div className="text-quiz-mb">{currentQuiz.question}</div>
@@ -41,7 +46,7 @@ const QuizContentMB: React.FC<QuizContentMBProps> = (
           ))}
         </div>
       </div>
-      <ModalList/>
+      <ModalList />
     </>
   );
 };

@@ -19,7 +19,7 @@ const QuizLayoutMB: React.FC<QuizLayoutMBProps> = (
       </div>
 
       <div className="z-0 h-full">
-        <div className="h-[153px]"></div>
+        <div className="h-[160px]"></div>
         <Outlet />
 
         <div className="h-11"></div>

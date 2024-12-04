@@ -7,6 +7,7 @@ const ACCESS_TOKEN_PAYLOAD_KEY_NAME = "accessTokenPayload";
 export function setAccessToken(rawAccessToken: string) {
   try {
     const data = jwtDecode<AccessTokenPayload>(rawAccessToken);
+    console.log(data)
 
     localStorage.setItem(ACCESS_TOKEN_PAYLOAD_KEY_NAME, JSON.stringify(data));
     sessionStorage.setItem(
@@ -18,11 +19,11 @@ export function setAccessToken(rawAccessToken: string) {
   }
 }
 
-export function getAccessTokenPayload(): AccessTokenPayload|null {
+export function getAccessTokenPayload(): AccessTokenPayload | null {
   // da usare solo per cose che non richiedono scurezza tipo nome utente e password
   const data = localStorage.getItem(ACCESS_TOKEN_PAYLOAD_KEY_NAME);
   if (!data) {
-    return  null
+    return null;
   }
   return JSON.parse(data) as AccessTokenPayload;
 }

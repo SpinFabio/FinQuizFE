@@ -24,6 +24,7 @@ const HomePage: React.FC<HomePageProps> = (
   React.useEffect(() => {
     try {
       const userName = getAccessTokenPayload()?.name;
+      console.log(getAccessTokenPayload())
       if (!userName) {
         navigate(LOGIN_PAGE_ROUTE);
       }

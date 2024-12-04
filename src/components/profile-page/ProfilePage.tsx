@@ -1,6 +1,6 @@
 import React from "react";
-import ProfilePageDT from "./ProfileDT/ProfilePageDT";
-import ProfilePageMB from "./ProfileMB/ProfilePageMB";
+import ProfilePageDT from "./profileDT/ProfilePageDT";
+import ProfilePageMB from "./profileMB/ProfilePageMB";
 
 interface ProfilePageProps {
   /* propName: propType */

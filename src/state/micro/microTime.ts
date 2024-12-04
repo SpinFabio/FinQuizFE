@@ -4,14 +4,16 @@ import {
 } from "../../components/layouts/layout-MB/useTimer";
 import { getAccessTokenPayload } from "../access-token/acces-token";
 
-const USER_MICRO_FAV_TIME_KEY = `${getAccessTokenPayload()?.id??"temp"}macroTimeFav`;
+function getUserMicroFavTimeKey(): string {
+  return `${getAccessTokenPayload()?.id ?? "temp"}macroTimeFav`;
+}
 
 export function setFavTimeMicro(time: TimeInterface): void {
-  localStorage.setItem(USER_MICRO_FAV_TIME_KEY, JSON.stringify(time));
+  localStorage.setItem(getUserMicroFavTimeKey(), JSON.stringify(time));
 }
 
 export function getFavTimeMicro(): TimeInterface {
-  const stringTime = localStorage.getItem(USER_MICRO_FAV_TIME_KEY);
+  const stringTime = localStorage.getItem(getUserMicroFavTimeKey());
 
   if (stringTime) {
     const localTime: TimeInterface = JSON.parse(stringTime);

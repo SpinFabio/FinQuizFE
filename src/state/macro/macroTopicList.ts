@@ -67,7 +67,9 @@ export interface UserMacroFav {
 
 //---------------------------------------- gestione del preferito -----------------------------------------------------------------------------------------------
 
-const USER_MACRO_FAV_KEY_NAME = `${getAccessTokenPayload()?.id??"temp"}macroTopicFavArray`;
+function getUserMacroFavKeyName(): string {
+  return `${getAccessTokenPayload()?.id ?? "temp"}macroTopicFavArray`;
+}
 
 export function setFavMacro(macroTopicArray: MacroTopic[]): void {
   const favArray: UserMacroFav[] = macroTopicArray.map((macro) => {
@@ -80,11 +82,11 @@ export function setFavMacro(macroTopicArray: MacroTopic[]): void {
 
   //console.log(favArray);
 
-  localStorage.setItem(USER_MACRO_FAV_KEY_NAME, JSON.stringify(favArray));
+  localStorage.setItem(getUserMacroFavKeyName(), JSON.stringify(favArray));
 }
 
 export function getFavMacro(macroArray: MacroTopic[]): MacroTopic[] {
-  const favData = localStorage.getItem(USER_MACRO_FAV_KEY_NAME);
+  const favData = localStorage.getItem(getUserMacroFavKeyName());
   if (!favData) {
     toast.warning(
       "Non esiste alcun preferito per questa categoria su questo dispositivo",

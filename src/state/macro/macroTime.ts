@@ -4,14 +4,16 @@ import {
 } from "../../components/layouts/layout-MB/useTimer";
 import { getAccessTokenPayload } from "../access-token/acces-token";
 
-const USER_MACRO_FAV_TIME_KEY = `${getAccessTokenPayload()?.id??"temp"}macroTimeFav`;
+function getUserMacroFavTimeKey(): string {
+  return `${getAccessTokenPayload()?.id ?? "temp"}macroTimeFav`;
+}
 
 export function setFavTimeMacro(time: TimeInterface): void {
-  localStorage.setItem(USER_MACRO_FAV_TIME_KEY, JSON.stringify(time));
+  localStorage.setItem(getUserMacroFavTimeKey(), JSON.stringify(time));
 }
 
 export function getFavTimeMacro(): TimeInterface {
-  const stringTime = localStorage.getItem(USER_MACRO_FAV_TIME_KEY);
+  const stringTime = localStorage.getItem(getUserMacroFavTimeKey());
 
   if (stringTime) {
     const localTime: TimeInterface = JSON.parse(stringTime);

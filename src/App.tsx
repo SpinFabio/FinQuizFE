@@ -22,7 +22,7 @@ import {
   REGISTER_PAGE_ROUTE,
 } from "./config/routes.tsx";
 import MicroContent from "./components/micro/MicroContent.tsx";
-import ProfilePage from "./components/Profile/ProfilePage.tsx";
+import ProfilePage from "./components/profile-page/ProfilePage.tsx";
 import { getTheme, setTheme } from "./state/theme/theme.ts";
 
 const App: React.FC = () => {

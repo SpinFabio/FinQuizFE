@@ -4,6 +4,7 @@ import { getAccessTokenPayload } from "../access-token/acces-token";
 const LOCAL_STORAGE_CURRENT_QUIZ_KEY: string = `${getAccessTokenPayload()?.id??"temp"}currentQuizSession`;
 
 export function setCurrentQuizzes(quizArray: QuizFE[]) {
+  console.log(LOCAL_STORAGE_CURRENT_QUIZ_KEY)
   localStorage.setItem(
     LOCAL_STORAGE_CURRENT_QUIZ_KEY,
     JSON.stringify(quizArray),
@@ -16,6 +17,8 @@ export function removeCurrentQuizzes() {
 
 export function checkCurrentQuizzes(): boolean {
   const res = localStorage.getItem(LOCAL_STORAGE_CURRENT_QUIZ_KEY);
+  console.log(LOCAL_STORAGE_CURRENT_QUIZ_KEY)
+  console.log(getAccessTokenPayload()?.id??"temp")
   if (res) return true;
   return false;
 }
