@@ -14,25 +14,25 @@ const LayoutTop: React.FC<LayoutTopProps> = ({ timerHook }) => {
       id="top"
       className="fixed top-0 z-50 flex h-auto w-full animate-emergeIn flex-col"
     >
-      <div id="icons" className="flex h-auto w-full bg-white">
+      <div id="icons" className="flex h-auto w-full bg-my-background">
         <HomeIconMB />
 
         <div
           id="bridge"
           className="flex w-full justify-center overflow-hidden bg-gradient-to-b from-primary to-primary-dark"
         >
-          <div className="-mx-[10px] h-[60px] w-[100%] self-end rounded-t-[24px] bg-white"></div>
+          <div className="-mx-[10px] h-[60px] w-[100%] self-end rounded-t-[24px] bg-my-background"></div>
         </div>
 
         <ProfileIconMB />
       </div>
       <div
         id="timer-and-fade"
-        className="flex h-5 items-center justify-center bg-gradient-to-b from-white to-transparent align-middle"
+        className="flex h-5 items-center justify-center bg-gradient-to-b from-my-background to-transparent align-middle"
       >
         <div
           id="timer-container"
-          className="bg z-50 -mt-4 rounded-2xl bg-red-500"
+          className="bg bg-my-red z-50 -mt-4 rounded-2xl"
         >
           <TimerMB isInteractable={false} timerHook={timerHook} />
         </div>

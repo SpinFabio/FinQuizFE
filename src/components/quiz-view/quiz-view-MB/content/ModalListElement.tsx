@@ -1,7 +1,7 @@
 import React from "react";
-import { QuizFE } from "../../../../state/quiz/quiz";
 import { classNames } from "../../../../utils/tailwind-utils";
 import { useQuizConsumer } from "../useQuiz";
+import { QuizFE } from "../../../../common/quiz-interfaces";
 
 interface ModalListElementProps {
   quiz: QuizFE;
@@ -28,15 +28,15 @@ const ModalListElement: React.FC<ModalListElementProps> = ({
     <div
       className={classNames(
         myBorderColor,
-        "relative my-2 h-[5.8rem] overflow-hidden rounded-r-[20px] border-b-[5px] border-l-[5px] border-b-white bg-white p-2",
+        "relative my-2 h-[5.8rem] overflow-hidden rounded-r-[20px] border-b-[5px] border-l-[5px] border-b-my-background bg-my-background p-2",
       )}
       onClick={() => {
         myHook.handleCloseListModal();
         myHook.setCurrentIndex(quizIndex);
       }}
     >
-      <div className="absolute bottom-0 left-0 h-1/2 w-full bg-gradient-to-b from-transparent to-white" />
-      <div className="absolute bottom-0 left-0 h-1/2 w-full bg-gradient-to-b from-transparent to-white" />
+      <div className="absolute bottom-0 left-0 h-1/2 w-full bg-gradient-to-b from-transparent to-my-background" />
+      <div className="absolute bottom-0 left-0 h-1/2 w-full bg-gradient-to-b from-transparent to-my-background" />
 
       <p className="mr-1 inline-block font-h1-mb">{quizNum}.</p>
       {quiz.question}

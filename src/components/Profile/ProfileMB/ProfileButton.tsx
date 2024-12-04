@@ -17,14 +17,9 @@ const arrowIcon = (
     viewBox="0 0 10 18"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    className="stroke-2"
   >
-    <path
-      d="M1 1L9 9L1 17"
-      stroke="white"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
+    <path d="M1 1L9 9L1 17" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
@@ -38,11 +33,11 @@ const ProfileButton: React.FC<ProfileButtonProps> = ({
   let className = "";
 
   if (type === "full") {
-    className = " bg-primary text-primary-contrast";
+    className = " bg-primary text-primary-contrast stroke-icons ";
   } else if (type === "checked") {
-    className = " ";
+    className = "  ";
   } else {
-    className = " stroke-primary text-primary border-primary bg-white";
+    className = " stroke-primary text-primary border-primary bg-my-background";
   }
 
   return (

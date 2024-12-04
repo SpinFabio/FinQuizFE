@@ -53,9 +53,9 @@ const MicroInnerListElem: React.FC<MicroInnerListElemProps> = ({
           </div>
           <div
             className={classNames(
-              "w-10 flex-shrink-0 border-white text-primary-contrast",
+              "w-10 flex-shrink-0 border-my-background text-primary-contrast",
               isLast ? "rounded-b-3xl" : "",
-              isSelected ? "bg-primary" : "bg-white",
+              isSelected ? "bg-primary" : "bg-my-background",
             )}
           >
             <div className="flex h-full w-full flex-col justify-center rounded-b-xl py-2 text-center">

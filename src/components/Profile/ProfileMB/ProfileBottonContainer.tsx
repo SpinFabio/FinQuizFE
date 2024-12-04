@@ -20,7 +20,7 @@ const myButtons: ButtonInter[] = [
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="stroke-white stroke-2"
+        className="stroke-icons stroke-2"
       >
         <path
           d="M11.4352 21.8824C16.4252 21.8824 20.4705 17.8371 20.4705 12.847H11.4352L11.4352 3.81171C6.44517 3.81168 2.3999 7.85695 2.3999 12.847C2.3999 17.8371 6.44514 21.8824 11.4352 21.8824Z"
@@ -45,7 +45,7 @@ const myButtons: ButtonInter[] = [
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="stroke-white stroke-2"
+        className="stroke-icons stroke-2"
       >
         <path
           d="M12 8V13M9 2H15M20.75 13.25C20.75 18.08 16.83 22 12 22C7.17 22 3.25 18.08 3.25 13.25C3.25 8.42 7.17 4.5 12 4.5C16.83 4.5 20.75 8.42 20.75 13.25Z"
@@ -66,9 +66,9 @@ const myButtons: ButtonInter[] = [
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="stroke-white stroke-2"
+        className="stroke-icons stroke-2"
       >
-        <g clip-path="url(#clip0_302_809)">
+        <g clipPath="url(#clip0_302_809)">
           <path
             d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z"
             strokeLinecap="round"
@@ -80,11 +80,6 @@ const myButtons: ButtonInter[] = [
             strokeLinejoin="round"
           />
         </g>
-        <defs>
-          <clipPath id="clip0_302_809">
-            <rect width="24" height="24" fill="white" />
-          </clipPath>
-        </defs>
       </svg>
     ),
     type: "full",
@@ -98,7 +93,7 @@ const myButtons: ButtonInter[] = [
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="stroke-white stroke-2"
+        className="stroke-icons stroke-2"
       >
         <path
           d="M10.5086 3.83008L8.45815 9.1427L11.9999 20.1699M11.9999 20.1699L15.6349 9.0495L13.6776 3.83008M11.9999 20.1699L2.3999 9.2359M11.9999 20.1699L21.5999 9.2359M2.3999 9.2359L6.50087 3.83008H17.5921L21.5999 9.2359M2.3999 9.2359H21.5999"
@@ -132,7 +127,7 @@ const myButtons: ButtonInter[] = [
         />
       </svg>
     ),
-    
+
     type: "empty",
   },
 ];
@@ -140,8 +135,13 @@ const myButtons: ButtonInter[] = [
 const ProfileBottonContainer: React.FC<ProfileBottonContainerProps> = ({}) => {
   return (
     <div className="w-full px-5">
-      {myButtons.map((butt) => (
-        <ProfileButton type={butt.type} name={butt.name} icon={butt.icon} />
+      {myButtons.map((butt, i) => (
+        <ProfileButton
+          key={i}
+          type={butt.type}
+          name={butt.name}
+          icon={butt.icon}
+        />
       ))}
       <div></div>
     </div>

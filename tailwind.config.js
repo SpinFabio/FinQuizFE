@@ -4,16 +4,23 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#0074D9",
-        "primary-light": "#7DE7FF",
-        "primary-hover": "#005AA8",
-        "primary-dark": "#004D90",
-        "primary-contrast": "#FFFFFF",
-        info: "rgb(75 85 99 )",
-        "my-green": "#34C759",
-        "my-green-light": "#A7F3D0",
-        "my-green-dark": "#065F46",
-        "my-orange": "#fb923c",
+        primary: "rgba(var(--primary))",
+        "primary-light": "rgba(var(--primary-light))",
+        "primary-hover": "rgba(var(--primary-hover))",
+        "primary-dark": "rgba(var(--primary-dark))",
+        "primary-contrast": "rgba(var(--primary-contrast))",
+        info: "rgba(var(--info))",
+        "my-green": "rgba(var(--my-green))",
+        "my-orange": "rgba(var(--my-orange))",
+        "my-red": "rgba(var(--my-red))",
+        "my-background": "rgba(var(--my-background))",
+        "my-secondary-bg": "rgba(var(--my-secondary-bg))",
+        "my-bgContrast": "rgba(var(--my-bgcontrast))",
+        "my-border-color": "rgba(var(--my-border-color))",
+        "my-text-1": "rgba(var(--my-text-1))",
+        "my-text-2": "rgba(var(--my-text-2))",
+        "my-shadow-on-bg": "rgba(var(--my-shadow-on-bg))",
+        icons: "rgba(var(--icons))",
       },
       borderColor: {
         primary: "#0074D9",
@@ -113,7 +120,6 @@ export default {
           transform: "translateY(-70px) scale(0.9)",
         },
       },
-      
 
       slideFromDX: {
         "0%": { opacity: 0, transform: "translateX(100%)" },

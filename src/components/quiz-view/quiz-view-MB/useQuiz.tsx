@@ -39,6 +39,10 @@ export function useQuiz() {
     }
   }, [quizArray]);
 
+  useEffect(() => {
+    console.log(isOpenListModal);
+  }, [isOpenListModal]);
+
   function getCurrentQuiz(): QuizFE {
     return quizArray[currentIndex];
   }

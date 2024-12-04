@@ -48,7 +48,7 @@ const Dots: React.FC<DotsProps> = (
       // entriamo se dobbiamo coprire qualche punto a SX
       if (i < coveredIndexSX) {
         canColor = false;
-        bgColor = "bg-white";
+        bgColor = "bg-my-background";
       }
     }
 
@@ -56,7 +56,7 @@ const Dots: React.FC<DotsProps> = (
       //console.log("dobbiamo coprire qualcosa");
       if (i > coveredIndexDX) {
         canColor = false;
-        bgColor = "bg-white";
+        bgColor = "bg-my-background";
       }
     }
     // gestione dell'indice sonda colore: la sonda colore inizia a testare

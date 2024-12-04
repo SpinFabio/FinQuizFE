@@ -33,7 +33,7 @@ const CountDownTimer: React.FC<CountDownTimerProps> = () => {
     setCurrentTimer(currentTime)
 
     return (
-      <div className="flex w-11 flex-col rounded-2xl border border-info bg-white px-4 text-center">
+      <div className="flex w-11 flex-col rounded-2xl border border-my-border-color bg-my-background px-4 text-center">
         <p className="pt-2 text-info">Tempo della Prova: </p>
         <div className="flex h-full flex-row items-center justify-center py-1 text-h2-mb text-info">
           {completed ? (

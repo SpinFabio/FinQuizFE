@@ -54,7 +54,7 @@ const AnswareContainer: React.FC<AnswareContainerProps> = ({
         animate={{ scale: click ? (isSelected ? 1.05 : 0.95) : 1 }}
         transition={{ duration: 0.1 }}
         className={classNames(
-          "my-2 flex flex-row items-center rounded-lg border border-info p-2 font-roboto text-quiz-mb font-body-mb shadow-lg",
+          "shadow-my-shadow-on-bg/40 my-2 flex flex-row items-center rounded-lg border border-info p-2 font-roboto text-quiz-mb font-body-mb shadow-lg",
           isSelected ? "scale-[105%]" : "scale-100",
         )}
         onClick={(_) => {

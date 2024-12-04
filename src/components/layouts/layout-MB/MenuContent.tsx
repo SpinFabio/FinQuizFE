@@ -54,10 +54,7 @@ const MenuContent: React.FC<MenuContentProps> = ({ menuHandler }) => {
   ];
 
   return (
-    <div
-      style={{ userSelect: "none" }}
-      className="flex h-auto w-full flex-row items-start justify-evenly rounded-t-[3rem] bg-gradient-to-b from-primary to-primary-dark outline outline-2 outline-white"
-    >
+    <div className="flex h-auto w-full flex-row items-start justify-evenly rounded-t-[3rem] bg-gradient-to-b from-primary to-primary-dark">
       {menuButtons.map((mb, i) => (
         <AnimatedButton key={i}>
           <IconMenu

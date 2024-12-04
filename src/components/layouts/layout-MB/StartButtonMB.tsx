@@ -29,14 +29,12 @@ const StartButtonMB: React.FC<StartButtonMBProps> = ({ menuHandler }) => {
   return (
     <div
       onClick={menuHandler.handleStart}
-      className="flex animate-popIn flex-col items-center rounded-full bg-green-500 px-4 py-2 shadow-white outline outline-2 outline-white"
+      className="bg-my shadow-my-shadow-on-bg border-icons flex animate-popIn flex-col items-center rounded-full border-2 bg-my-green px-4 py-2"
       style={{ userSelect: "none" }}
     >
       <div className="flex flex-row items-center justify-center">
         {startIcon}
-        <div className="pl-3 text-h2-mb font-h2-mb text-primary-contrast">
-          inizia
-        </div>
+        <div className="text-icons pl-3 text-h2-mb font-h2-mb">inizia</div>
       </div>
     </div>
   );

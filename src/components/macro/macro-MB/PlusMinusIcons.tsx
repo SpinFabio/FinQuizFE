@@ -30,7 +30,7 @@ const PlusMinusIcons: React.FC<PlusMinusIconsProps> = ({
         viewBox="0 0 44 44"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className={style ? "stroke-white" : "stroke-primary"}
+        className={style ? "stroke-icons" : "stroke-primary"}
       >
         <path
           d={

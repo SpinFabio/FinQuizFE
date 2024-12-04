@@ -22,7 +22,7 @@ const HomePageMB: React.FC<HomePageMBProps> = ({
     <>
       <div className="flex h-screen flex-col">
         <ProfileIconMB />
-        <div id="Text-Box" className="item-start mx-5 flex flex-col">
+        <div id="Text-Box" className="item-start mx-5 flex flex-col text-my-text-1">
           <h1 className="font-robot fonto-body mt-8 text-h1-mb leading-tight">
             Benvenuto {userName}
           </h1>

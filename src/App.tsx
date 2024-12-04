@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
 import "./index.css";
 import AuthPage from "./components/user-auth/AuthPage/AuthPage.tsx";
@@ -23,8 +23,23 @@ import {
 } from "./config/routes.tsx";
 import MicroContent from "./components/micro/MicroContent.tsx";
 import ProfilePage from "./components/Profile/ProfilePage.tsx";
+import { getTheme, setTheme } from "./state/theme/theme.ts";
 
 const App: React.FC = () => {
+  useEffect(() => {
+    // serve per caricare il tema all'avvio
+    const currentTheme = getTheme();
+    if (currentTheme === "light") {
+      setTheme(currentTheme);
+      document.body.classList.add(currentTheme);
+      document.body.classList.remove("dark");
+    } else {
+      setTheme(currentTheme);
+      document.body.classList.add(currentTheme);
+      document.body.classList.remove("light");
+    }
+  }, []);
+
   return (
     <BrowserRouter basename="/">
       <Routes>

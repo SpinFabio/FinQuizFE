@@ -17,6 +17,7 @@ const MicroListElem: React.FC<MicroListElemProps> = ({ macroMicroData }) => {
       viewBox="0 0 17 18"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className="stroke-icons"
     >
       <path
         d="M9.44461 4.04163L14.1668 8.99996M14.1668 8.99996L9.44461 13.9583M14.1668 8.99996L2.8335 8.99996"
@@ -28,14 +29,14 @@ const MicroListElem: React.FC<MicroListElemProps> = ({ macroMicroData }) => {
   );
 
   const [isOpen, setIsOpen] = useState(false);
-  
-  const [animationClass, setAnimationClass] = useState('');
+
+  const [animationClass, setAnimationClass] = useState("");
 
   useEffect(() => {
     if (isOpen) {
-      setAnimationClass('animate-innerMicroElementIn');
+      setAnimationClass("animate-innerMicroElementIn");
     } else {
-      setAnimationClass('animate-innerMicroElementout');
+      setAnimationClass("animate-innerMicroElementout");
     }
   }, [isOpen]);
 
@@ -45,17 +46,15 @@ const MicroListElem: React.FC<MicroListElemProps> = ({ macroMicroData }) => {
     setIsOpen(!isOpen);
   };
 
-  
-
   return (
     <>
       <div id="top-part" className="m-2">
         <div
           className={classNames(
-            "z-50 flex flex-row items-center justify-start border border-info stroke-black p-2",
+            "border-my-border-color z-50 flex flex-row items-center justify-start border stroke-black p-2",
             isOpen ? "rounded-t-lg" : "rounded-lg",
             macroMicroData.sumOfSelected > 0
-              ? "bg-primary stroke-white text-primary-contrast"
+              ? "bg-primary stroke-icons text-primary-contrast"
               : "",
           )}
           onClick={handleOpenClose}
@@ -72,12 +71,11 @@ const MicroListElem: React.FC<MicroListElemProps> = ({ macroMicroData }) => {
         </div>
         {isOpen ? (
           <>
-            <div className="z-40 flex animate-appearIn flex-row justify-between bg-info py-2 pl-4 text-primary-contrast">
+            <div className="bg-my-secondary-bg border-my-border-color z-40 flex animate-appearIn flex-row justify-between border py-2 pl-4 text-primary-contrast">
               <div className="text-info-mb">
                 Quiz selezionati in questa sezione:
               </div>
               <div className="flex w-10 justify-center border-l-2 text-center">
-                {" "}
                 {macroMicroData.sumOfSelected}
               </div>
             </div>
@@ -86,7 +84,7 @@ const MicroListElem: React.FC<MicroListElemProps> = ({ macroMicroData }) => {
                 <div
                   key={i}
                   style={{ animationDelay: `${delayMs * i}ms` }}
-                  className={classNames("opacity-0",animationClass)}
+                  className={classNames("opacity-0", animationClass)}
                 >
                   <MicroInnerListElem
                     key={i}
@@ -104,7 +102,7 @@ const MicroListElem: React.FC<MicroListElemProps> = ({ macroMicroData }) => {
               >
                 <div
                   onClick={handleOpenClose}
-                  className="-rotate-90 rounded-l-lg bg-gradient-to-l from-primary to-primary-dark stroke-white p-4"
+                  className="stroke-icons -rotate-90 rounded-l-lg bg-gradient-to-l from-primary to-primary-dark p-4"
                 >
                   <AnimatedButton>{arrowIcon}</AnimatedButton>
                 </div>

@@ -13,7 +13,8 @@ interface MacroListElemProps {
 const MacroListElem: React.FC<MacroListElemProps> = ({ macro }) => {
   const myHook: UseMacroInterface = useMacroConsumer();
 
-  const myGradient = macro.selectedNumber > 0 ? "bg-primary " : "bg-white";
+  const myGradient =
+    macro.selectedNumber > 0 ? "bg-primary " : "bg-my-background";
   const myTextColor =
     macro.selectedNumber > 0 ? "text-primary-contrast" : "text-primary";
 
@@ -22,7 +23,7 @@ const MacroListElem: React.FC<MacroListElemProps> = ({ macro }) => {
       <div
         id="top-part"
         onClick={() => myHook.handleCheckUncheck(macro.id)}
-        className="flex h-7 flex-row items-center justify-start rounded-t-lg border border-info px-3"
+        className="border-my-border-color flex h-7 flex-row items-center justify-start rounded-t-lg border px-3"
       >
         <div className="flex flex-row text-body-mb font-h2-mb">
           <div className="pr-2">
@@ -34,16 +35,16 @@ const MacroListElem: React.FC<MacroListElemProps> = ({ macro }) => {
 
       <div
         id="bottom-part"
-        className="flex w-full flex-row rounded-b-lg shadow-md shadow-slate-200"
+        className="shadow-my-shadow-on-bg flex w-full flex-row rounded-b-lg shadow-md"
       >
         <div
           id="left-bottom"
           className={classNames(
             myGradient,
-            "flex flex-row rounded-bl-lg text-white",
+            " flex flex-row rounded-bl-lg",
           )}
         >
-          <div className="flex flex-row rounded-bl-lg rounded-tr-2xl bg-info text-white">
+          <div className="bg-my-secondary-bg text-my-text-2 flex flex-row rounded-bl-lg rounded-tr-2xl">
             <div className="flex flex-col items-center justify-center px-4 py-2">
               <p className="text-info-mb" style={{ userSelect: "none" }}>
                 Quiz Totali:
@@ -60,7 +61,7 @@ const MacroListElem: React.FC<MacroListElemProps> = ({ macro }) => {
         </div>
         <div
           id="right-bottom"
-          className="flex flex-grow flex-row items-center justify-evenly rounded-br-lg bg-info"
+          className="flex flex-grow flex-row items-center justify-evenly rounded-br-lg bg-my-secondary-bg"
         >
           <div
             className={classNames(
