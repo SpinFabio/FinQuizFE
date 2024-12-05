@@ -100,13 +100,13 @@ const QuizBottomLayoutMB: React.FC<QuizBottomLayoutMBProps> = (
           <div>{rightIcon}</div>
         </div>
 
-        <div className="fixed bottom-0 z-40 flex h-[100px] w-full flex-row items-start justify-center">
+        <div className="fixed bottom-0 z-[40] flex h-[100px] w-full flex-row items-start justify-center">
           <AnimatedButton>
-            <div className="flex size-[80px] flex-col content-center justify-center rounded-full bg-gradient-to-b from-primary to-primary-dark stroke-primary-contrast p-3 text-primary-contrast">
-              <div
-                className="flex flex-col items-center justify-center"
-                onClick={myHook.handleOpenListModal}
-              >
+            <div
+              onClick={myHook.handleOpenListModal}
+              className="flex size-[80px] flex-col content-center justify-center rounded-full bg-gradient-to-b from-primary to-primary-dark stroke-primary-contrast p-3 text-primary-contrast"
+            >
+              <div className="flex flex-col items-center justify-center">
                 {listIcon}
               </div>
             </div>

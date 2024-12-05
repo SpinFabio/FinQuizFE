@@ -1,6 +1,9 @@
 import AnswareContainer from "./AnswareContainer";
 import { useQuizConsumer } from "../useQuiz";
 import ModalList from "./ModalList";
+import ModalExit from "./ModalExit";
+import ModalOptions from "./ModalOption";
+import ModalOption from "./ModalOption";
 
 interface QuizContentMBProps {
   /* propName: propType */
@@ -46,7 +49,10 @@ const QuizContentMB: React.FC<QuizContentMBProps> = (
           ))}
         </div>
       </div>
+
       <ModalList />
+      <ModalExit/>
+      <ModalOption/>
     </>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./index.css";
 import AuthPage from "./components/user-auth/AuthPage/AuthPage.tsx";
 import Page404 from "./components/ErrorPages/Page404.tsx";
@@ -24,6 +24,8 @@ import {
 import MicroContent from "./components/micro/MicroContent.tsx";
 import ProfilePage from "./components/profile-page/ProfilePage.tsx";
 import { getTheme, setTheme } from "./state/theme/theme.ts";
+import QuizRevLayoutPage from "./components/quiz-rev/QuizRevLayoutpage.tsx";
+import QuizRevContentPage from "./components/quiz-rev/QuizRevContentPage.tsx";
 
 const App: React.FC = () => {
   useEffect(() => {
@@ -63,10 +65,12 @@ const App: React.FC = () => {
           <Route path={QUIZ_PAGE_ROUTE} element={<QuizContentPage />} />
         </Route>
 
-        <Route
-          path={QUIZ_REVIEW_PAGE_ROUTE}
-          element={<>pagina quiz Rewiew da implementare</>}
-        />
+        <Route element={<QuizRevLayoutPage />}>
+          <Route
+            path={QUIZ_REVIEW_PAGE_ROUTE}
+            element={<QuizRevContentPage />}
+          />
+        </Route>
 
         <Route path="/test" element={<TestPage />} />
         <Route path={"/test-be"} element={<TestBE />} />

@@ -11,6 +11,7 @@ import {
   QUIZ_REVIEW_PAGE_ROUTE,
 } from "../../../config/routes";
 import { QuizFE } from "../../../common/quiz-interfaces";
+import { setCurrentReviewQuizzes } from "../../../state/quiz/quiz-rev";
 
 export function useQuiz() {
   const navigate = useNavigate();
@@ -19,6 +20,8 @@ export function useQuiz() {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [triggerAnimation, setAnimationTrigger] = useState(0);
   const [isOpenListModal, setIsOpenListModal] = useState(false);
+  const [isOpenOptionsModal, setIsOpenOptionModal] = useState(false);
+  const [isOpenExitModal, setIsOpenExitModal] = useState(false);
 
   useEffect(() => {
     if (inMemoryQuizzes === undefined) {
@@ -112,6 +115,14 @@ export function useQuiz() {
     });
   }
 
+  function handleEndQuiz() {
+    removeCurrentQuizzes();
+    navigate(QUIZ_REVIEW_PAGE_ROUTE);
+    setCurrentReviewQuizzes(quizArray)
+  }
+
+  //--------------modals------------------------------------------------------------------
+
   function handleCloseListModal() {
     setIsOpenListModal(false);
   }
@@ -120,9 +131,20 @@ export function useQuiz() {
     setIsOpenListModal(true);
   }
 
-  function handleEndQuiz() {
-    removeCurrentQuizzes();
-    navigate(QUIZ_REVIEW_PAGE_ROUTE);
+  function handleCloseOptionModal() {
+    setIsOpenOptionModal(false);
+  }
+
+  function handleOpenOptionModal() {
+    setIsOpenOptionModal(true);
+  }
+
+  function handleCloseExitModal() {
+    setIsOpenExitModal(false);
+  }
+
+  function handleOpenExitModal() {
+    setIsOpenExitModal(true);
   }
 
   return {
@@ -135,10 +157,17 @@ export function useQuiz() {
     handleAnswerSelection,
     handleFlagCurrentQuiz,
     setCurrentIndex,
+    handleEndQuiz,
+  //---------------------------
+    isOpenListModal,
     handleOpenListModal,
     handleCloseListModal,
-    isOpenListModal,
-    handleEndQuiz,
+    isOpenOptionsModal,
+    handleCloseOptionModal,
+    handleOpenOptionModal,
+    isOpenExitModal,
+    handleCloseExitModal,
+    handleOpenExitModal,
   };
 }
 

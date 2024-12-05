@@ -14,7 +14,20 @@ const ModalList: React.FC<ModalListProps> = (
 ) => {
   const myHook = useQuizConsumer();
 
-  const showMarked = myHook.quizArray.find((quiz) => quiz.isFlagged);
+  const markedQuizList = myHook.quizArray
+    .map((quiz, index) => {
+      return { ...quiz, originalIndex: index };
+    })
+    .filter((quiz) => quiz.isFlagged)
+    .map((quiz, i) => {
+      return (
+        <ModalListElement
+          key={i}
+          quizNum={quiz.originalIndex + 1}
+          quiz={quiz}
+        />
+      );
+    });
 
   return (
     <ModalMB
@@ -31,21 +44,8 @@ const ModalList: React.FC<ModalListProps> = (
           }}
         />
         <div onClick={(e) => e.stopPropagation()}>
-          <p className={showMarked ? "" : "hidden"}>domande marcate: </p>
-          {myHook.quizArray
-            .map((quiz, index) => {
-              return { ...quiz, originalIndex: index };
-            })
-            .filter((quiz) => quiz.isFlagged)
-            .map((quiz, i) => {
-              return (
-                <ModalListElement
-                  key={i}
-                  quizNum={quiz.originalIndex + 1}
-                  quiz={quiz}
-                />
-              );
-            })}
+          <p className={markedQuizList.length>0 ? "" : "hidden"}>domande marcate: </p>
+          {markedQuizList}
 
           <p className="mt-5">lista completa delle domande: </p>
           {myHook.quizArray.map((quiz, i) => {

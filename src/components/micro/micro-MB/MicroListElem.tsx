@@ -72,10 +72,10 @@ const MicroListElem: React.FC<MicroListElemProps> = ({ macroMicroData }) => {
         <AnimatePresence>
           {isOpen ? (
             <motion.div
-              style={{ transformOrigin: "top" }}
               key={"accordion"}
+              style={{ transformOrigin: "top" }}
               animate={{ scaleY: 1 }}
-              transition={{duration:0.1}}
+              transition={{ duration: 0.1 }}
               exit={{ scaleY: 0 }}
             >
               <div className="bg-my-secondary-bg border-my-border-color z-40 flex animate-appearIn flex-row justify-between border py-2 pl-4 text-primary-contrast">

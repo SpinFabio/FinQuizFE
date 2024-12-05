@@ -1,30 +1,33 @@
 import { QuizFE } from "../../common/quiz-interfaces";
 import { getAccessTokenPayload } from "../access-token/acces-token";
 
-const LOCAL_STORAGE_CURRENT_QUIZ_KEY: string = `${getAccessTokenPayload()?.id??"temp"}currentQuizSession`;
+function getLocalStorageCurrentQuizKey(): string {
+  const userId = getAccessTokenPayload()?.id ?? "temp";
+  return `${userId}currentQuizSession`;
+}
 
 export function setCurrentQuizzes(quizArray: QuizFE[]) {
-  console.log(LOCAL_STORAGE_CURRENT_QUIZ_KEY)
+  //console.log(getLocalStorageCurrentQuizKey)
   localStorage.setItem(
-    LOCAL_STORAGE_CURRENT_QUIZ_KEY,
+    getLocalStorageCurrentQuizKey(),
     JSON.stringify(quizArray),
   );
 }
 
 export function removeCurrentQuizzes() {
-  localStorage.removeItem(LOCAL_STORAGE_CURRENT_QUIZ_KEY);
+  localStorage.removeItem(getLocalStorageCurrentQuizKey());
 }
 
 export function checkCurrentQuizzes(): boolean {
-  const res = localStorage.getItem(LOCAL_STORAGE_CURRENT_QUIZ_KEY);
-  console.log(LOCAL_STORAGE_CURRENT_QUIZ_KEY)
-  console.log(getAccessTokenPayload()?.id??"temp")
+  const res = localStorage.getItem(getLocalStorageCurrentQuizKey());
+  //console.log(getLocalStorageCurrentQuizKey())
+  //console.log(getAccessTokenPayload()?.id??"temp")
   if (res) return true;
   return false;
 }
 
 export function getCurrentQuizzes(): QuizFE[] | undefined {
-  const quizzes = localStorage.getItem(LOCAL_STORAGE_CURRENT_QUIZ_KEY);
+  const quizzes = localStorage.getItem(getLocalStorageCurrentQuizKey());
   if (!quizzes) {
     return undefined;
   } else {

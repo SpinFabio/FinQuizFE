@@ -91,7 +91,10 @@ const QuizTopLayout: React.FC<QuizTopLayoutProps> = (
       <div className="fixed z-0 h-10 w-full bg-my-background text-my-bgContrast"></div>
       <div className="fixed z-50 flex w-full flex-row items-center justify-between">
         <QuizHomeIcon />
-        <div className="flex flex-col items-center justify-center px-5">
+        <div
+          className="flex flex-col items-center justify-center px-5"
+          onClick={myHook.handleOpenOptionModal}
+        >
           <div className="flex w-4 flex-col content-center items-center">
             <p className="text-info-mb font-info-mb text-my-bgContrast">
               opzioni
@@ -105,12 +108,18 @@ const QuizTopLayout: React.FC<QuizTopLayoutProps> = (
         <CountDownTimer />
       </div>
 
-      <div className="fixed z-10 mt-[90px] w-full ">
+      <div className="fixed z-10 mt-[90px] w-full">
         <div
           id="quizList+caroselDots+Flag"
           className="flex w-full flex-row items-center justify-between bg-my-background"
         >
-          <div className={classNames(myStyle)} onClick={myHook.handleEndQuiz}>
+          <div
+            className={classNames(myStyle)}
+            onClick={() => {
+              myHook.handleOpenExitModal();
+              console.log("ciao")
+            }}
+          >
             <div className="flex w-4 flex-col content-center items-center">
               <p className="text-info-mb font-info-mb text-my-bgContrast">
                 termina
@@ -118,7 +127,9 @@ const QuizTopLayout: React.FC<QuizTopLayoutProps> = (
             </div>
             <AnimatedButton>{LogOutIcon}</AnimatedButton>
           </div>
+
           <Dots />
+
           <div
             className={classNames(
               myStyle,
@@ -136,7 +147,7 @@ const QuizTopLayout: React.FC<QuizTopLayoutProps> = (
             <AnimatedButton>{flagIcon}</AnimatedButton>
           </div>
         </div>
-        <div className="z-[99] h-1 border-b border-my-border-color bg-my-background mx-3"></div>
+        <div className="border-my-border-color z-[99] mx-3 h-1 border-b bg-my-background"></div>
       </div>
     </div>
   );

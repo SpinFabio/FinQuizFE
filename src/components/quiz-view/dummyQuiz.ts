@@ -1,4 +1,4 @@
-import { QuizFE } from "../../state/quiz/quiz";
+import { QuizFE } from "../../common/quiz-interfaces";
 
 export const mockQuizData: QuizFE[] = [
   // NON CANCELLARLO CHE SERVE PER INIZIALIZZARE LA PAGINA QUIZ

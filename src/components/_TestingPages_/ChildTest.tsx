@@ -6,7 +6,12 @@ interface ChildTestProps {
 }
 
 const ChildTest: React.FC<ChildTestProps> = () => {
-  return <motion.div className="bg- p-5">ciaone</motion.div>;
+  return (
+    <motion.div className="bg- p-5">
+      <div className="bg-my-red size-10 shadow-2xl shadow-blue-800"></div>
+      <div className="bg-my-red size-10 shadow shadow-blue-800"></div>
+    </motion.div>
+  );
 };
 
 export default ChildTest;

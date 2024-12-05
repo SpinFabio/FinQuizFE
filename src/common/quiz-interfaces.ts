@@ -1,3 +1,5 @@
+import { boolean } from "yup";
+
 export interface QuizBE {
   macroTopicID: number;
   microTopicID: number;
@@ -18,4 +20,9 @@ export interface QuizFE {
   score: 1 | 2;
   isViewed: boolean;
   isFlagged: boolean;
+}
+
+export interface ReviewedQuizFE extends QuizFE {
+  isCorrect:boolean
+  realIndex:number
 }
