@@ -43,7 +43,7 @@ const UpperContentReview: React.FC<UpperContentReviewProps> = ({
           )}
           style={{ animationDelay: `${i++ * delay}ms` }}
         >
-          {statState.percentage}%
+          {Math.round(statState.percentage)}%
         </h3>
         <p
           className={commonAnimation}

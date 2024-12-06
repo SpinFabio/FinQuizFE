@@ -134,6 +134,7 @@ const QuizRevContentMB: React.FC<QuizRevContentMBProps> = (
           .filter((quiz) => !quiz.isCorrect && quiz.selectedAnswer !== "")
           .map((quiz, i) => (
             <div
+              key={i}
               className="animate-appearIn opacity-0"
               style={{ animationDelay: `${i * msDelay}ms` }}
             >

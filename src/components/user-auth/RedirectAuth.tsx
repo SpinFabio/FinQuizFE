@@ -10,7 +10,7 @@ const RedirectAuth: React.FC<RedirectAuthProps> = ({ typeAuth }) => {
   let text = "";
   let linkTo = "";
   if (typeAuth === "login") {
-    text = "Non hai un account?";
+    text = "Non hai ancora un account?";
     linkTo = REGISTER_PAGE_ROUTE;
   } else {
     text = "Hai già un account? ";
