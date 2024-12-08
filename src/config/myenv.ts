@@ -11,3 +11,6 @@ export const MIN_MICRO_QUIZZES = 12; // questo non toccarlo o rompi il dot Visua
 
 export const MAX_HOURS = 5;
 export const MAX_MINUTES = 60; // questo non toccarlo
+
+
+export const MY_BLUR_STYLE = "bg-my-background/70";

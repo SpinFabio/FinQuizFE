@@ -29,9 +29,9 @@ const HomePageMB: React.FC<HomePageMBProps> = ({
         <ProfileIconMB />
         <div
           id="Text-Box"
-          className="item-start text-my-text-1 mx-5 flex flex-col"
+          className="item-start text-my-text-1  my-6 mx-6  p-4 flex flex-col"
         >
-          <h1 className="font-robot fonto-body mt-8 text-h1-mb leading-tight">
+          <h1 className="font-robot fonto-body  text-h1-mb leading-tight">
             Benvenuto {userName}
           </h1>
           <h2 className="font-roboto text-body-mb font-info-mb">
@@ -39,7 +39,7 @@ const HomePageMB: React.FC<HomePageMBProps> = ({
           </h2>
         </div>
 
-        <div className="mx-4 flex flex-col items-center" id="card-container">
+        <div id="card-container" className="mx-6 flex flex-col items-center" >
           {modeArray.map((mode: Modes, index: number) => {
             return (
               <CardMode
@@ -51,7 +51,8 @@ const HomePageMB: React.FC<HomePageMBProps> = ({
             );
           })}
         </div>
-        <div className="flex h-full flex-grow items-center justify-center py-5">
+
+        <div className="flex h-full flex-grow items-center justify-center py-5 ">
           {isQuizzesArrayPresent ? (
             <AnimatedButton>
               <ResumeButton

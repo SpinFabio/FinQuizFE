@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import React, { useEffect } from "react";
 import { classNames } from "../../../utils/tailwind-utils";
 import SimplePortal from "../portals/SimplePortal";
+import { MY_BLUR_STYLE } from "../../../config/myenv";
 
 interface ModalMBProps {
   isOpen: boolean;
@@ -54,7 +55,7 @@ const ModalMB: React.FC<ModalMBProps> = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className={classNames(
-              "fixed left-0 top-0 z-[9999] flex h-screen w-screen items-start justify-center overflow-y-auto backdrop-blur-sm sm:hidden",
+              "fixed left-0 top-0 z-[9999] flex h-screen w-screen items-start justify-center overflow-y-auto  sm:hidden",MY_BLUR_STYLE,
               setOverflow ? setOverflow : "overflow-hidden",
             )}
             onClick={onClose}

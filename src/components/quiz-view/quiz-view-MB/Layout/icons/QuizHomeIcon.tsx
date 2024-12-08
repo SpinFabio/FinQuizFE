@@ -12,7 +12,7 @@ const QuizHomeIcon: React.FC<QuizHomeIconProps> = (
 ) => {
   return (
     <div
-      className="flex rounded-br-[50px] bg-gradient-to-b from-primary to-primary-dark pb-5 pl-3 pr-5 pt-4"
+      className="flex rounded-br-[50px]  p-5"
     >
       <BaseHomeIcon />
     </div>

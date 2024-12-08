@@ -5,6 +5,7 @@ import { classNames } from "../../../../utils/tailwind-utils";
 import Dots from "./Dots";
 import CountDownTimer from "./CountDownTimer";
 import AnimatedButton from "../../../wigets/animated-buttons/AnimatedButton";
+import { MY_BLUR_STYLE } from "../../../../config/myenv";
 
 interface QuizTopLayoutProps {
   /* propName: propType */
@@ -88,7 +89,12 @@ const QuizTopLayout: React.FC<QuizTopLayoutProps> = (
 
   return (
     <div>
-      <div className="fixed z-0 h-10 w-full bg-my-background text-my-bgContrast"></div>
+      <div
+        id="background-top-elements"
+        className={classNames(
+          "fixed z-0 h-[150px] w-full",MY_BLUR_STYLE
+        )}
+      />
       <div className="fixed z-50 flex w-full flex-row items-center justify-between">
         <QuizHomeIcon />
         <div
@@ -111,13 +117,13 @@ const QuizTopLayout: React.FC<QuizTopLayoutProps> = (
       <div className="fixed z-10 mt-[90px] w-full">
         <div
           id="quizList+caroselDots+Flag"
-          className="flex w-full flex-row items-center justify-between bg-my-background"
+          className="flex w-full flex-row items-center justify-between"
         >
           <div
             className={classNames(myStyle)}
             onClick={() => {
               myHook.handleOpenExitModal();
-              console.log("ciao")
+              console.log("ciao");
             }}
           >
             <div className="flex w-4 flex-col content-center items-center">
@@ -147,7 +153,6 @@ const QuizTopLayout: React.FC<QuizTopLayoutProps> = (
             <AnimatedButton>{flagIcon}</AnimatedButton>
           </div>
         </div>
-        <div className="border-my-border-color z-[99] mx-3 h-1 border-b bg-my-background"></div>
       </div>
     </div>
   );

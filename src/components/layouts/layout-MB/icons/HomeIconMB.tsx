@@ -12,7 +12,7 @@ const HomeIconMB: React.FC<HomeIconMBProps> = (
 ) => {
   return (
     <div className="z-50 flex items-start justify-start">
-      <div className="flex rounded-br-[42px] bg-gradient-to-b from-primary to-primary-dark p-5">
+      <div className="flex rounded-full p-5">
         <BaseHomeIcon />
       </div>
     </div>

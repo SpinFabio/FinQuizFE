@@ -10,7 +10,7 @@ const ReusableProfileIcon: React.FC<ReusableProfileIconProps> = ({
 }) => {
   return (
     <div
-      className="flex rounded-bl-[42px] bg-gradient-to-b from-primary to-primary-dark p-5"
+      className="flex rounded-full    p-5"
       onClick={onActon}
     >
       <BaseProfileIcon />

@@ -48,7 +48,7 @@ const MicroListElem: React.FC<MicroListElemProps> = ({ macroMicroData }) => {
 
   return (
     <>
-      <div id="top-part" className="m-2">
+      <div id="top-part" className="my-2">
         <div
           className={classNames(
             "border-my-border-color z-50 flex flex-row items-center justify-start border stroke-black p-2",

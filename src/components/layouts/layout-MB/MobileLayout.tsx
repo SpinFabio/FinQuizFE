@@ -39,11 +39,11 @@ const MobileLayout: React.FC<MobileLayoutProps> = () => {
         <div className="h-72 w-full" />
       </div>
 
-      <div id="menu" className="fixed bottom-0 z-50 w-full animate-emergeIn">
-        <div className="flex h-6 items-center justify-center">
+      <div id="menu" className="fixed bottom-0 w-full animate-emergeIn">
+        <div className="relative z-50 flex h-0 items-center justify-center">
           <StartButtonMB menuHandler={currentMenuHandler} />
         </div>
-        <div className="z-50">
+        <div className="relative z-0">
           <MenuContent menuHandler={currentMenuHandler} />
         </div>
       </div>

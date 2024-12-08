@@ -17,11 +17,11 @@ const MicroListMB: React.FC<MicroListMBProps> = (
 
   return (
     <div key={myHook.animationTrigger}>
-      <div className="p-2">Quiz selezionati al momento: {myHook.totSum}</div>
+      <div className="p-4 px-6">Quiz selezionati al momento: {myHook.totSum}</div>
       {myHook.macroMicroState.map((microData, i) => (
         <div
           key={i}
-          className="animate-appearIn opacity-0"
+          className="animate-appearIn opacity-0 px-5 p-1"
           style={{ animationDelay: `${i * 100}ms` }}
         >
           <MicroListElem key={i} macroMicroData={microData} />

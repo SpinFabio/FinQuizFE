@@ -14,7 +14,7 @@ const CardMode: React.FC<CardModeProps> = ({
 }) => {
   return (
     <div
-      className="animate-appearIn my-2 h-10 w-full rounded-md bg-gradient-to-r from-primary to-primary-dark p-4 pb-6 opacity-0 shadow-xl shadow-my-shadow-on-bg transition hover:scale-[101%]"
+      className="animate-appearIn my-2 h-10 w-full rounded-3xl bg-gradient-to-r from-primary to-primary-dark p-4 pb-6 opacity-0 shadow-xl shadow-my-shadow-on-bg transition hover:scale-[101%]"
       style={{ animationDelay: `${appearDelay}ms` }}
     >
       <Link to={linkTo}>

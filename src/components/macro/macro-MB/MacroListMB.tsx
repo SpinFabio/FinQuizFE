@@ -9,12 +9,12 @@ const MacroListMB: React.FC = () => {
 
   return (
     <div key={macroHook.animationTrigger}>
-      <p className="px-4"> Quiz selezionati: {macroHook.totalSum}</p>
+      <p className="px-6 py-4"> Quiz selezionati: {macroHook.totalSum}</p>
 
       {macroHook.macroState.map((macroT, i) => (
         <div
           key={macroT.name}
-          className="animate-appearIn opacity-0"
+          className="animate-appearIn opacity-0 px-5" 
           style={{ animationDelay: `${i * 100}ms` }}
         >
           <MacroListElem key={i} macro={macroT} />
